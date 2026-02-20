@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Very Days</title>
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --fg:#f5f5f7;
+      --muted:rgba(245,245,247,.72);
+      --line:rgba(255,255,255,.10);
+      --card:rgba(255,255,255,.06);
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+                   "Hiragino Sans", "Noto Sans JP", Arial, sans-serif;
+      color:var(--fg);
+      background: var(--bg);
+      overflow-x:hidden;
+    }
+
+    /* soft minimal background */
+    .bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+    }
+    .bg::before{
+      content:"";
+      position:absolute; inset:-30%;
+      background:
+        radial-gradient(600px 400px at 20% 30%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(700px 500px at 80% 40%, rgba(255,255,255,.07), transparent 60%),
+        radial-gradient(600px 500px at 55% 80%, rgba(255,255,255,.05), transparent 60%),
+        linear-gradient(to bottom, rgba(255,255,255,.03), transparent 35%, rgba(255,255,255,.02));
+      filter: blur(18px);
+      transform: translateZ(0);
+      opacity:.9;
+    }
+    .bg::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity:.06;
+      mix-blend-mode: screen;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,13,.82), rgba(11,11,13,.35));
+      border-bottom: 1px solid var(--line);
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+    }
+    .dot{
+      width:10px;height:10px;border-radius:50%;
+      background: rgba(255,255,255,.85);
+      box-shadow: 0 0 0 6px rgba(255,255,255,.06);
+    }
+    .brand span{
+      letter-spacing: .2px;
+      font-weight: 650;
+      opacity:.95;
+    }
+
+    .lang{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang button{
+      appearance:none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--fg);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      opacity:.9;
+    }
+    .lang button:hover{ background: rgba(255,255,255,.06); }
+    .lang button:active{ transform: scale(.98); }
+    .lang button[aria-pressed="true"]{
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.22);
+      opacity:1;
+    }
+
+    main{
+      min-height: calc(100vh - 64px);
+      display:grid;
+      place-items:center;
+      padding: 48px 20px 64px;
+    }
+    .hero{
+      width: 100%;
+      max-width: 980px;
+      padding: 54px 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-120px -80px auto auto;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 60%);
+      filter: blur(10px);
+      opacity:.7;
+    }
+    h1{
+      margin:0 0 14px;
+      font-size: clamp(44px, 6vw, 72px);
+      line-height: 1.05;
+      letter-spacing: -1.2px;
+      font-weight: 800;
+    }
+    .subtitle{
+      margin:0;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 46ch;
+    }
+    .meta{
+      margin-top: 22px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      color: rgba(245,245,247,.62);
+      font-size: 12.5px;
+    }
+    .pill{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    footer{
+      margin-top: 28px;
+      color: rgba(245,245,247,.45);
+      font-size: 12px;
+    }
+    a{ color:inherit; }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap">
+      <div class="brand" aria-label="Very Days">
+        <span>verydays</span>
+      </div>
+
+      <nav class="lang" aria-label="Language">
+        <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        <button type="button" data-lang="en" aria-pressed="false">Eng</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Hero">
+      <h1 id="title">Very days</h1>
+      <p class="subtitle" id="subtitle">당신의 옆에서 매일을 함께 하는 very days</p>
+
+      <div class="meta" aria-label="Meta">
+        <span class="pill" id="pill1">Simple</span>
+        <span class="pill" id="pill2">Calm</span>
+        <span class="pill" id="pill3">Everyday</span>
+      </div>
+
+      <footer id="footer">© <span id="year"></span> lenayoo</footer>
+    </section>
+  </main>
+
+  <script>
+    const copy = {
+      ko: {
+        title: "Very days",
+        subtitle: "당신의 옆에서 매일을 함께 하는 Very days",
+        pills: ["Simple", "Calm", "Everyday"]
+      },
+      ja: {
+        title: "Very days",
+        subtitle: "あなたのそばで、毎日をいっしょに過ごす Very days",
+        pills: ["シンプル", "静けさ", "毎日"]
+      },
+      en: {
+        title: "Very days",
+        subtitle: "Very days, by your side—every single day.",
+        pills: ["Simple", "Calm", "Everyday"]
+      }
+    };
+
+    const els = {
+      title: document.getElementById("title"),
+      subtitle: document.getElementById("subtitle"),
+      pill1: document.getElementById("pill1"),
+      pill2: document.getElementById("pill2"),
+      pill3: document.getElementById("pill3"),
+      year: document.getElementById("year"),
+      buttons: document.querySelectorAll(".lang button")
+    };
+
+    els.year.textContent = new Date().getFullYear();
+
+    function setLang(lang){
+      const c = copy[lang];
+      els.title.textContent = c.title;
+      els.subtitle.textContent = c.subtitle;
+      els.pill1.textContent = c.pills[0];
+      els.pill2.textContent = c.pills[1];
+      els.pill3.textContent = c.pills[2];
+
+      els.buttons.forEach(b => {
+        const pressed = b.dataset.lang === lang;
+        b.setAttribute("aria-pressed", pressed ? "true" : "false");
+      });
+
+      // also update html lang (nice-to-have)
+      document.documentElement.lang = (lang === "ko") ? "ko" : (lang === "ja" ? "ja" : "en");
+    }
+
+    els.buttons.forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+  </script>
+</body>
+</html>
