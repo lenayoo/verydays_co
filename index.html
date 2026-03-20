@@ -170,6 +170,31 @@
       color: rgba(245,245,247,.45);
       font-size: 12px;
     }
+    .site-footer{
+      margin-top: 18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      color: rgba(245,245,247,.62);
+      font-size: 13px;
+    }
+    .footer-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      transition: background .2s ease, border-color .2s ease, transform .08s ease;
+    }
+    .footer-link:hover{
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.18);
+    }
+    .footer-link:active{ transform: scale(.98); }
     a{ color:inherit; }
   </style>
 </head>
@@ -203,6 +228,9 @@
       </div>
 
       <footer id="footer">© <span id="year"></span> lenayoo</footer>
+      <div class="site-footer">
+        <a class="footer-link" href="./tarot-days-privacy-policy.html" id="privacyLink">Tarot days Privacy Policy</a>
+      </div>
     </section>
   </main>
 
@@ -211,17 +239,20 @@
       ko: {
         title: "Very days",
         subtitle: "당신의 옆에서 매일을 함께 하는 Very days",
-        pills: ["Simple", "Calm", "Everyday"]
+        pills: ["Simple", "Calm", "Everyday"],
+        privacyLink: "Tarot days 개인정보처리방침"
       },
       ja: {
         title: "Very days",
         subtitle: "あなたのそばで、毎日をいっしょに過ごす Very days",
-        pills: ["シンプル", "静けさ", "毎日"]
+        pills: ["シンプル", "静けさ", "毎日"],
+        privacyLink: "Tarot days プライバシーポリシー"
       },
       en: {
         title: "Very days",
         subtitle: "Very days, by your side—every single day.",
-        pills: ["Simple", "Calm", "Everyday"]
+        pills: ["Simple", "Calm", "Everyday"],
+        privacyLink: "Tarot days Privacy Policy"
       }
     };
 
@@ -231,6 +262,7 @@
       pill1: document.getElementById("pill1"),
       pill2: document.getElementById("pill2"),
       pill3: document.getElementById("pill3"),
+      privacyLink: document.getElementById("privacyLink"),
       year: document.getElementById("year"),
       buttons: document.querySelectorAll(".lang button")
     };
@@ -244,6 +276,7 @@
       els.pill1.textContent = c.pills[0];
       els.pill2.textContent = c.pills[1];
       els.pill3.textContent = c.pills[2];
+      els.privacyLink.textContent = c.privacyLink;
 
       els.buttons.forEach(b => {
         const pressed = b.dataset.lang === lang;

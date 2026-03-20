@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tarot days Privacy Policy</title>
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --fg:#f5f5f7;
+      --muted:rgba(245,245,247,.72);
+      --soft:rgba(245,245,247,.58);
+      --line:rgba(255,255,255,.10);
+      --card:rgba(255,255,255,.06);
+      --shadow: 0 20px 60px rgba(0,0,0,.55);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR",
+                   "Hiragino Sans", "Noto Sans JP", Arial, sans-serif;
+      color:var(--fg);
+      background:var(--bg);
+      overflow-x:hidden;
+    }
+    .bg{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-1;
+    }
+    .bg::before{
+      content:"";
+      position:absolute; inset:-30%;
+      background:
+        radial-gradient(600px 400px at 18% 28%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(700px 500px at 82% 36%, rgba(255,255,255,.07), transparent 60%),
+        radial-gradient(600px 500px at 56% 82%, rgba(255,255,255,.05), transparent 60%),
+        linear-gradient(to bottom, rgba(255,255,255,.03), transparent 35%, rgba(255,255,255,.02));
+      filter: blur(18px);
+      opacity:.9;
+    }
+    .bg::after{
+      content:"";
+      position:absolute; inset:0;
+      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 22px 22px;
+      opacity:.06;
+      mix-blend-mode: screen;
+    }
+    header{
+      position:sticky;
+      top:0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,13,.82), rgba(11,11,13,.35));
+      border-bottom: 1px solid var(--line);
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+      text-decoration:none;
+    }
+    .brand span{
+      letter-spacing:.2px;
+      font-weight:650;
+      opacity:.95;
+    }
+    .lang{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang button{
+      appearance:none;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--fg);
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      cursor:pointer;
+      transition: transform .08s ease, background .2s ease, border-color .2s ease;
+      opacity:.9;
+    }
+    .lang button:hover{ background: rgba(255,255,255,.06); }
+    .lang button:active{ transform: scale(.98); }
+    .lang button[aria-pressed="true"]{
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.22);
+      opacity:1;
+    }
+    main{
+      padding: 44px 20px 64px;
+    }
+    .page{
+      max-width: 980px;
+      margin: 0 auto;
+      display:grid;
+      gap:18px;
+    }
+    .hero, .section{
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .hero{
+      padding: 40px 28px 32px;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-120px -80px auto auto;
+      width:320px;
+      height:320px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.22), transparent 60%);
+      filter: blur(10px);
+      opacity:.7;
+    }
+    .eyebrow{
+      margin:0 0 10px;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:rgba(245,245,247,.5);
+    }
+    h1{
+      margin:0;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height:1.05;
+      letter-spacing:-1px;
+      font-weight:800;
+      max-width:12ch;
+    }
+    .subtitle{
+      margin:16px 0 0;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height:1.7;
+      color:var(--muted);
+      max-width:58ch;
+    }
+    .meta{
+      margin-top: 22px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: rgba(245,245,247,.72);
+      font-size: 12.5px;
+    }
+    .section{
+      padding: 26px 24px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:20px;
+      letter-spacing:-.2px;
+    }
+    p{
+      margin:0;
+      color:var(--soft);
+      line-height:1.8;
+      font-size:15px;
+    }
+    .stack{
+      display:grid;
+      gap:12px;
+    }
+    .highlight{
+      padding:18px;
+      border-radius:18px;
+      background: rgba(255,255,255,.04);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .highlight strong{
+      display:block;
+      margin-bottom:8px;
+      font-size:15px;
+      color:var(--fg);
+    }
+    .footer{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      align-items:center;
+      color: rgba(245,245,247,.45);
+      font-size: 12px;
+      padding: 4px 2px 0;
+    }
+    .link{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,.18);
+      padding-bottom:2px;
+    }
+    @media (max-width: 640px){
+      .wrap{ padding:16px; }
+      .hero, .section{ border-radius:18px; }
+      .hero{ padding:28px 20px 24px; }
+      .section{ padding:22px 18px; }
+      .footer{ align-items:flex-start; }
+    }
+    a{ color:inherit; }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header>
+    <div class="wrap">
+      <a class="brand" href="./index.html" aria-label="Very Days home">
+        <span>verydays</span>
+      </a>
+
+      <nav class="lang" aria-label="Language">
+        <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        <button type="button" data-lang="en" aria-pressed="false">Eng</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page">
+      <section class="hero" aria-label="Privacy Policy Hero">
+        <p class="eyebrow" id="eyebrow">Privacy Policy</p>
+        <h1 id="title">Tarot days Privacy Policy</h1>
+        <p class="subtitle" id="subtitle">Tarot days does not collect, store, or share any personal information from users.</p>
+
+        <div class="meta" aria-label="Privacy Summary">
+          <span class="pill" id="pill1">No sign-in</span>
+          <span class="pill" id="pill2">No analytics SDK</span>
+          <span class="pill" id="pill3">No personal data collected</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="stack">
+          <div class="highlight">
+            <strong id="highlightTitle">Summary</strong>
+            <p id="highlightBody">Tarot days is designed to work without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 id="section1Title">Information We Collect</h2>
+        <p id="section1Body">Tarot days does not collect personal information or device-based identifiers that can be used to identify you.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="section2Title">How We Use Information</h2>
+        <p id="section2Body">Because we do not collect personal information, we do not use, analyze, sell, or share customer data with third parties.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="section3Title">Third-Party Services</h2>
+        <p id="section3Body">Tarot days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="section4Title">Children's Privacy</h2>
+        <p id="section4Body">Since Tarot days does not collect personal information from any user, it also does not knowingly collect personal information from children.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="section5Title">Changes to This Policy</h2>
+        <p id="section5Body">If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.</p>
+      </section>
+
+      <section class="section">
+        <h2 id="section6Title">Contact</h2>
+        <p id="section6Body">If you have questions about this policy, please contact the developer through the contact method provided on the App Store listing.</p>
+      </section>
+
+      <div class="footer">
+        <span id="effectiveDate">Effective date: 2026-03-20</span>
+        <a class="link" href="./index.html" id="backLink">Back to Very days</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const copy = {
+      ko: {
+        eyebrow: "Privacy Policy",
+        title: "Tarot days 개인정보처리방침",
+        subtitle: "Tarot days는 사용자의 개인정보를 수집, 저장, 공유하지 않습니다.",
+        pills: ["로그인 없음", "분석 SDK 없음", "개인정보 수집 없음"],
+        highlightTitle: "요약",
+        highlightBody: "Tarot days는 고객정보를 수집하지 않는 방식으로 설계되었습니다. 계정, 이름, 이메일 주소, 전화번호, 사진, 연락처, 위치 정보, 결제 정보를 요구하거나 저장하지 않습니다.",
+        section1Title: "수집하는 정보",
+        section1Body: "Tarot days는 개인정보나 사용자를 식별할 수 있는 기기 기반 식별자를 수집하지 않습니다.",
+        section2Title: "정보 이용 방식",
+        section2Body: "개인정보를 수집하지 않기 때문에, 고객 데이터를 이용, 분석, 판매하거나 제3자와 공유하지 않습니다.",
+        section3Title: "제3자 서비스",
+        section3Body: "Tarot days에는 고객정보를 수집하는 광고 SDK, 외부 분석 도구, 제3자 추적 기술이 포함되어 있지 않습니다.",
+        section4Title: "아동의 개인정보",
+        section4Body: "Tarot days는 어떤 사용자로부터도 개인정보를 수집하지 않으므로, 아동의 개인정보 역시 의도적으로 수집하지 않습니다.",
+        section5Title: "정책 변경",
+        section5Body: "향후 본 개인정보처리방침이 변경되는 경우, 수정된 시행일과 함께 이 페이지에 업데이트된 내용을 게시합니다.",
+        section6Title: "문의",
+        section6Body: "본 정책에 관한 문의가 있을 경우, App Store 목록에 기재된 개발자 연락 방법을 통해 문의해 주세요.",
+        effectiveDate: "시행일: 2026-03-20",
+        backLink: "Very days로 돌아가기"
+      },
+      ja: {
+        eyebrow: "Privacy Policy",
+        title: "Tarot days プライバシーポリシー",
+        subtitle: "Tarot days は、ユーザーの個人情報を収集、保存、共有しません。",
+        pills: ["ログイン不要", "分析 SDK なし", "個人情報収集なし"],
+        highlightTitle: "概要",
+        highlightBody: "Tarot days は顧客情報を収集しない設計です。アカウント、氏名、メールアドレス、電話番号、写真、連絡先、位置情報、決済情報を要求または保存しません。",
+        section1Title: "収集する情報",
+        section1Body: "Tarot days は、個人を特定できる個人情報や端末識別子を収集しません。",
+        section2Title: "情報の利用",
+        section2Body: "個人情報を収集しないため、顧客データを利用、分析、販売、または第三者と共有することはありません。",
+        section3Title: "第三者サービス",
+        section3Body: "Tarot days には、顧客情報を収集する広告 SDK、外部分析ツール、第三者トラッキング技術は含まれていません。",
+        section4Title: "子どものプライバシー",
+        section4Body: "Tarot days はいかなるユーザーからも個人情報を収集しないため、子どもの個人情報を意図的に収集することもありません。",
+        section5Title: "本ポリシーの変更",
+        section5Body: "今後このプライバシーポリシーが変更された場合は、改定後の発効日とともにこのページに掲載します。",
+        section6Title: "お問い合わせ",
+        section6Body: "本ポリシーに関するご質問は、App Store の掲載情報にある開発者連絡先からお問い合わせください。",
+        effectiveDate: "施行日: 2026-03-20",
+        backLink: "Very days に戻る"
+      },
+      en: {
+        eyebrow: "Privacy Policy",
+        title: "Tarot days Privacy Policy",
+        subtitle: "Tarot days does not collect, store, or share any personal information from users.",
+        pills: ["No sign-in", "No analytics SDK", "No personal data collected"],
+        highlightTitle: "Summary",
+        highlightBody: "Tarot days is designed to work without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.",
+        section1Title: "Information We Collect",
+        section1Body: "Tarot days does not collect personal information or device-based identifiers that can be used to identify you.",
+        section2Title: "How We Use Information",
+        section2Body: "Because we do not collect personal information, we do not use, analyze, sell, or share customer data with third parties.",
+        section3Title: "Third-Party Services",
+        section3Body: "Tarot days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.",
+        section4Title: "Children's Privacy",
+        section4Body: "Since Tarot days does not collect personal information from any user, it also does not knowingly collect personal information from children.",
+        section5Title: "Changes to This Policy",
+        section5Body: "If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.",
+        section6Title: "Contact",
+        section6Body: "If you have questions about this policy, please contact the developer through the contact method provided on the App Store listing.",
+        effectiveDate: "Effective date: 2026-03-20",
+        backLink: "Back to Very days"
+      }
+    };
+
+    const els = {
+      eyebrow: document.getElementById("eyebrow"),
+      title: document.getElementById("title"),
+      subtitle: document.getElementById("subtitle"),
+      pill1: document.getElementById("pill1"),
+      pill2: document.getElementById("pill2"),
+      pill3: document.getElementById("pill3"),
+      highlightTitle: document.getElementById("highlightTitle"),
+      highlightBody: document.getElementById("highlightBody"),
+      section1Title: document.getElementById("section1Title"),
+      section1Body: document.getElementById("section1Body"),
+      section2Title: document.getElementById("section2Title"),
+      section2Body: document.getElementById("section2Body"),
+      section3Title: document.getElementById("section3Title"),
+      section3Body: document.getElementById("section3Body"),
+      section4Title: document.getElementById("section4Title"),
+      section4Body: document.getElementById("section4Body"),
+      section5Title: document.getElementById("section5Title"),
+      section5Body: document.getElementById("section5Body"),
+      section6Title: document.getElementById("section6Title"),
+      section6Body: document.getElementById("section6Body"),
+      effectiveDate: document.getElementById("effectiveDate"),
+      backLink: document.getElementById("backLink"),
+      buttons: document.querySelectorAll(".lang button")
+    };
+
+    function setLang(lang){
+      const c = copy[lang];
+      els.eyebrow.textContent = c.eyebrow;
+      els.title.textContent = c.title;
+      els.subtitle.textContent = c.subtitle;
+      els.pill1.textContent = c.pills[0];
+      els.pill2.textContent = c.pills[1];
+      els.pill3.textContent = c.pills[2];
+      els.highlightTitle.textContent = c.highlightTitle;
+      els.highlightBody.textContent = c.highlightBody;
+      els.section1Title.textContent = c.section1Title;
+      els.section1Body.textContent = c.section1Body;
+      els.section2Title.textContent = c.section2Title;
+      els.section2Body.textContent = c.section2Body;
+      els.section3Title.textContent = c.section3Title;
+      els.section3Body.textContent = c.section3Body;
+      els.section4Title.textContent = c.section4Title;
+      els.section4Body.textContent = c.section4Body;
+      els.section5Title.textContent = c.section5Title;
+      els.section5Body.textContent = c.section5Body;
+      els.section6Title.textContent = c.section6Title;
+      els.section6Body.textContent = c.section6Body;
+      els.effectiveDate.textContent = c.effectiveDate;
+      els.backLink.textContent = c.backLink;
+
+      els.buttons.forEach(b => {
+        const pressed = b.dataset.lang === lang;
+        b.setAttribute("aria-pressed", pressed ? "true" : "false");
+      });
+
+      document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
+    }
+
+    els.buttons.forEach(btn => {
+      btn.addEventListener("click", () => setLang(btn.dataset.lang));
+    });
+  </script>
+</body>
+</html>
