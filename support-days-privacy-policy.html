@@ -3,102 +3,113 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tarot days Privacy Policy</title>
+  <title>Support days Privacy Policy</title>
   <style>
     :root{
-      --sky:#8fa9e3;
-      --sun:#faf5dc;
-      --sand:#f3e6cc;
-      --sand-deep:#ead08d;
-      --sand-soft:#fbf8ec;
-      --text:#3f4c73;
-      --muted:#6f7b9c;
-      --card:rgba(255,250,239,.82);
-      --line:rgba(90,108,151,.14);
-      --shadow:0 28px 80px rgba(112,131,171,.18);
+      --bg-top:#fff6b2;
+      --bg-bottom:#ffe89a;
+      --ink:#564f44;
+      --muted:#7b7366;
+      --card:rgba(255,255,255,.78);
+      --line:rgba(86,79,68,.10);
+      --shadow:0 24px 72px rgba(193,169,94,.18);
+      --yellow:#ffd98f;
+      --pink:#f8c4c2;
+      --blue:#bad0ef;
+      --mint:#bfe0bf;
+      --lavender:#ddd0f5;
+      --peach:#f7bca4;
+      --cream:#f4e9cb;
+      --dot:#fff8de;
+      --face:rgba(86,79,68,.72);
     }
     *{ box-sizing:border-box; }
     html,body{ min-height:100%; }
     body{
       margin:0;
-      font-family:"Avenir Next", "Segoe UI", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
-      color:var(--text);
-      background:linear-gradient(180deg, var(--sky) 0 38%, #c5d6f3 38% 46%, #f8f2e3 46% 100%);
+      font-family:"Trebuchet MS", "Avenir Next", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 520px at 50% 0%, rgba(255,255,255,.42), transparent 60%),
+        linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
       overflow-x:hidden;
     }
     a{ color:inherit; }
-    .scene{
+    .art{
       position:fixed;
       inset:0;
       z-index:-2;
       pointer-events:none;
       overflow:hidden;
     }
-    .sun{
+    .dots{
       position:absolute;
-      top:108px;
-      right:calc(50% - 260px);
-      width:122px;
-      height:122px;
+      left:50%;
+      bottom:62px;
+      width:min(760px, 100vw);
+      height:120px;
+      transform:translateX(-50%);
+      background-image:radial-gradient(rgba(255,248,222,.8) 1.5px, transparent 1.5px);
+      background-size:18px 18px;
+      opacity:.45;
+      mask-image:linear-gradient(180deg, transparent, rgba(0,0,0,.65) 45%, rgba(0,0,0,.95));
+    }
+    .kids{
+      position:absolute;
+      left:50%;
+      bottom:-24px;
+      width:min(760px, 100vw);
+      height:270px;
+      transform:translateX(-50%);
+    }
+    .kid{
+      position:absolute;
+      bottom:0;
+      border-radius:46% 54% 52% 48% / 40% 46% 54% 60%;
+    }
+    .kid::before,
+    .kid::after{
+      content:"";
+      position:absolute;
+    }
+    .kid::before{
+      width:8px;
+      height:8px;
       border-radius:50%;
-      background:var(--sun);
-      box-shadow:0 0 46px rgba(250,245,220,.42);
+      top:34%;
+      left:38%;
+      background:var(--face);
+      box-shadow:36px 0 0 var(--face);
+      opacity:.72;
     }
-    .star{
-      position:absolute;
-      top:88px;
-      left:calc(50% - 270px);
-      width:72px;
-      height:72px;
-      background:#fffdf6;
-      clip-path:polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
-      opacity:.9;
+    .kid::after{
+      width:44px;
+      height:16px;
+      left:38%;
+      bottom:28%;
+      border-bottom:2px solid var(--face);
+      border-radius:0 0 40px 40px;
+      opacity:.66;
     }
-    .dune{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      width:min(760px, 100vw);
-    }
-    .dune.one{
-      bottom:24%;
-      height:210px;
-      background:
-        radial-gradient(circle, rgba(255,255,255,.34) 0 1px, transparent 1.5px) 0 0 / 8px 8px,
-        linear-gradient(180deg, #eed393, #e8ca82);
-      clip-path:polygon(0 100%, 0 32%, 15% 14%, 30% 33%, 44% 38%, 60% 64%, 76% 58%, 90% 48%, 100% 56%, 100% 100%);
-    }
-    .dune.two{
-      bottom:11%;
-      height:228px;
-      background:linear-gradient(180deg, var(--sand), #efe0bd);
-      clip-path:polygon(0 100%, 0 48%, 14% 62%, 31% 56%, 47% 37%, 63% 58%, 80% 52%, 100% 38%, 100% 100%);
-    }
-    .dune.three{
-      bottom:-2%;
-      height:174px;
-      background:
-        radial-gradient(circle, rgba(255,255,255,.34) 0 1px, transparent 1.5px) 0 0 / 8px 8px,
-        linear-gradient(180deg, #e6ca84, #dcc073);
-      clip-path:polygon(0 100%, 0 56%, 17% 70%, 32% 63%, 48% 78%, 63% 44%, 83% 60%, 100% 46%, 100% 100%);
-    }
-    .mist{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      bottom:6%;
-      width:min(760px, 100vw);
-      height:124px;
-      background:var(--sand-soft);
-      clip-path:polygon(0 100%, 0 42%, 18% 58%, 42% 52%, 58% 30%, 73% 62%, 88% 67%, 100% 58%, 100% 100%);
-    }
+    .kid.one{ left:0; width:190px; height:150px; background:var(--yellow); }
+    .kid.two{ left:126px; width:174px; height:138px; background:var(--pink); }
+    .kid.three{ left:250px; width:250px; height:206px; background:var(--blue); border-radius:42% 58% 48% 52% / 22% 18% 82% 78%; }
+    .kid.three::before{ top:32%; left:40%; box-shadow:44px 0 0 var(--face); }
+    .kid.three::after{ width:54px; left:40%; }
+    .kid.four{ right:118px; width:184px; height:168px; background:var(--mint); }
+    .kid.five{ right:0; width:170px; height:210px; background:var(--lavender); border-radius:44% 56% 42% 58% / 24% 20% 80% 76%; }
+    .kid.six{ right:154px; bottom:-10px; width:210px; height:90px; background:var(--peach); border-radius:999px; }
+    .kid.six::before{ top:32%; left:34%; box-shadow:24px 0 0 var(--face); width:7px; height:7px; }
+    .kid.six::after{ width:26px; left:34%; bottom:30%; }
+    .kid.seven{ left:120px; bottom:-4px; width:146px; height:110px; background:var(--cream); }
+    .kid.seven::after{ width:36px; left:36%; }
     header{
       position:sticky;
       top:0;
       z-index:10;
       backdrop-filter:blur(10px);
-      background:linear-gradient(180deg, rgba(250,248,240,.54), rgba(250,248,240,.18));
-      border-bottom:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,.08));
+      border-bottom:1px solid rgba(86,79,68,.08);
     }
     .wrap{
       max-width:920px;
@@ -112,7 +123,7 @@
     .brand{
       text-decoration:none;
       font-weight:700;
-      letter-spacing:.04em;
+      letter-spacing:.03em;
       text-transform:lowercase;
     }
     .lang{
@@ -122,93 +133,94 @@
     }
     .lang button{
       appearance:none;
-      border:1px solid rgba(78,97,141,.18);
-      background:rgba(255,255,255,.48);
-      color:var(--text);
+      border:1px solid rgba(86,79,68,.12);
+      background:rgba(255,255,255,.5);
+      color:var(--ink);
       padding:8px 11px;
       border-radius:999px;
       font-size:13px;
       cursor:pointer;
     }
     .lang button[aria-pressed="true"]{
-      background:rgba(255,249,235,.94);
-      border-color:rgba(79,98,142,.28);
+      background:rgba(255,255,255,.86);
     }
     main{
       max-width:920px;
       margin:0 auto;
-      padding:48px 20px 110px;
+      padding:44px 20px 210px;
     }
     .page{
       max-width:620px;
       margin:0 auto;
     }
     .hero, .section{
-      position:relative;
-      overflow:hidden;
-      border-radius:30px;
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,251,241,.9), var(--card));
+      background:var(--card);
       box-shadow:var(--shadow);
-      backdrop-filter:blur(10px);
+      backdrop-filter:blur(12px);
+      position:relative;
     }
     .hero{
-      padding:42px 34px;
+      border-radius:34px;
+      padding:34px 32px 30px;
       margin-bottom:18px;
+      overflow:hidden;
     }
-    .hero::after{
+    .hero::before{
       content:"";
       position:absolute;
-      width:220px;
-      height:220px;
-      top:-60px;
-      right:-56px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,.68), transparent 68%);
+      right:-30px;
+      bottom:-34px;
+      width:140px;
+      height:140px;
+      border-radius:48% 52% 52% 48% / 42% 46% 54% 58%;
+      background:rgba(186,208,239,.36);
     }
     .eyebrow{
-      margin:0 0 12px;
+      margin:0 0 10px;
       font-size:12px;
-      letter-spacing:.2em;
       text-transform:uppercase;
-      color:#7a86aa;
+      letter-spacing:.18em;
+      color:rgba(86,79,68,.56);
     }
     h1{
       margin:0;
-      font-size:clamp(34px, 7vw, 60px);
-      line-height:1.02;
+      font-size:clamp(34px, 7vw, 58px);
+      line-height:1.03;
       letter-spacing:-.05em;
     }
     .subtitle{
-      margin:16px 0 0;
-      max-width:30ch;
-      color:var(--muted);
-      line-height:1.8;
+      margin:14px 0 0;
+      max-width:31ch;
       font-size:17px;
+      line-height:1.75;
+      color:var(--muted);
     }
     .meta{
-      margin-top:22px;
+      margin-top:20px;
       display:flex;
       gap:10px;
       flex-wrap:wrap;
     }
     .pill{
+      display:inline-flex;
+      align-items:center;
       padding:9px 12px;
       border-radius:999px;
-      background:rgba(255,255,255,.56);
-      border:1px solid rgba(89,106,148,.12);
+      background:rgba(255,255,255,.76);
+      border:1px solid rgba(86,79,68,.08);
       font-size:13px;
-      color:#677594;
     }
-    .section-grid{
+    .grid{
       display:grid;
       gap:16px;
     }
     .section{
-      padding:24px 22px 22px;
+      border-radius:26px;
+      padding:24px 22px;
     }
     .summary{
-      background:linear-gradient(180deg, rgba(255,255,255,.58), rgba(255,250,239,.72));
+      background:rgba(255,255,255,.84);
     }
     h2{
       margin:0 0 10px;
@@ -227,34 +239,43 @@
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
-      color:#75819d;
+      color:rgba(86,79,68,.72);
       font-size:13px;
       padding:0 4px;
     }
     .footer a{
       text-decoration:none;
-      border-bottom:1px solid rgba(103,121,165,.24);
+      border-bottom:1px solid rgba(86,79,68,.18);
       padding-bottom:2px;
     }
     @media (max-width: 640px){
       .wrap{ padding:16px; }
-      main{ padding:34px 16px 88px; }
-      .hero, .section{ border-radius:24px; }
-      .hero{ padding:30px 22px; }
-      .section{ padding:22px 18px; }
-      .sun{ right:8vw; }
-      .star{ left:10vw; }
+      main{ padding:34px 16px 190px; }
+      .hero{ border-radius:28px; padding:28px 22px 24px; }
+      .section{ border-radius:22px; padding:22px 18px; }
+      .kids{ height:232px; }
+      .kid.one{ width:150px; height:120px; }
+      .kid.two{ left:92px; width:140px; height:118px; }
+      .kid.three{ left:176px; width:180px; height:160px; }
+      .kid.four{ right:82px; width:138px; height:128px; }
+      .kid.five{ width:132px; height:168px; }
+      .kid.six{ right:96px; width:154px; }
+      .kid.seven{ left:88px; width:120px; }
     }
   </style>
 </head>
 <body>
-  <div class="scene" aria-hidden="true">
-    <div class="star"></div>
-    <div class="sun"></div>
-    <div class="dune one"></div>
-    <div class="dune two"></div>
-    <div class="mist"></div>
-    <div class="dune three"></div>
+  <div class="art" aria-hidden="true">
+    <div class="dots"></div>
+    <div class="kids">
+      <div class="kid one"></div>
+      <div class="kid two"></div>
+      <div class="kid three"></div>
+      <div class="kid four"></div>
+      <div class="kid five"></div>
+      <div class="kid six"></div>
+      <div class="kid seven"></div>
+    </div>
   </div>
 
   <header>
@@ -272,8 +293,8 @@
     <div class="page">
       <section class="hero" aria-label="Privacy Policy Hero">
         <p class="eyebrow" id="eyebrow">Privacy Policy</p>
-        <h1 id="title">Tarot days Privacy Policy</h1>
-        <p class="subtitle" id="subtitle">Tarot days does not collect, store, or share any personal information from users.</p>
+        <h1 id="title">Support days Privacy Policy</h1>
+        <p class="subtitle" id="subtitle">Support days does not collect, store, or share any personal information from users.</p>
         <div class="meta" aria-label="Privacy Summary">
           <span class="pill" id="pill1">No sign-in</span>
           <span class="pill" id="pill2">No analytics SDK</span>
@@ -281,14 +302,14 @@
         </div>
       </section>
 
-      <div class="section-grid">
+      <div class="grid">
         <section class="section summary">
           <h2 id="highlightTitle">Summary</h2>
-          <p id="highlightBody">Tarot days is designed to work without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.</p>
+          <p id="highlightBody">Support days is designed to work without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.</p>
         </section>
         <section class="section">
           <h2 id="section1Title">Information We Collect</h2>
-          <p id="section1Body">Tarot days does not collect personal information or device-based identifiers that can be used to identify you.</p>
+          <p id="section1Body">Support days does not collect personal information or device-based identifiers that can be used to identify you.</p>
         </section>
         <section class="section">
           <h2 id="section2Title">How We Use Information</h2>
@@ -296,11 +317,11 @@
         </section>
         <section class="section">
           <h2 id="section3Title">Third-Party Services</h2>
-          <p id="section3Body">Tarot days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.</p>
+          <p id="section3Body">Support days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.</p>
         </section>
         <section class="section">
           <h2 id="section4Title">Children's Privacy</h2>
-          <p id="section4Body">Since Tarot days does not collect personal information from any user, it also does not knowingly collect personal information from children.</p>
+          <p id="section4Body">Since Support days does not collect personal information from any user, it also does not knowingly collect personal information from children.</p>
         </section>
         <section class="section">
           <h2 id="section5Title">Changes to This Policy</h2>
@@ -323,19 +344,19 @@
     const copy = {
       ko: {
         eyebrow: "Privacy Policy",
-        title: "Tarot days 개인정보처리방침",
-        subtitle: "Tarot days는 사용자의 개인정보를 수집, 저장, 공유하지 않습니다.",
+        title: "Support days 개인정보처리방침",
+        subtitle: "Support days는 사용자의 개인정보를 수집, 저장, 공유하지 않습니다.",
         pills: ["로그인 없음", "분석 SDK 없음", "개인정보 수집 없음"],
         highlightTitle: "요약",
-        highlightBody: "Tarot days는 고객정보를 수집하지 않는 방식으로 설계되었습니다. 계정, 이름, 이메일 주소, 전화번호, 사진, 연락처, 위치 정보, 결제 정보를 요구하거나 저장하지 않습니다.",
+        highlightBody: "Support days는 고객정보를 수집하지 않는 방식으로 설계되었습니다. 계정, 이름, 이메일 주소, 전화번호, 사진, 연락처, 위치 정보, 결제 정보를 요구하거나 저장하지 않습니다.",
         section1Title: "수집하는 정보",
-        section1Body: "Tarot days는 개인정보나 사용자를 식별할 수 있는 기기 기반 식별자를 수집하지 않습니다.",
+        section1Body: "Support days는 개인정보나 사용자를 식별할 수 있는 기기 기반 식별자를 수집하지 않습니다.",
         section2Title: "정보 이용 방식",
         section2Body: "개인정보를 수집하지 않기 때문에, 고객 데이터를 이용, 분석, 판매하거나 제3자와 공유하지 않습니다.",
         section3Title: "제3자 서비스",
-        section3Body: "Tarot days에는 고객정보를 수집하는 광고 SDK, 외부 분석 도구, 제3자 추적 기술이 포함되어 있지 않습니다.",
+        section3Body: "Support days에는 고객정보를 수집하는 광고 SDK, 외부 분석 도구, 제3자 추적 기술이 포함되어 있지 않습니다.",
         section4Title: "아동의 개인정보",
-        section4Body: "Tarot days는 어떤 사용자로부터도 개인정보를 수집하지 않으므로, 아동의 개인정보 역시 의도적으로 수집하지 않습니다.",
+        section4Body: "Support days는 어떤 사용자로부터도 개인정보를 수집하지 않으므로, 아동의 개인정보 역시 의도적으로 수집하지 않습니다.",
         section5Title: "정책 변경",
         section5Body: "향후 본 개인정보처리방침이 변경되는 경우, 수정된 시행일과 함께 이 페이지에 업데이트된 내용을 게시합니다.",
         section6Title: "문의",
@@ -345,19 +366,19 @@
       },
       ja: {
         eyebrow: "Privacy Policy",
-        title: "Tarot days プライバシーポリシー",
-        subtitle: "Tarot days は、ユーザーの個人情報を収集、保存、共有しません。",
+        title: "Support days プライバシーポリシー",
+        subtitle: "Support days は、ユーザーの個人情報を収集、保存、共有しません。",
         pills: ["ログイン不要", "分析 SDK なし", "個人情報収集なし"],
         highlightTitle: "概要",
-        highlightBody: "Tarot days は顧客情報を収集しない設計です。アカウント、氏名、メールアドレス、電話番号、写真、連絡先、位置情報、決済情報を要求または保存しません。",
+        highlightBody: "Support days は顧客情報を収集しない設計です。アカウント、氏名、メールアドレス、電話番号、写真、連絡先、位置情報、決済情報を要求または保存しません。",
         section1Title: "収集する情報",
-        section1Body: "Tarot days は、個人を特定できる個人情報や端末識別子を収集しません。",
+        section1Body: "Support days は、個人を特定できる個人情報や端末識別子を収集しません。",
         section2Title: "情報の利用",
         section2Body: "個人情報を収集しないため、顧客データを利用、分析、販売、または第三者と共有することはありません。",
         section3Title: "第三者サービス",
-        section3Body: "Tarot days には、顧客情報を収集する広告 SDK、外部分析ツール、第三者トラッキング技術は含まれていません。",
+        section3Body: "Support days には、顧客情報を収集する広告 SDK、外部分析ツール、第三者トラッキング技術は含まれていません。",
         section4Title: "子どものプライバシー",
-        section4Body: "Tarot days はいかなるユーザーからも個人情報を収集しないため、子どもの個人情報を意図的に収集することもありません。",
+        section4Body: "Support days はいかなるユーザーからも個人情報を収集しないため、子どもの個人情報を意図的に収集することもありません。",
         section5Title: "本ポリシーの変更",
         section5Body: "今後このプライバシーポリシーが変更された場合は、改定後の発効日とともにこのページに掲載します。",
         section6Title: "お問い合わせ",
@@ -367,19 +388,19 @@
       },
       en: {
         eyebrow: "Privacy Policy",
-        title: "Tarot days Privacy Policy",
-        subtitle: "Tarot days does not collect, store, or share any personal information from users.",
+        title: "Support days Privacy Policy",
+        subtitle: "Support days does not collect, store, or share any personal information from users.",
         pills: ["No sign-in", "No analytics SDK", "No personal data collected"],
         highlightTitle: "Summary",
-        highlightBody: "Tarot days is designed to work without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.",
+        highlightBody: "Support days is designed to work without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.",
         section1Title: "Information We Collect",
-        section1Body: "Tarot days does not collect personal information or device-based identifiers that can be used to identify you.",
+        section1Body: "Support days does not collect personal information or device-based identifiers that can be used to identify you.",
         section2Title: "How We Use Information",
         section2Body: "Because we do not collect personal information, we do not use, analyze, sell, or share customer data with third parties.",
         section3Title: "Third-Party Services",
-        section3Body: "Tarot days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.",
+        section3Body: "Support days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.",
         section4Title: "Children's Privacy",
-        section4Body: "Since Tarot days does not collect personal information from any user, it also does not knowingly collect personal information from children.",
+        section4Body: "Since Support days does not collect personal information from any user, it also does not knowingly collect personal information from children.",
         section5Title: "Changes to This Policy",
         section5Body: "If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.",
         section6Title: "Contact",
