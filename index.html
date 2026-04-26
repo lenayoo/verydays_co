@@ -358,6 +358,42 @@
       width:150px;
       height:104px;
     }
+    .card-art.water{
+      width:154px;
+      height:108px;
+      border-radius:32px;
+      background:
+        radial-gradient(circle at 24% 20%, rgba(162,206,239,.52) 0 8px, transparent 9px),
+        radial-gradient(circle at 78% 18%, rgba(162,206,239,.34) 0 11px, transparent 12px),
+        linear-gradient(180deg, rgba(246,252,255,.98), rgba(220,238,250,.94));
+      box-shadow:inset 0 0 0 1px rgba(111,162,201,.16);
+    }
+    .card-art.water::before{
+      content:"";
+      position:absolute;
+      right:22px;
+      bottom:18px;
+      width:76px;
+      height:82px;
+      clip-path:polygon(50% 0%, 74% 24%, 89% 46%, 91% 67%, 82% 85%, 64% 97%, 36% 97%, 18% 85%, 9% 67%, 11% 46%, 26% 24%);
+      background:
+        radial-gradient(circle at 36% 28%, rgba(255,255,255,.74) 0 8px, transparent 9px),
+        radial-gradient(circle at 47% 42%, rgba(255,255,255,.42) 0 6px, transparent 7px),
+        linear-gradient(180deg, #f2fbff, #c8e3f7);
+      box-shadow:inset 0 0 0 1px rgba(48,111,168,.16);
+    }
+    .card-art.water::after{
+      content:"";
+      position:absolute;
+      left:54px;
+      bottom:22px;
+      width:72px;
+      height:18px;
+      border-radius:999px;
+      background:linear-gradient(180deg, #f08b5d, #dc673e);
+      transform:rotate(7deg);
+      box-shadow:0 0 0 1px rgba(82,62,96,.08);
+    }
     .blob{
       position:absolute;
       border-radius:46% 54% 50% 50% / 38% 45% 55% 62%;
@@ -459,18 +495,18 @@
         </div>
 
         <div class="project-grid">
-          <a class="project-card" href="./tarot-days-privacy-policy.html">
-            <span class="card-tag" id="tarotTag">Privacy Policy</span>
+          <a class="project-card" href="./tarot-days.html">
+            <span class="card-tag" id="tarotTag">Project Page</span>
             <h3 id="tarotTitle">Tarot days</h3>
-            <p id="tarotBody">차분한 사막 톤의 프라이버시 정책 페이지.</p>
+            <p id="tarotBody">타로 데이즈 전용 소개 페이지와 정책 링크.</p>
             <span class="card-link" id="tarotLink">페이지 열기 →</span>
             <span class="card-art desert" aria-hidden="true"></span>
           </a>
 
-          <a class="project-card" href="./support-days-privacy-policy.html">
-            <span class="card-tag" id="supportTag">Privacy Policy</span>
+          <a class="project-card" href="./support-days.html">
+            <span class="card-tag" id="supportTag">Project Page</span>
             <h3 id="supportTitle">Support days</h3>
-            <p id="supportBody">따뜻한 노란 배경과 부드러운 표정의 정책 페이지.</p>
+            <p id="supportBody">서포트 데이즈 전용 소개 페이지와 정책 링크.</p>
             <span class="card-link" id="supportLink">페이지 열기 →</span>
             <span class="card-art blobs" aria-hidden="true">
               <span class="blob one"></span>
@@ -478,6 +514,14 @@
               <span class="blob three"></span>
               <span class="blob four"></span>
             </span>
+          </a>
+
+          <a class="project-card" href="./water-days.html">
+            <span class="card-tag" id="waterTag">Project Page</span>
+            <h3 id="waterTitle">Water Days</h3>
+            <p id="waterBody">워터 데이즈 전용 소개 페이지와 정책 링크.</p>
+            <span class="card-link" id="waterLink">페이지 열기 →</span>
+            <span class="card-art water" aria-hidden="true"></span>
           </a>
         </div>
       </section>
@@ -496,15 +540,19 @@
         storyTitle: "Small and steady",
         storyBody: "Very days는 작고 조용한 리듬으로 매일 곁에 머무르는 공간입니다.",
         projectsTitle: "Projects",
-        projectsBody: "verydays 설명과 분리된 프로젝트 링크입니다.",
-        tarotTag: "Privacy Policy",
+        projectsBody: "앱별로 분리된 개별 페이지 링크입니다.",
+        tarotTag: "Project Page",
         tarotTitle: "Tarot days",
-        tarotBody: "차분한 사막 톤의 프라이버시 정책 페이지.",
+        tarotBody: "타로 데이즈 전용 소개 페이지와 정책 링크.",
         tarotLink: "페이지 열기 →",
-        supportTag: "Privacy Policy",
+        supportTag: "Project Page",
         supportTitle: "Support days",
-        supportBody: "따뜻한 노란 배경과 부드러운 표정의 정책 페이지.",
-        supportLink: "페이지 열기 →"
+        supportBody: "서포트 데이즈 전용 소개 페이지와 정책 링크.",
+        supportLink: "페이지 열기 →",
+        waterTag: "Project Page",
+        waterTitle: "Water Days",
+        waterBody: "워터 데이즈 전용 소개 페이지와 정책 링크.",
+        waterLink: "페이지 열기 →"
       },
       ja: {
         eyebrow: "Quiet company for every day",
@@ -514,15 +562,19 @@
         storyTitle: "Small and steady",
         storyBody: "Very days は、静かなリズムで毎日に寄り添う小さな場所です。",
         projectsTitle: "Projects",
-        projectsBody: "verydays の紹介とは分けて配置したプロジェクトリンクです。",
-        tarotTag: "Privacy Policy",
+        projectsBody: "アプリごとに分けた個別ページへのリンクです。",
+        tarotTag: "Project Page",
         tarotTitle: "Tarot days",
-        tarotBody: "落ち着いた砂丘トーンのプライバシーポリシーページ。",
+        tarotBody: "Tarot Days 専用の紹介ページとポリシーリンク。",
         tarotLink: "ページを開く →",
-        supportTag: "Privacy Policy",
+        supportTag: "Project Page",
         supportTitle: "Support days",
-        supportBody: "あたたかい黄色い背景とやわらかな表情のポリシーページ。",
-        supportLink: "ページを開く →"
+        supportBody: "Support Days 専用の紹介ページとポリシーリンク。",
+        supportLink: "ページを開く →",
+        waterTag: "Project Page",
+        waterTitle: "Water Days",
+        waterBody: "Water Days 専用の紹介ページとポリシーリンク。",
+        waterLink: "ページを開く →"
       },
       en: {
         eyebrow: "Quiet company for every day",
@@ -532,15 +584,19 @@
         storyTitle: "Small and steady",
         storyBody: "Very days is a small, quiet place that stays beside everyday life.",
         projectsTitle: "Projects",
-        projectsBody: "Project links separated from the verydays introduction.",
-        tarotTag: "Privacy Policy",
+        projectsBody: "Links to separate pages for each app.",
+        tarotTag: "Project Page",
         tarotTitle: "Tarot days",
-        tarotBody: "A privacy policy page with a calm desert palette.",
+        tarotBody: "A separate app page with its own policy link.",
         tarotLink: "Open page →",
-        supportTag: "Privacy Policy",
+        supportTag: "Project Page",
         supportTitle: "Support days",
-        supportBody: "A privacy policy page with a warm yellow background and gentler faces.",
-        supportLink: "Open page →"
+        supportBody: "A separate app page with its own policy link.",
+        supportLink: "Open page →",
+        waterTag: "Project Page",
+        waterTitle: "Water Days",
+        waterBody: "A separate app page with its own policy link.",
+        waterLink: "Open page →"
       }
     };
 
@@ -563,6 +619,10 @@
       supportTitle: document.getElementById("supportTitle"),
       supportBody: document.getElementById("supportBody"),
       supportLink: document.getElementById("supportLink"),
+      waterTag: document.getElementById("waterTag"),
+      waterTitle: document.getElementById("waterTitle"),
+      waterBody: document.getElementById("waterBody"),
+      waterLink: document.getElementById("waterLink"),
       year: document.getElementById("year"),
       buttons: document.querySelectorAll(".lang button")
     };
@@ -587,6 +647,10 @@
       els.supportTitle.textContent = c.supportTitle;
       els.supportBody.textContent = c.supportBody;
       els.supportLink.textContent = c.supportLink;
+      els.waterTag.textContent = c.waterTag;
+      els.waterTitle.textContent = c.waterTitle;
+      els.waterBody.textContent = c.waterBody;
+      els.waterLink.textContent = c.waterLink;
 
       els.buttons.forEach((button) => {
         const pressed = button.dataset.lang === lang;

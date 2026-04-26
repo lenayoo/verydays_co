@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Water Days Privacy Policy</title>
+  <style>
+    :root{
+      --bg-top:#fcfeff;
+      --bg-mid:#f5faff;
+      --bg-bottom:#edf6fc;
+      --ink:#17314d;
+      --muted:#5d7492;
+      --card:rgba(255,255,255,.82);
+      --card-strong:rgba(255,255,255,.94);
+      --line:rgba(112,149,183,.16);
+      --shadow:0 28px 78px rgba(125,166,205,.16);
+      --water:#73baf1;
+      --water-deep:#3d8ed2;
+      --water-soft:#e1f2ff;
+      --cloud:#8fb8df;
+      --scarf:#ef7648;
+      --scarf-deep:#d95d32;
+      --cheek:#ef9a9a;
+      --night:#20375d;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ min-height:100%; }
+    body{
+      margin:0;
+      font-family:"Trebuchet MS", "Avenir Next", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(920px 520px at 50% 0%, rgba(255,255,255,.88), transparent 62%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 54%, var(--bg-bottom) 100%);
+      overflow-x:hidden;
+    }
+    a{ color:inherit; }
+    .scene{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .wash{
+      position:absolute;
+      inset:auto 0 -80px;
+      height:280px;
+      background:
+        radial-gradient(circle at 14% 26%, rgba(255,255,255,.72) 0 28px, transparent 29px),
+        radial-gradient(circle at 72% 38%, rgba(255,255,255,.62) 0 20px, transparent 21px),
+        linear-gradient(180deg, rgba(220,240,251,.1), rgba(210,233,248,.4));
+      clip-path:polygon(0 100%, 0 42%, 12% 58%, 25% 52%, 36% 63%, 52% 44%, 65% 60%, 80% 50%, 100% 64%, 100% 100%);
+      opacity:.74;
+    }
+    .corner-drop{
+      position:absolute;
+      width:108px;
+      height:138px;
+      opacity:.22;
+      clip-path:polygon(50% 0%, 74% 24%, 89% 46%, 91% 67%, 82% 85%, 64% 97%, 36% 97%, 18% 85%, 9% 67%, 11% 46%, 26% 24%);
+      background:linear-gradient(180deg, rgba(235,247,255,.88), rgba(177,213,241,.54));
+      box-shadow:inset 0 0 0 1px rgba(128,171,204,.18);
+    }
+    .corner-drop::after{
+      content:"";
+      position:absolute;
+      top:18px;
+      left:24px;
+      width:24px;
+      height:44px;
+      border-radius:50%;
+      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,0));
+      transform:rotate(18deg);
+    }
+    .corner-drop.top{
+      top:48px;
+      right:46px;
+    }
+    .corner-drop.bottom{
+      left:38px;
+      bottom:44px;
+    }
+    .cloud{
+      position:absolute;
+      color:rgba(120,162,202,.72);
+    }
+    .cloud svg{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    .cloud.one{
+      top:104px;
+      left:42px;
+      width:178px;
+    }
+    .cloud.two{
+      right:58px;
+      bottom:112px;
+      width:188px;
+    }
+    .bubble{
+      position:absolute;
+      border-radius:50%;
+      background:rgba(176,214,242,.34);
+      animation:drift 8s ease-in-out infinite;
+    }
+    .bubble.one{
+      top:18%;
+      right:20%;
+      width:18px;
+      height:18px;
+      animation-delay:-2.4s;
+    }
+    .bubble.two{
+      top:32%;
+      left:14%;
+      width:12px;
+      height:12px;
+      animation-delay:-5.2s;
+    }
+    .bubble.three{
+      right:12%;
+      bottom:24%;
+      width:20px;
+      height:20px;
+      animation-delay:-1.2s;
+    }
+    @keyframes drift{
+      0%, 100%{ transform:translateY(0); }
+      50%{ transform:translateY(-10px); }
+    }
+    @keyframes float{
+      0%, 100%{ transform:translateY(0); }
+      50%{ transform:translateY(-8px); }
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(180deg, rgba(250,253,255,.8), rgba(250,253,255,.28));
+      border-bottom:1px solid rgba(133,169,198,.12);
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:lowercase;
+    }
+    .lang{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang button{
+      appearance:none;
+      border:1px solid rgba(103,140,172,.18);
+      background:rgba(255,255,255,.52);
+      color:var(--ink);
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+    }
+    .lang button[aria-pressed="true"]{
+      background:rgba(255,255,255,.96);
+      border-color:rgba(100,140,174,.28);
+    }
+    main{
+      max-width:980px;
+      margin:0 auto;
+      padding:46px 20px 120px;
+    }
+    .page{
+      max-width:680px;
+      margin:0 auto;
+    }
+    .hero,
+    .section{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, var(--card-strong), var(--card));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+    .hero{
+      border-radius:36px;
+      padding:34px 32px;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 240px;
+      gap:18px;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      margin-bottom:18px;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -44px -56px auto;
+      width:200px;
+      height:200px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(201,233,252,.62), transparent 68%);
+    }
+    .eyebrow{
+      margin:0 0 12px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:#7a94b0;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(34px, 7vw, 60px);
+      line-height:1.03;
+      letter-spacing:-.05em;
+    }
+    .subtitle{
+      margin:14px 0 0;
+      max-width:30ch;
+      font-size:17px;
+      line-height:1.8;
+      color:var(--muted);
+    }
+    .meta{
+      margin-top:22px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(118,156,189,.12);
+      font-size:13px;
+      color:#537090;
+    }
+    .mascot-shell{
+      position:relative;
+      min-height:240px;
+      display:grid;
+      align-items:center;
+      justify-items:center;
+      animation:float 6s ease-in-out infinite;
+    }
+    .mascot{
+      display:block;
+      width:220px;
+      max-width:100%;
+      height:auto;
+      border-radius:34px;
+      box-shadow:0 18px 34px rgba(97,143,184,.14);
+    }
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+    .section{
+      border-radius:28px;
+      padding:24px 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .summary{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(243,250,255,.88)),
+        var(--card);
+    }
+    .summary::after{
+      content:"";
+      position:absolute;
+      right:-18px;
+      top:-26px;
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(194,229,250,.48), transparent 68%);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-.03em;
+    }
+    p{
+      margin:0;
+      font-size:15px;
+      line-height:1.85;
+      color:var(--muted);
+    }
+    .footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:0 4px;
+      color:#7289a4;
+      font-size:13px;
+    }
+    .footer a{
+      text-decoration:none;
+      border-bottom:1px solid rgba(108,145,178,.24);
+      padding-bottom:2px;
+    }
+    @media (max-width: 720px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .mascot-shell{
+        min-height:212px;
+      }
+    }
+    @media (max-width: 640px){
+      .wrap{ padding:16px; }
+      main{ padding:34px 16px 98px; }
+      .hero{
+        border-radius:28px;
+        padding:28px 22px 24px;
+      }
+      .section{
+        border-radius:24px;
+        padding:22px 18px;
+      }
+      .corner-drop.top{
+        top:58px;
+        right:18px;
+        width:84px;
+        height:108px;
+      }
+      .corner-drop.bottom{
+        left:14px;
+        bottom:28px;
+        width:88px;
+        height:112px;
+      }
+      .cloud.one{
+        top:96px;
+        left:10px;
+        width:128px;
+      }
+      .cloud.two{
+        right:8px;
+        bottom:104px;
+        width:136px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .bubble,
+      .mascot-shell{
+        animation:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="wash"></div>
+    <div class="corner-drop top"></div>
+    <div class="corner-drop bottom"></div>
+    <div class="cloud one">
+      <svg viewBox="0 0 180 70" fill="none">
+        <path d="M12 50C12 40.059 20.059 32 30 32C34.493 32 38.601 33.645 41.756 36.364C46.122 26.765 56.053 20 67.564 20C78.181 20 87.453 25.756 92.396 34.325C95.173 31.636 98.955 30 103.12 30C111.18 30 117.817 36.131 118.618 43.979H168" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="cloud two">
+      <svg viewBox="0 0 190 72" fill="none">
+        <path d="M16 52C16 41.507 24.507 33 35 33C39.252 33 43.178 34.396 46.344 36.754C50.868 27.725 60.212 21.5 71.01 21.5C82.187 21.5 91.821 28.17 96.079 37.747C99.72 34.836 104.334 33.1 109.354 33.1C119.912 33.1 128.524 40.917 129.816 51.1H176" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="bubble one"></div>
+    <div class="bubble two"></div>
+    <div class="bubble three"></div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <a class="brand" href="./index.html" aria-label="Very Days home">verydays</a>
+      <nav class="lang" aria-label="Language">
+        <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        <button type="button" data-lang="en" aria-pressed="true">Eng</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page">
+      <section class="hero" aria-label="Privacy Policy Hero">
+        <div>
+          <p class="eyebrow" id="eyebrow">Privacy Policy</p>
+          <h1 id="title">Water Days Privacy Policy</h1>
+          <p class="subtitle" id="subtitle">Water Days does not collect, store, or share any personal information from users.</p>
+          <div class="meta" aria-label="Privacy Summary">
+            <span class="pill" id="pill1">No sign-in</span>
+            <span class="pill" id="pill2">No analytics SDK</span>
+            <span class="pill" id="pill3">No personal data collected</span>
+          </div>
+        </div>
+
+        <div class="mascot-shell">
+          <img class="mascot" src="./assets/water_days_logo.png" alt="Water Days logo" />
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="section summary">
+          <h2 id="highlightTitle">Summary</h2>
+          <p id="highlightBody">Water Days is designed to help you track daily water intake without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.</p>
+        </section>
+        <section class="section">
+          <h2 id="section1Title">Information We Collect</h2>
+          <p id="section1Body">Water Days does not collect personal information or device-based identifiers that can be used to identify you.</p>
+        </section>
+        <section class="section">
+          <h2 id="section2Title">How We Use Information</h2>
+          <p id="section2Body">Because we do not collect personal information, we do not use, analyze, sell, or share customer data with third parties.</p>
+        </section>
+        <section class="section">
+          <h2 id="section3Title">Third-Party Services</h2>
+          <p id="section3Body">Water Days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.</p>
+        </section>
+        <section class="section">
+          <h2 id="section4Title">Children's Privacy</h2>
+          <p id="section4Body">Since Water Days does not collect personal information from any user, it also does not knowingly collect personal information from children.</p>
+        </section>
+        <section class="section">
+          <h2 id="section5Title">Changes to This Policy</h2>
+          <p id="section5Body">If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.</p>
+        </section>
+        <section class="section">
+          <h2 id="section6Title">Contact</h2>
+          <p id="section6Body">If you have questions about this policy, please contact the developer through the contact method provided on the App Store listing.</p>
+        </section>
+      </div>
+
+      <div class="footer">
+        <span id="effectiveDate">Effective date: 2026-04-26</span>
+        <a href="./water-days.html" id="backLink">Back to Water Days</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const copy = {
+      ko: {
+        eyebrow: "Privacy Policy",
+        title: "Water Days 개인정보처리방침",
+        subtitle: "Water Days는 사용자의 개인정보를 수집, 저장, 공유하지 않습니다.",
+        pills: ["로그인 없음", "분석 SDK 없음", "개인정보 수집 없음"],
+        highlightTitle: "요약",
+        highlightBody: "Water Days는 하루 물 섭취를 간단히 기록할 수 있도록 설계되었으며 고객정보를 수집하지 않습니다. 계정, 이름, 이메일 주소, 전화번호, 사진, 연락처, 위치 정보, 결제 정보를 요구하거나 저장하지 않습니다.",
+        section1Title: "수집하는 정보",
+        section1Body: "Water Days는 개인정보나 사용자를 식별할 수 있는 기기 기반 식별자를 수집하지 않습니다.",
+        section2Title: "정보 이용 방식",
+        section2Body: "개인정보를 수집하지 않기 때문에, 고객 데이터를 이용, 분석, 판매하거나 제3자와 공유하지 않습니다.",
+        section3Title: "제3자 서비스",
+        section3Body: "Water Days에는 고객정보를 수집하는 광고 SDK, 외부 분석 도구, 제3자 추적 기술이 포함되어 있지 않습니다.",
+        section4Title: "아동의 개인정보",
+        section4Body: "Water Days는 어떤 사용자로부터도 개인정보를 수집하지 않으므로, 아동의 개인정보 역시 의도적으로 수집하지 않습니다.",
+        section5Title: "정책 변경",
+        section5Body: "향후 본 개인정보처리방침이 변경되는 경우, 수정된 시행일과 함께 이 페이지에 업데이트된 내용을 게시합니다.",
+        section6Title: "문의",
+        section6Body: "본 정책에 관한 문의가 있을 경우, App Store 목록에 기재된 개발자 연락 방법을 통해 문의해 주세요.",
+        effectiveDate: "시행일: 2026-04-26",
+        backLink: "Water Days로 돌아가기"
+      },
+      ja: {
+        eyebrow: "Privacy Policy",
+        title: "Water Days プライバシーポリシー",
+        subtitle: "Water Days は、ユーザーの個人情報を収集、保存、共有しません。",
+        pills: ["ログイン不要", "分析 SDK なし", "個人情報収集なし"],
+        highlightTitle: "概要",
+        highlightBody: "Water Days は、毎日の水分記録をシンプルに続けられるよう設計されており、顧客情報を収集しません。アカウント、氏名、メールアドレス、電話番号、写真、連絡先、位置情報、決済情報を要求または保存しません。",
+        section1Title: "収集する情報",
+        section1Body: "Water Days は、個人を特定できる個人情報や端末識別子を収集しません。",
+        section2Title: "情報の利用",
+        section2Body: "個人情報を収集しないため、顧客データを利用、分析、販売、または第三者と共有することはありません。",
+        section3Title: "第三者サービス",
+        section3Body: "Water Days には、顧客情報を収集する広告 SDK、外部分析ツール、第三者トラッキング技術は含まれていません。",
+        section4Title: "子どものプライバシー",
+        section4Body: "Water Days はいかなるユーザーからも個人情報を収集しないため、子どもの個人情報を意図的に収集することもありません。",
+        section5Title: "本ポリシーの変更",
+        section5Body: "今後このプライバシーポリシーが変更された場合は、改定後の発効日とともにこのページに掲載します。",
+        section6Title: "お問い合わせ",
+        section6Body: "本ポリシーに関するご質問は、App Store の掲載情報にある開発者連絡先からお問い合わせください。",
+        effectiveDate: "施行日: 2026-04-26",
+        backLink: "Water Days に戻る"
+      },
+      en: {
+        eyebrow: "Privacy Policy",
+        title: "Water Days Privacy Policy",
+        subtitle: "Water Days does not collect, store, or share any personal information from users.",
+        pills: ["No sign-in", "No analytics SDK", "No personal data collected"],
+        highlightTitle: "Summary",
+        highlightBody: "Water Days is designed to help you track daily water intake without collecting customer information. We do not ask for accounts, names, email addresses, phone numbers, photos, contacts, location data, or payment information.",
+        section1Title: "Information We Collect",
+        section1Body: "Water Days does not collect personal information or device-based identifiers that can be used to identify you.",
+        section2Title: "How We Use Information",
+        section2Body: "Because we do not collect personal information, we do not use, analyze, sell, or share customer data with third parties.",
+        section3Title: "Third-Party Services",
+        section3Body: "Water Days does not include advertising SDKs, external analytics tools, or third-party tracking technologies that collect customer information.",
+        section4Title: "Children's Privacy",
+        section4Body: "Since Water Days does not collect personal information from any user, it also does not knowingly collect personal information from children.",
+        section5Title: "Changes to This Policy",
+        section5Body: "If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.",
+        section6Title: "Contact",
+        section6Body: "If you have questions about this policy, please contact the developer through the contact method provided on the App Store listing.",
+        effectiveDate: "Effective date: 2026-04-26",
+        backLink: "Back to Water Days"
+      }
+    };
+
+    const els = {
+      eyebrow: document.getElementById("eyebrow"),
+      title: document.getElementById("title"),
+      subtitle: document.getElementById("subtitle"),
+      pill1: document.getElementById("pill1"),
+      pill2: document.getElementById("pill2"),
+      pill3: document.getElementById("pill3"),
+      highlightTitle: document.getElementById("highlightTitle"),
+      highlightBody: document.getElementById("highlightBody"),
+      section1Title: document.getElementById("section1Title"),
+      section1Body: document.getElementById("section1Body"),
+      section2Title: document.getElementById("section2Title"),
+      section2Body: document.getElementById("section2Body"),
+      section3Title: document.getElementById("section3Title"),
+      section3Body: document.getElementById("section3Body"),
+      section4Title: document.getElementById("section4Title"),
+      section4Body: document.getElementById("section4Body"),
+      section5Title: document.getElementById("section5Title"),
+      section5Body: document.getElementById("section5Body"),
+      section6Title: document.getElementById("section6Title"),
+      section6Body: document.getElementById("section6Body"),
+      effectiveDate: document.getElementById("effectiveDate"),
+      backLink: document.getElementById("backLink"),
+      buttons: document.querySelectorAll(".lang button")
+    };
+
+    function setLang(lang){
+      const c = copy[lang];
+      els.eyebrow.textContent = c.eyebrow;
+      els.title.textContent = c.title;
+      els.subtitle.textContent = c.subtitle;
+      els.pill1.textContent = c.pills[0];
+      els.pill2.textContent = c.pills[1];
+      els.pill3.textContent = c.pills[2];
+      els.highlightTitle.textContent = c.highlightTitle;
+      els.highlightBody.textContent = c.highlightBody;
+      els.section1Title.textContent = c.section1Title;
+      els.section1Body.textContent = c.section1Body;
+      els.section2Title.textContent = c.section2Title;
+      els.section2Body.textContent = c.section2Body;
+      els.section3Title.textContent = c.section3Title;
+      els.section3Body.textContent = c.section3Body;
+      els.section4Title.textContent = c.section4Title;
+      els.section4Body.textContent = c.section4Body;
+      els.section5Title.textContent = c.section5Title;
+      els.section5Body.textContent = c.section5Body;
+      els.section6Title.textContent = c.section6Title;
+      els.section6Body.textContent = c.section6Body;
+      els.effectiveDate.textContent = c.effectiveDate;
+      els.backLink.textContent = c.backLink;
+      els.buttons.forEach((button) => {
+        const pressed = button.dataset.lang === lang;
+        button.setAttribute("aria-pressed", pressed ? "true" : "false");
+      });
+      document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
+    }
+
+    els.buttons.forEach((btn) => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+    setLang("en");
+  </script>
+</body>
+</html>

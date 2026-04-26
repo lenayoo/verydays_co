@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -282,9 +282,9 @@
     <div class="wrap">
       <a class="brand" href="./index.html" aria-label="Very Days home">verydays</a>
       <nav class="lang" aria-label="Language">
-        <button type="button" data-lang="ko" aria-pressed="true">한국어</button>
+        <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
         <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
-        <button type="button" data-lang="en" aria-pressed="false">Eng</button>
+        <button type="button" data-lang="en" aria-pressed="true">Eng</button>
       </nav>
     </div>
   </header>
@@ -335,7 +335,7 @@
 
       <div class="footer">
         <span id="effectiveDate">Effective date: 2026-03-20</span>
-        <a href="./index.html" id="backLink">Back to Very days</a>
+        <a href="./support-days.html" id="backLink">Back to Support Days</a>
       </div>
     </div>
   </main>
@@ -362,7 +362,7 @@
         section6Title: "문의",
         section6Body: "본 정책에 관한 문의가 있을 경우, App Store 목록에 기재된 개발자 연락 방법을 통해 문의해 주세요.",
         effectiveDate: "시행일: 2026-03-20",
-        backLink: "Very days로 돌아가기"
+        backLink: "Support Days로 돌아가기"
       },
       ja: {
         eyebrow: "Privacy Policy",
@@ -384,7 +384,7 @@
         section6Title: "お問い合わせ",
         section6Body: "本ポリシーに関するご質問は、App Store の掲載情報にある開発者連絡先からお問い合わせください。",
         effectiveDate: "施行日: 2026-03-20",
-        backLink: "Very days に戻る"
+        backLink: "Support Days に戻る"
       },
       en: {
         eyebrow: "Privacy Policy",
@@ -406,7 +406,7 @@
         section6Title: "Contact",
         section6Body: "If you have questions about this policy, please contact the developer through the contact method provided on the App Store listing.",
         effectiveDate: "Effective date: 2026-03-20",
-        backLink: "Back to Very days"
+        backLink: "Back to Support Days"
       }
     };
 
@@ -468,6 +468,7 @@
     }
 
     els.buttons.forEach((btn) => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+    setLang("en");
   </script>
 </body>
 </html>
