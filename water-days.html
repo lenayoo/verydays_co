@@ -6,16 +6,16 @@
   <title>Water Days</title>
   <style>
     :root{
-      --bg-top:#fcfeff;
-      --bg-mid:#f5faff;
-      --bg-bottom:#edf6fc;
+      --bg-top:#fbfeff;
+      --bg-mid:#f2f9ff;
+      --bg-bottom:#ebf5fc;
       --ink:#17314d;
       --muted:#5d7492;
-      --card:rgba(255,255,255,.82);
-      --card-strong:rgba(255,255,255,.94);
+      --card:rgba(255,255,255,.86);
+      --card-strong:rgba(255,255,255,.95);
       --line:rgba(112,149,183,.16);
-      --shadow:0 28px 78px rgba(125,166,205,.16);
-      --cloud:#8fb8df;
+      --shadow:0 24px 72px rgba(125,166,205,.16);
+      --button:#eef7ff;
     }
     *{ box-sizing:border-box; }
     html,body{ min-height:100%; }
@@ -24,7 +24,7 @@
       font-family:"Trebuchet MS", "Avenir Next", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(920px 520px at 50% 0%, rgba(255,255,255,.88), transparent 62%),
+        radial-gradient(900px 520px at 50% 0%, rgba(255,255,255,.9), transparent 62%),
         linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 54%, var(--bg-bottom) 100%);
       overflow-x:hidden;
     }
@@ -32,48 +32,39 @@
     .scene{
       position:fixed;
       inset:0;
-      z-index:-2;
+      z-index:-1;
       pointer-events:none;
       overflow:hidden;
     }
     .wash{
       position:absolute;
-      inset:auto 0 -80px;
-      height:280px;
+      inset:auto 0 -90px;
+      height:250px;
       background:
         radial-gradient(circle at 14% 26%, rgba(255,255,255,.72) 0 28px, transparent 29px),
         radial-gradient(circle at 72% 38%, rgba(255,255,255,.62) 0 20px, transparent 21px),
-        linear-gradient(180deg, rgba(220,240,251,.1), rgba(210,233,248,.4));
+        linear-gradient(180deg, rgba(220,240,251,.08), rgba(210,233,248,.34));
       clip-path:polygon(0 100%, 0 42%, 12% 58%, 25% 52%, 36% 63%, 52% 44%, 65% 60%, 80% 50%, 100% 64%, 100% 100%);
       opacity:.74;
     }
-    .corner-drop{
+    .drop{
       position:absolute;
-      width:108px;
-      height:138px;
-      opacity:.22;
+      opacity:.2;
       clip-path:polygon(50% 0%, 74% 24%, 89% 46%, 91% 67%, 82% 85%, 64% 97%, 36% 97%, 18% 85%, 9% 67%, 11% 46%, 26% 24%);
       background:linear-gradient(180deg, rgba(235,247,255,.88), rgba(177,213,241,.54));
       box-shadow:inset 0 0 0 1px rgba(128,171,204,.18);
     }
-    .corner-drop::after{
-      content:"";
-      position:absolute;
-      top:18px;
-      left:24px;
-      width:24px;
-      height:44px;
-      border-radius:50%;
-      background:linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,0));
-      transform:rotate(18deg);
+    .drop.one{
+      top:58px;
+      right:48px;
+      width:94px;
+      height:120px;
     }
-    .corner-drop.top{
-      top:48px;
-      right:46px;
-    }
-    .corner-drop.bottom{
-      left:38px;
-      bottom:44px;
+    .drop.two{
+      left:42px;
+      bottom:46px;
+      width:82px;
+      height:106px;
     }
     .cloud{
       position:absolute;
@@ -87,58 +78,23 @@
     .cloud.one{
       top:104px;
       left:42px;
-      width:178px;
+      width:168px;
     }
     .cloud.two{
-      right:58px;
-      bottom:112px;
-      width:188px;
-    }
-    .bubble{
-      position:absolute;
-      border-radius:50%;
-      background:rgba(176,214,242,.34);
-      animation:drift 8s ease-in-out infinite;
-    }
-    .bubble.one{
-      top:18%;
-      right:20%;
-      width:18px;
-      height:18px;
-      animation-delay:-2.4s;
-    }
-    .bubble.two{
-      top:32%;
-      left:14%;
-      width:12px;
-      height:12px;
-      animation-delay:-5.2s;
-    }
-    .bubble.three{
-      right:12%;
-      bottom:24%;
-      width:20px;
-      height:20px;
-      animation-delay:-1.2s;
-    }
-    @keyframes drift{
-      0%, 100%{ transform:translateY(0); }
-      50%{ transform:translateY(-10px); }
-    }
-    @keyframes float{
-      0%, 100%{ transform:translateY(0); }
-      50%{ transform:translateY(-8px); }
+      right:56px;
+      bottom:114px;
+      width:182px;
     }
     header{
       position:sticky;
       top:0;
       z-index:10;
       backdrop-filter:blur(10px);
-      background:linear-gradient(180deg, rgba(250,253,255,.8), rgba(250,253,255,.28));
+      background:linear-gradient(180deg, rgba(250,253,255,.82), rgba(250,253,255,.32));
       border-bottom:1px solid rgba(133,169,198,.12);
     }
     .wrap{
-      max-width:980px;
+      max-width:920px;
       margin:0 auto;
       padding:18px 20px;
       display:flex;
@@ -160,7 +116,7 @@
     .lang button{
       appearance:none;
       border:1px solid rgba(103,140,172,.18);
-      background:rgba(255,255,255,.52);
+      background:rgba(255,255,255,.56);
       color:var(--ink);
       padding:8px 11px;
       border-radius:999px;
@@ -168,44 +124,43 @@
       cursor:pointer;
     }
     .lang button[aria-pressed="true"]{
-      background:rgba(255,255,255,.96);
-      border-color:rgba(100,140,174,.28);
+      background:rgba(255,255,255,.98);
+      border-color:rgba(100,140,174,.26);
     }
     main{
-      max-width:980px;
+      max-width:920px;
       margin:0 auto;
-      padding:46px 20px 120px;
+      padding:46px 20px 100px;
     }
     .page{
-      max-width:680px;
+      max-width:760px;
       margin:0 auto;
     }
-    .hero,
-    .section{
+    .panel{
       border:1px solid var(--line);
+      border-radius:30px;
       background:linear-gradient(180deg, var(--card-strong), var(--card));
       box-shadow:var(--shadow);
-      backdrop-filter:blur(12px);
+      backdrop-filter:blur(10px);
     }
     .hero{
-      border-radius:36px;
       padding:34px 32px;
       display:grid;
-      grid-template-columns:minmax(0, 1fr) 240px;
-      gap:18px;
+      grid-template-columns:minmax(0, 1fr) 220px;
+      gap:22px;
       align-items:center;
       position:relative;
       overflow:hidden;
-      margin-bottom:18px;
     }
     .hero::after{
       content:"";
       position:absolute;
-      inset:auto -44px -56px auto;
-      width:200px;
-      height:200px;
+      width:210px;
+      height:210px;
+      right:-54px;
+      bottom:-62px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(201,233,252,.62), transparent 68%);
+      background:radial-gradient(circle, rgba(201,233,252,.58), transparent 68%);
     }
     .eyebrow{
       margin:0 0 12px;
@@ -220,104 +175,109 @@
       line-height:1.03;
       letter-spacing:-.05em;
     }
-    .subtitle{
+    .value{
       margin:14px 0 0;
-      max-width:30ch;
-      font-size:17px;
+      font-size:24px;
+      line-height:1.45;
+      letter-spacing:-.03em;
+      color:#446688;
+    }
+    .description{
+      margin:12px 0 0;
+      max-width:33ch;
+      font-size:16px;
       line-height:1.8;
       color:var(--muted);
     }
-    .meta{
+    .download-grid{
       margin-top:22px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.82);
-      border:1px solid rgba(118,156,189,.12);
-      font-size:13px;
-      color:#537090;
-    }
-    .mascot-shell{
-      position:relative;
-      min-height:240px;
       display:grid;
-      align-items:center;
-      justify-items:center;
-      animation:float 6s ease-in-out infinite;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+      max-width:520px;
     }
-    .mascot{
-      display:block;
-      width:220px;
-      max-width:100%;
-      height:auto;
-      border-radius:34px;
-      box-shadow:0 18px 34px rgba(97,143,184,.14);
-    }
-    .grid{
+    .store{
       display:grid;
-      gap:16px;
+      gap:8px;
     }
-    .section{
-      border-radius:28px;
-      padding:24px 22px;
-      position:relative;
-      overflow:hidden;
+    .store-label{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#7f97b2;
     }
-    .summary{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.92), rgba(243,250,255,.88)),
-        var(--card);
-    }
-    .summary::after{
-      content:"";
-      position:absolute;
-      right:-18px;
-      top:-26px;
-      width:130px;
-      height:130px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(194,229,250,.48), transparent 68%);
-    }
-    h2{
-      margin:0 0 10px;
-      font-size:20px;
-      letter-spacing:-.03em;
-    }
-    p{
-      margin:0;
-      font-size:15px;
-      line-height:1.85;
-      color:var(--muted);
-    }
-    .action{
-      text-decoration:none;
-      display:block;
-      background:rgba(255,255,255,.9);
-    }
-    .action-copy{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-    .action-link{
+    .store-button{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:11px 14px;
-      min-width:138px;
-      border-radius:999px;
-      background:rgba(255,255,255,.96);
-      border:1px solid rgba(108,145,178,.18);
-      color:#537090;
+      min-height:50px;
+      padding:0 16px;
+      border-radius:16px;
+      border:1px solid rgba(108,145,178,.16);
+      background:var(--button);
+      color:#527091;
+      text-decoration:none;
       font-size:14px;
-      white-space:nowrap;
+      text-align:center;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .store-button.is-disabled{
+      background:rgba(255,255,255,.76);
+      color:#94a3b8;
+      border-color:rgba(148,163,184,.18);
+      pointer-events:none;
+    }
+    .visual{
+      min-height:220px;
+      display:grid;
+      place-items:center;
+    }
+    .logo-frame{
+      width:192px;
+      padding:12px;
+      border-radius:28px;
+      background:rgba(255,255,255,.78);
+      box-shadow:0 18px 36px rgba(97,143,184,.12);
+    }
+    .logo-frame img{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:22px;
+    }
+    .section{
+      margin-top:16px;
+      padding:24px 22px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:21px;
+      letter-spacing:-.03em;
+    }
+    .benefits{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+    .benefits li{
+      position:relative;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+    .benefits li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.78em;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#7cb6e8;
+      transform:translateY(-50%);
     }
     .footer{
       margin-top:18px;
@@ -325,64 +285,45 @@
       justify-content:space-between;
       gap:16px;
       flex-wrap:wrap;
-      padding:0 4px;
       color:#7289a4;
       font-size:13px;
+      padding:0 4px;
     }
     .footer a{
       text-decoration:none;
       border-bottom:1px solid rgba(108,145,178,.24);
       padding-bottom:2px;
     }
-    @media (max-width: 720px){
+    @media (max-width: 680px){
       .hero{
         grid-template-columns:1fr;
       }
-      .mascot-shell{
-        min-height:212px;
+      .visual{
+        min-height:180px;
+      }
+      .download-grid{
+        grid-template-columns:1fr;
       }
     }
     @media (max-width: 640px){
       .wrap{ padding:16px; }
-      main{ padding:34px 16px 98px; }
-      .hero{
-        border-radius:28px;
-        padding:28px 22px 24px;
-      }
-      .section{
-        border-radius:24px;
-        padding:22px 18px;
-      }
-      .action-copy{
-        display:grid;
-      }
-      .corner-drop.top{
-        top:58px;
+      main{ padding:34px 16px 88px; }
+      .panel{ border-radius:24px; }
+      .hero{ padding:30px 22px; }
+      .section{ padding:22px 18px; }
+      .drop.one{
         right:18px;
-        width:84px;
-        height:108px;
       }
-      .corner-drop.bottom{
+      .drop.two{
         left:14px;
-        bottom:28px;
-        width:88px;
-        height:112px;
       }
       .cloud.one{
-        top:96px;
         left:10px;
-        width:128px;
+        width:126px;
       }
       .cloud.two{
         right:8px;
-        bottom:104px;
-        width:136px;
-      }
-    }
-    @media (prefers-reduced-motion: reduce){
-      .bubble,
-      .mascot-shell{
-        animation:none;
+        width:134px;
       }
     }
   </style>
@@ -390,8 +331,8 @@
 <body>
   <div class="scene" aria-hidden="true">
     <div class="wash"></div>
-    <div class="corner-drop top"></div>
-    <div class="corner-drop bottom"></div>
+    <div class="drop one"></div>
+    <div class="drop two"></div>
     <div class="cloud one">
       <svg viewBox="0 0 180 70" fill="none">
         <path d="M12 50C12 40.059 20.059 32 30 32C34.493 32 38.601 33.645 41.756 36.364C46.122 26.765 56.053 20 67.564 20C78.181 20 87.453 25.756 92.396 34.325C95.173 31.636 98.955 30 103.12 30C111.18 30 117.817 36.131 118.618 43.979H168" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -402,9 +343,6 @@
         <path d="M16 52C16 41.507 24.507 33 35 33C39.252 33 43.178 34.396 46.344 36.754C50.868 27.725 60.212 21.5 71.01 21.5C82.187 21.5 91.821 28.17 96.079 37.747C99.72 34.836 104.334 33.1 109.354 33.1C119.912 33.1 128.524 40.917 129.816 51.1H176" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </div>
-    <div class="bubble one"></div>
-    <div class="bubble two"></div>
-    <div class="bubble three"></div>
   </div>
 
   <header>
@@ -420,42 +358,43 @@
 
   <main>
     <div class="page">
-      <section class="hero" aria-label="Water Days">
+      <section class="panel hero" aria-label="Water Days">
         <div>
-          <p class="eyebrow" id="eyebrow">Project Page</p>
+          <p class="eyebrow" id="eyebrow">Daily Habit</p>
           <h1 id="title">Water Days</h1>
-          <p class="subtitle" id="subtitle">A separate home page for the Water Days app inside Very Days.</p>
-          <div class="meta" aria-label="Project Summary">
-            <span class="pill" id="pill1">Fresh</span>
-            <span class="pill" id="pill2">Private</span>
-            <span class="pill" id="pill3">Simple</span>
+          <p class="value" id="value">A lighter way to keep up with water.</p>
+          <p class="description" id="description">Water Days helps you log each glass quickly, see your progress at a glance, and keep hydration simple. It is made for a daily habit you can actually keep.</p>
+
+          <div class="download-grid" aria-label="Download links">
+            <div class="store">
+              <span class="store-label" id="iosLabel">iPhone &amp; iPad</span>
+              <span class="store-button is-disabled" id="iosButton">Coming soon</span>
+            </div>
+            <div class="store">
+              <span class="store-label" id="androidLabel">Android</span>
+              <span class="store-button is-disabled" id="androidButton">Coming soon</span>
+            </div>
           </div>
         </div>
 
-        <div class="mascot-shell">
-          <img class="mascot" src="./assets/water_days_logo.png" alt="Water Days logo" />
+        <div class="visual" aria-hidden="true">
+          <div class="logo-frame">
+            <img src="./assets/water_days_logo.png" alt="" />
+          </div>
         </div>
       </section>
 
-      <div class="grid">
-        <section class="section summary">
-          <h2 id="aboutTitle">About</h2>
-          <p id="aboutBody">Water Days now has its own page instead of being grouped only inside the main index. This page keeps the app entry separate and leaves the privacy policy on its own dedicated URL.</p>
-        </section>
-
-        <a class="section action" href="./water-days-privacy-policy.html">
-          <div class="action-copy">
-            <div>
-              <h2 id="privacyTitle">Privacy Policy</h2>
-              <p id="privacyBody">Read the separate privacy policy page for Water Days. It states that no customer information is collected.</p>
-            </div>
-            <span class="action-link" id="privacyLink">Open policy →</span>
-          </div>
-        </a>
-      </div>
+      <section class="panel section">
+        <h2 id="benefitsTitle">Why people use it</h2>
+        <ul class="benefits">
+          <li id="benefit1">To record water in a few taps without slowing down the day.</li>
+          <li id="benefit2">To see progress clearly instead of doing mental math.</li>
+          <li id="benefit3">To keep a healthy habit with a friendly, low-pressure interface.</li>
+        </ul>
+      </section>
 
       <div class="footer">
-        <span id="footerLabel">Water Days page</span>
+        <a href="./water-days-privacy-policy.html" id="privacyLink">Privacy Policy</a>
         <a href="./index.html" id="backLink">Back to Very Days</a>
       </div>
     </div>
@@ -464,42 +403,51 @@
   <script>
     const copy = {
       ko: {
-        eyebrow: "Project Page",
+        eyebrow: "Daily Habit",
         title: "Water Days",
-        subtitle: "Very Days 안에서 Water Days를 따로 볼 수 있는 개별 페이지입니다.",
-        pills: ["산뜻함", "프라이빗", "심플"],
-        aboutTitle: "소개",
-        aboutBody: "Water Days는 이제 메인 인덱스에만 묶이지 않고 별도 페이지를 가집니다. 이 페이지는 앱 진입을 분리하고, 개인정보처리방침은 전용 URL에 따로 두도록 정리했습니다.",
-        privacyTitle: "개인정보처리방침",
-        privacyBody: "Water Days 전용 개인정보처리방침 페이지를 확인할 수 있습니다. 고객 정보를 수집하지 않는다는 내용이 별도로 정리되어 있습니다.",
-        privacyLink: "정책 보기 →",
-        footerLabel: "Water Days 페이지",
+        value: "물을 챙기는 습관을 조금 더 가볍게.",
+        description: "Water Days는 물을 마실 때마다 빠르게 기록하고, 하루 진행 상황을 한눈에 확인하게 도와줍니다. 계속 쓸 수 있는 단순한 습관 앱을 목표로 만들었습니다.",
+        iosLabel: "iPhone & iPad",
+        iosButton: "Coming soon",
+        androidLabel: "Android",
+        androidButton: "Coming soon",
+        benefitsTitle: "이럴 때 좋아요",
+        benefit1: "하루 흐름을 끊지 않고 몇 번의 탭으로 물을 기록하고 싶을 때.",
+        benefit2: "머릿속 계산 대신 진행 상황을 바로 보고 싶을 때.",
+        benefit3: "부담 없는 화면으로 건강한 습관을 이어가고 싶을 때.",
+        privacyLink: "개인정보처리방침",
         backLink: "Very Days로 돌아가기"
       },
       ja: {
-        eyebrow: "Project Page",
+        eyebrow: "Daily Habit",
         title: "Water Days",
-        subtitle: "Very Days の中で Water Days を個別に見られる専用ページです。",
-        pills: ["さわやか", "プライベート", "シンプル"],
-        aboutTitle: "紹介",
-        aboutBody: "Water Days は、メインのインデックスだけにまとめず、個別ページを持つようにしました。このページでアプリの入口を分け、プライバシーポリシーは専用 URL に整理しています。",
-        privacyTitle: "プライバシーポリシー",
-        privacyBody: "Water Days 専用のプライバシーポリシーページを確認できます。顧客情報を収集しないことを別ページで明確にしています。",
-        privacyLink: "ポリシーを見る →",
-        footerLabel: "Water Days ページ",
+        value: "水を飲む習慣をもう少し軽やかに。",
+        description: "Water Days は飲んだ水をすばやく記録し、一日の進み具合をひと目で見られるようにします。続けやすいシンプルな習慣アプリを目指して作りました。",
+        iosLabel: "iPhone & iPad",
+        iosButton: "Coming soon",
+        androidLabel: "Android",
+        androidButton: "Coming soon",
+        benefitsTitle: "こんなときに",
+        benefit1: "一日の流れを止めずに数回のタップで水分を記録したいとき。",
+        benefit2: "頭の中で数えず、進み具合をすぐ見たいとき。",
+        benefit3: "負担の少ない画面で健康習慣を続けたいとき。",
+        privacyLink: "プライバシーポリシー",
         backLink: "Very Days に戻る"
       },
       en: {
-        eyebrow: "Project Page",
+        eyebrow: "Daily Habit",
         title: "Water Days",
-        subtitle: "A separate home page for the Water Days app inside Very Days.",
-        pills: ["Fresh", "Private", "Simple"],
-        aboutTitle: "About",
-        aboutBody: "Water Days now has its own page instead of being grouped only inside the main index. This page keeps the app entry separate and leaves the privacy policy on its own dedicated URL.",
-        privacyTitle: "Privacy Policy",
-        privacyBody: "Read the separate privacy policy page for Water Days. It states that no customer information is collected.",
-        privacyLink: "Open policy →",
-        footerLabel: "Water Days page",
+        value: "A lighter way to keep up with water.",
+        description: "Water Days helps you log each glass quickly, see your progress at a glance, and keep hydration simple. It is made for a daily habit you can actually keep.",
+        iosLabel: "iPhone & iPad",
+        iosButton: "Coming soon",
+        androidLabel: "Android",
+        androidButton: "Coming soon",
+        benefitsTitle: "Why people use it",
+        benefit1: "To record water in a few taps without slowing down the day.",
+        benefit2: "To see progress clearly instead of doing mental math.",
+        benefit3: "To keep a healthy habit with a friendly, low-pressure interface.",
+        privacyLink: "Privacy Policy",
         backLink: "Back to Very Days"
       }
     };
@@ -507,16 +455,17 @@
     const els = {
       eyebrow: document.getElementById("eyebrow"),
       title: document.getElementById("title"),
-      subtitle: document.getElementById("subtitle"),
-      pill1: document.getElementById("pill1"),
-      pill2: document.getElementById("pill2"),
-      pill3: document.getElementById("pill3"),
-      aboutTitle: document.getElementById("aboutTitle"),
-      aboutBody: document.getElementById("aboutBody"),
-      privacyTitle: document.getElementById("privacyTitle"),
-      privacyBody: document.getElementById("privacyBody"),
+      value: document.getElementById("value"),
+      description: document.getElementById("description"),
+      iosLabel: document.getElementById("iosLabel"),
+      iosButton: document.getElementById("iosButton"),
+      androidLabel: document.getElementById("androidLabel"),
+      androidButton: document.getElementById("androidButton"),
+      benefitsTitle: document.getElementById("benefitsTitle"),
+      benefit1: document.getElementById("benefit1"),
+      benefit2: document.getElementById("benefit2"),
+      benefit3: document.getElementById("benefit3"),
       privacyLink: document.getElementById("privacyLink"),
-      footerLabel: document.getElementById("footerLabel"),
       backLink: document.getElementById("backLink"),
       buttons: document.querySelectorAll(".lang button")
     };
@@ -525,21 +474,24 @@
       const c = copy[lang];
       els.eyebrow.textContent = c.eyebrow;
       els.title.textContent = c.title;
-      els.subtitle.textContent = c.subtitle;
-      els.pill1.textContent = c.pills[0];
-      els.pill2.textContent = c.pills[1];
-      els.pill3.textContent = c.pills[2];
-      els.aboutTitle.textContent = c.aboutTitle;
-      els.aboutBody.textContent = c.aboutBody;
-      els.privacyTitle.textContent = c.privacyTitle;
-      els.privacyBody.textContent = c.privacyBody;
+      els.value.textContent = c.value;
+      els.description.textContent = c.description;
+      els.iosLabel.textContent = c.iosLabel;
+      els.iosButton.textContent = c.iosButton;
+      els.androidLabel.textContent = c.androidLabel;
+      els.androidButton.textContent = c.androidButton;
+      els.benefitsTitle.textContent = c.benefitsTitle;
+      els.benefit1.textContent = c.benefit1;
+      els.benefit2.textContent = c.benefit2;
+      els.benefit3.textContent = c.benefit3;
       els.privacyLink.textContent = c.privacyLink;
-      els.footerLabel.textContent = c.footerLabel;
       els.backLink.textContent = c.backLink;
+
       els.buttons.forEach((button) => {
         const pressed = button.dataset.lang === lang;
         button.setAttribute("aria-pressed", pressed ? "true" : "false");
       });
+
       document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
     }
 

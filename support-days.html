@@ -6,22 +6,18 @@
   <title>Support Days</title>
   <style>
     :root{
-      --bg-top:#fff6b2;
-      --bg-bottom:#ffe89a;
-      --ink:#564f44;
+      --bg-top:#fff6bd;
+      --bg-bottom:#ffe7a8;
+      --ink:#5a5146;
       --muted:#7b7366;
-      --card:rgba(255,255,255,.78);
-      --line:rgba(86,79,68,.10);
-      --shadow:0 24px 72px rgba(193,169,94,.18);
-      --yellow:#ffd98f;
-      --pink:#f8c4c2;
-      --blue:#bad0ef;
-      --mint:#bfe0bf;
-      --lavender:#ddd0f5;
-      --peach:#f7bca4;
-      --cream:#f4e9cb;
-      --dot:#fff8de;
-      --face:rgba(86,79,68,.72);
+      --card:rgba(255,255,255,.86);
+      --card-strong:rgba(255,255,255,.95);
+      --line:rgba(86,79,68,.1);
+      --shadow:0 24px 72px rgba(193,169,94,.16);
+      --yellow:#ffe09a;
+      --pink:#f7cbc9;
+      --blue:#c8daf2;
+      --button:#fff8e8;
     }
     *{ box-sizing:border-box; }
     html,body{ min-height:100%; }
@@ -30,85 +26,55 @@
       font-family:"Trebuchet MS", "Avenir Next", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
       color:var(--ink);
       background:
-        radial-gradient(900px 520px at 50% 0%, rgba(255,255,255,.42), transparent 60%),
+        radial-gradient(900px 520px at 50% 0%, rgba(255,255,255,.52), transparent 60%),
         linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
       overflow-x:hidden;
     }
     a{ color:inherit; }
-    .art{
+    .scene{
       position:fixed;
       inset:0;
-      z-index:-2;
+      z-index:-1;
       pointer-events:none;
       overflow:hidden;
     }
     .dots{
       position:absolute;
       left:50%;
-      bottom:62px;
+      bottom:56px;
       width:min(760px, 100vw);
       height:120px;
       transform:translateX(-50%);
       background-image:radial-gradient(rgba(255,248,222,.8) 1.5px, transparent 1.5px);
       background-size:18px 18px;
-      opacity:.45;
+      opacity:.4;
       mask-image:linear-gradient(180deg, transparent, rgba(0,0,0,.65) 45%, rgba(0,0,0,.95));
     }
-    .kids{
+    .blob-bg{
       position:absolute;
       left:50%;
-      bottom:-24px;
+      bottom:-18px;
       width:min(760px, 100vw);
-      height:270px;
+      height:220px;
       transform:translateX(-50%);
     }
-    .kid{
+    .blob-bg span{
       position:absolute;
       bottom:0;
       border-radius:46% 54% 52% 48% / 40% 46% 54% 60%;
+      opacity:.9;
     }
-    .kid::before,
-    .kid::after{
-      content:"";
-      position:absolute;
-    }
-    .kid::before{
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      top:34%;
-      left:38%;
-      background:var(--face);
-      box-shadow:36px 0 0 var(--face);
-      opacity:.72;
-    }
-    .kid::after{
-      width:44px;
-      height:16px;
-      left:38%;
-      bottom:28%;
-      border-bottom:2px solid var(--face);
-      border-radius:0 0 40px 40px;
-      opacity:.66;
-    }
-    .kid.one{ left:0; width:190px; height:150px; background:var(--yellow); }
-    .kid.two{ left:126px; width:174px; height:138px; background:var(--pink); }
-    .kid.three{ left:250px; width:250px; height:206px; background:var(--blue); border-radius:42% 58% 48% 52% / 22% 18% 82% 78%; }
-    .kid.three::before{ top:32%; left:40%; box-shadow:44px 0 0 var(--face); }
-    .kid.three::after{ width:54px; left:40%; }
-    .kid.four{ right:118px; width:184px; height:168px; background:var(--mint); }
-    .kid.five{ right:0; width:170px; height:210px; background:var(--lavender); border-radius:44% 56% 42% 58% / 24% 20% 80% 76%; }
-    .kid.six{ right:154px; bottom:-10px; width:210px; height:90px; background:var(--peach); border-radius:999px; }
-    .kid.six::before{ top:32%; left:34%; box-shadow:24px 0 0 var(--face); width:7px; height:7px; }
-    .kid.six::after{ width:26px; left:34%; bottom:30%; }
-    .kid.seven{ left:120px; bottom:-4px; width:146px; height:110px; background:var(--cream); }
-    .kid.seven::after{ width:36px; left:36%; }
+    .blob-bg .one{ left:18px; width:152px; height:118px; background:var(--yellow); }
+    .blob-bg .two{ left:150px; width:144px; height:112px; background:var(--pink); }
+    .blob-bg .three{ left:286px; width:196px; height:152px; background:var(--blue); }
+    .blob-bg .four{ right:110px; width:150px; height:128px; background:#c5e2c8; }
+    .blob-bg .five{ right:0; width:138px; height:168px; background:#dfd2f4; }
     header{
       position:sticky;
       top:0;
       z-index:10;
       backdrop-filter:blur(10px);
-      background:linear-gradient(180deg, rgba(255,255,255,.38), rgba(255,255,255,.08));
+      background:linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,.14));
       border-bottom:1px solid rgba(86,79,68,.08);
     }
     .wrap{
@@ -134,7 +100,7 @@
     .lang button{
       appearance:none;
       border:1px solid rgba(86,79,68,.12);
-      background:rgba(255,255,255,.5);
+      background:rgba(255,255,255,.54);
       color:var(--ink);
       padding:8px 11px;
       border-radius:999px;
@@ -142,49 +108,48 @@
       cursor:pointer;
     }
     .lang button[aria-pressed="true"]{
-      background:rgba(255,255,255,.86);
+      background:rgba(255,255,255,.92);
     }
     main{
       max-width:920px;
       margin:0 auto;
-      padding:44px 20px 210px;
+      padding:44px 20px 180px;
     }
     .page{
-      max-width:680px;
+      max-width:760px;
       margin:0 auto;
     }
-    .hero, .section{
+    .panel{
       border:1px solid var(--line);
-      background:var(--card);
+      border-radius:30px;
+      background:linear-gradient(180deg, var(--card-strong), var(--card));
       box-shadow:var(--shadow);
-      backdrop-filter:blur(12px);
-      position:relative;
+      backdrop-filter:blur(10px);
     }
     .hero{
-      border-radius:34px;
-      padding:34px 32px 30px;
-      margin-bottom:18px;
-      overflow:hidden;
+      padding:34px 32px;
       display:grid;
-      grid-template-columns:minmax(0, 1fr) 210px;
-      gap:18px;
+      grid-template-columns:minmax(0, 1fr) 220px;
+      gap:22px;
       align-items:center;
+      position:relative;
+      overflow:hidden;
     }
-    .hero::before{
+    .hero::after{
       content:"";
       position:absolute;
-      right:-30px;
-      bottom:-34px;
-      width:140px;
-      height:140px;
-      border-radius:48% 52% 52% 48% / 42% 46% 54% 58%;
-      background:rgba(186,208,239,.36);
+      width:180px;
+      height:180px;
+      right:-48px;
+      bottom:-52px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(200,218,242,.54), transparent 68%);
     }
     .eyebrow{
       margin:0 0 10px;
       font-size:12px;
-      text-transform:uppercase;
       letter-spacing:.18em;
+      text-transform:uppercase;
       color:rgba(86,79,68,.56);
     }
     h1{
@@ -193,88 +158,127 @@
       line-height:1.03;
       letter-spacing:-.05em;
     }
-    .subtitle{
+    .value{
       margin:14px 0 0;
-      max-width:31ch;
-      font-size:17px;
-      line-height:1.75;
-      color:var(--muted);
-    }
-    .meta{
-      margin-top:20px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.76);
-      border:1px solid rgba(86,79,68,.08);
-      font-size:13px;
-    }
-    .blob-art{
-      position:relative;
-      min-height:220px;
-      animation:float 6s ease-in-out infinite;
-    }
-    .blob{
-      position:absolute;
-      border-radius:46% 54% 50% 50% / 38% 45% 55% 62%;
-      box-shadow:0 18px 36px rgba(190,166,95,.12);
-    }
-    .blob.one{ inset:18px auto auto 8px; width:92px; height:72px; background:var(--yellow); }
-    .blob.two{ inset:30px 12px auto auto; width:94px; height:76px; background:var(--pink); }
-    .blob.three{ inset:auto auto 20px 0; width:108px; height:84px; background:var(--blue); }
-    .blob.four{ inset:auto 0 12px auto; width:98px; height:60px; border-radius:999px; background:var(--peach); }
-    @keyframes float{
-      0%, 100%{ transform:translateY(0); }
-      50%{ transform:translateY(-8px); }
-    }
-    .grid{
-      display:grid;
-      gap:16px;
-    }
-    .section{
-      border-radius:26px;
-      padding:24px 22px;
-    }
-    h2{
-      margin:0 0 10px;
-      font-size:20px;
+      font-size:24px;
+      line-height:1.45;
       letter-spacing:-.03em;
+      color:#675d50;
     }
-    p{
-      margin:0;
+    .description{
+      margin:12px 0 0;
+      max-width:33ch;
+      font-size:16px;
       line-height:1.8;
       color:var(--muted);
-      font-size:15px;
     }
-    .action{
-      text-decoration:none;
-      display:block;
-      background:rgba(255,255,255,.84);
+    .download-grid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+      max-width:520px;
     }
-    .action-copy{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
+    .store{
+      display:grid;
+      gap:8px;
     }
-    .action-link{
+    .store-label{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#8b806f;
+    }
+    .store-button{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:11px 14px;
-      min-width:138px;
-      border-radius:999px;
-      background:rgba(255,255,255,.86);
-      border:1px solid rgba(86,79,68,.10);
-      color:#6d6558;
+      min-height:50px;
+      padding:0 16px;
+      border-radius:16px;
+      border:1px solid rgba(86,79,68,.1);
+      background:var(--button);
+      color:#645b4f;
+      text-decoration:none;
       font-size:14px;
-      white-space:nowrap;
+      text-align:center;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .store-button.is-disabled{
+      background:rgba(255,255,255,.74);
+      color:#a1a1aa;
+      border-color:rgba(161,161,170,.18);
+      pointer-events:none;
+    }
+    .visual{
+      min-height:208px;
+      display:grid;
+      place-items:center;
+    }
+    .visual-group{
+      position:relative;
+      width:170px;
+      height:160px;
+    }
+    .visual-group span{
+      position:absolute;
+      border-radius:46% 54% 50% 50% / 38% 45% 55% 62%;
+      box-shadow:0 18px 32px rgba(193,169,94,.12);
+    }
+    .visual-group .one{
+      width:86px;
+      height:68px;
+      left:2px;
+      top:28px;
+      background:var(--yellow);
+    }
+    .visual-group .two{
+      width:90px;
+      height:70px;
+      right:10px;
+      top:8px;
+      background:var(--pink);
+    }
+    .visual-group .three{
+      width:96px;
+      height:74px;
+      left:34px;
+      bottom:6px;
+      background:var(--blue);
+    }
+    .section{
+      margin-top:16px;
+      padding:24px 22px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:21px;
+      letter-spacing:-.03em;
+    }
+    .benefits{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+    .benefits li{
+      position:relative;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+    .benefits li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.78em;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#dcae65;
+      transform:translateY(-50%);
     }
     .footer{
       margin-top:18px;
@@ -291,45 +295,35 @@
       border-bottom:1px solid rgba(86,79,68,.18);
       padding-bottom:2px;
     }
-    @media (max-width: 640px){
-      .wrap{ padding:16px; }
-      main{ padding:34px 16px 190px; }
+    @media (max-width: 680px){
       .hero{
-        border-radius:28px;
-        padding:28px 22px 24px;
         grid-template-columns:1fr;
       }
-      .section{ border-radius:22px; padding:22px 18px; }
-      .action-copy{
-        display:grid;
+      .visual{
+        min-height:170px;
       }
-      .kids{ height:232px; }
-      .kid.one{ width:150px; height:120px; }
-      .kid.two{ left:92px; width:140px; height:118px; }
-      .kid.three{ left:176px; width:180px; height:160px; }
-      .kid.four{ right:82px; width:138px; height:128px; }
-      .kid.five{ width:132px; height:168px; }
-      .kid.six{ right:96px; width:154px; }
-      .kid.seven{ left:88px; width:120px; }
+      .download-grid{
+        grid-template-columns:1fr;
+      }
     }
-    @media (prefers-reduced-motion: reduce){
-      .blob-art{
-        animation:none;
-      }
+    @media (max-width: 640px){
+      .wrap{ padding:16px; }
+      main{ padding:34px 16px 170px; }
+      .panel{ border-radius:24px; }
+      .hero{ padding:30px 22px; }
+      .section{ padding:22px 18px; }
     }
   </style>
 </head>
 <body>
-  <div class="art" aria-hidden="true">
+  <div class="scene" aria-hidden="true">
     <div class="dots"></div>
-    <div class="kids">
-      <div class="kid one"></div>
-      <div class="kid two"></div>
-      <div class="kid three"></div>
-      <div class="kid four"></div>
-      <div class="kid five"></div>
-      <div class="kid six"></div>
-      <div class="kid seven"></div>
+    <div class="blob-bg">
+      <span class="one"></span>
+      <span class="two"></span>
+      <span class="three"></span>
+      <span class="four"></span>
+      <span class="five"></span>
     </div>
   </div>
 
@@ -346,44 +340,45 @@
 
   <main>
     <div class="page">
-      <section class="hero" aria-label="Support Days">
+      <section class="panel hero" aria-label="Support Days">
         <div>
-          <p class="eyebrow" id="eyebrow">Project Page</p>
+          <p class="eyebrow" id="eyebrow">Emotional Check-in</p>
           <h1 id="title">Support Days</h1>
-          <p class="subtitle" id="subtitle">A separate home page for the Support Days app inside Very Days.</p>
-          <div class="meta" aria-label="Project Summary">
-            <span class="pill" id="pill1">Warm</span>
-            <span class="pill" id="pill2">Private</span>
-            <span class="pill" id="pill3">Gentle</span>
+          <p class="value" id="value">A small place to notice how today feels.</p>
+          <p class="description" id="description">Support Days helps you record your mood, read a short supportive message, and look back on your emotional rhythm over time. It is made for ordinary days, hard days, and everything in between.</p>
+
+          <div class="download-grid" aria-label="Download links">
+            <div class="store">
+              <span class="store-label" id="iosLabel">iPhone &amp; iPad</span>
+              <a class="store-button" id="iosButton" href="https://apps.apple.com/us/app/support-days/id6761288425" target="_blank" rel="noreferrer">Download on the App Store</a>
+            </div>
+            <div class="store">
+              <span class="store-label" id="androidLabel">Android</span>
+              <a class="store-button" id="androidButton" href="https://play.google.com/store/apps/details?id=com.verydays.supportdays&hl=en" target="_blank" rel="noreferrer">Get it on Google Play</a>
+            </div>
           </div>
         </div>
-        <div class="blob-art" aria-hidden="true">
-          <span class="blob one"></span>
-          <span class="blob two"></span>
-          <span class="blob three"></span>
-          <span class="blob four"></span>
+
+        <div class="visual" aria-hidden="true">
+          <div class="visual-group">
+            <span class="one"></span>
+            <span class="two"></span>
+            <span class="three"></span>
+          </div>
         </div>
       </section>
 
-      <div class="grid">
-        <section class="section">
-          <h2 id="aboutTitle">About</h2>
-          <p id="aboutBody">Support Days now has its own page instead of being grouped only inside the main index. This page keeps the app entry separate and leaves the privacy policy on its own dedicated URL.</p>
-        </section>
-
-        <a class="section action" href="./support-days-privacy-policy.html">
-          <div class="action-copy">
-            <div>
-              <h2 id="privacyTitle">Privacy Policy</h2>
-              <p id="privacyBody">Read the separate privacy policy page for Support Days. It states that no customer information is collected.</p>
-            </div>
-            <span class="action-link" id="privacyLink">Open policy →</span>
-          </div>
-        </a>
-      </div>
+      <section class="panel section">
+        <h2 id="benefitsTitle">Why people use it</h2>
+        <ul class="benefits">
+          <li id="benefit1">To log today’s mood in a few seconds.</li>
+          <li id="benefit2">To notice emotional patterns across the month without pressure.</li>
+          <li id="benefit3">To get a gentle, simple companion instead of a crowded wellness app.</li>
+        </ul>
+      </section>
 
       <div class="footer">
-        <span id="footerLabel">Support Days page</span>
+        <a href="./support-days-privacy-policy.html" id="privacyLink">Privacy Policy</a>
         <a href="./index.html" id="backLink">Back to Very Days</a>
       </div>
     </div>
@@ -392,42 +387,51 @@
   <script>
     const copy = {
       ko: {
-        eyebrow: "Project Page",
+        eyebrow: "Emotional Check-in",
         title: "Support Days",
-        subtitle: "Very Days 안에서 Support Days를 따로 볼 수 있는 개별 페이지입니다.",
-        pills: ["따뜻함", "프라이빗", "부드러움"],
-        aboutTitle: "소개",
-        aboutBody: "Support Days는 이제 메인 인덱스에만 묶이지 않고 별도 페이지를 가집니다. 이 페이지는 앱 진입을 분리하고, 개인정보처리방침은 전용 URL에 따로 두도록 정리했습니다.",
-        privacyTitle: "개인정보처리방침",
-        privacyBody: "Support Days 전용 개인정보처리방침 페이지를 확인할 수 있습니다. 고객 정보를 수집하지 않는다는 내용이 별도로 정리되어 있습니다.",
-        privacyLink: "정책 보기 →",
-        footerLabel: "Support Days 페이지",
+        value: "오늘의 마음을 가볍게 알아차릴 수 있는 작은 공간.",
+        description: "Support Days는 오늘의 감정을 기록하고, 짧은 응원의 말을 읽고, 시간이 지나며 내 감정의 흐름을 돌아볼 수 있게 도와줍니다. 평범한 날에도, 버거운 날에도 자연스럽게 열 수 있도록 만들었습니다.",
+        iosLabel: "iPhone & iPad",
+        iosButton: "Download on the App Store",
+        androidLabel: "Android",
+        androidButton: "Google Play에서 받기",
+        benefitsTitle: "이럴 때 좋아요",
+        benefit1: "오늘 기분을 몇 초 안에 가볍게 남기고 싶을 때.",
+        benefit2: "부담 없이 한 달 감정 흐름을 보고 싶을 때.",
+        benefit3: "복잡한 웰니스 앱보다 더 단순하고 다정한 동반자가 필요할 때.",
+        privacyLink: "개인정보처리방침",
         backLink: "Very Days로 돌아가기"
       },
       ja: {
-        eyebrow: "Project Page",
+        eyebrow: "Emotional Check-in",
         title: "Support Days",
-        subtitle: "Very Days の中で Support Days を個別に見られる専用ページです。",
-        pills: ["あたたかさ", "プライベート", "やわらかさ"],
-        aboutTitle: "紹介",
-        aboutBody: "Support Days は、メインのインデックスだけにまとめず、個別ページを持つようにしました。このページでアプリの入口を分け、プライバシーポリシーは専用 URL に整理しています。",
-        privacyTitle: "プライバシーポリシー",
-        privacyBody: "Support Days 専用のプライバシーポリシーページを確認できます。顧客情報を収集しないことを別ページで明確にしています。",
-        privacyLink: "ポリシーを見る →",
-        footerLabel: "Support Days ページ",
+        value: "今日の気持ちにそっと気づける小さな場所。",
+        description: "Support Days はその日の気分を記録し、短い励ましの言葉を受け取り、時間をかけて自分の感情の流れを見返せるようにします。ふつうの日にも、少しつらい日にも自然に開けるように作りました。",
+        iosLabel: "iPhone & iPad",
+        iosButton: "Download on the App Store",
+        androidLabel: "Android",
+        androidButton: "Google Play で入手",
+        benefitsTitle: "こんなときに",
+        benefit1: "今日の気分を数秒で残したいとき。",
+        benefit2: "無理なく一か月の感情の流れを見たいとき。",
+        benefit3: "機能が多すぎるウェルネスアプリより、もっとやさしくシンプルな相棒がほしいとき。",
+        privacyLink: "プライバシーポリシー",
         backLink: "Very Days に戻る"
       },
       en: {
-        eyebrow: "Project Page",
+        eyebrow: "Emotional Check-in",
         title: "Support Days",
-        subtitle: "A separate home page for the Support Days app inside Very Days.",
-        pills: ["Warm", "Private", "Gentle"],
-        aboutTitle: "About",
-        aboutBody: "Support Days now has its own page instead of being grouped only inside the main index. This page keeps the app entry separate and leaves the privacy policy on its own dedicated URL.",
-        privacyTitle: "Privacy Policy",
-        privacyBody: "Read the separate privacy policy page for Support Days. It states that no customer information is collected.",
-        privacyLink: "Open policy →",
-        footerLabel: "Support Days page",
+        value: "A small place to notice how today feels.",
+        description: "Support Days helps you record your mood, read a short supportive message, and look back on your emotional rhythm over time. It is made for ordinary days, hard days, and everything in between.",
+        iosLabel: "iPhone & iPad",
+        iosButton: "Download on the App Store",
+        androidLabel: "Android",
+        androidButton: "Get it on Google Play",
+        benefitsTitle: "Why people use it",
+        benefit1: "To log today’s mood in a few seconds.",
+        benefit2: "To notice emotional patterns across the month without pressure.",
+        benefit3: "To get a gentle, simple companion instead of a crowded wellness app.",
+        privacyLink: "Privacy Policy",
         backLink: "Back to Very Days"
       }
     };
@@ -435,16 +439,17 @@
     const els = {
       eyebrow: document.getElementById("eyebrow"),
       title: document.getElementById("title"),
-      subtitle: document.getElementById("subtitle"),
-      pill1: document.getElementById("pill1"),
-      pill2: document.getElementById("pill2"),
-      pill3: document.getElementById("pill3"),
-      aboutTitle: document.getElementById("aboutTitle"),
-      aboutBody: document.getElementById("aboutBody"),
-      privacyTitle: document.getElementById("privacyTitle"),
-      privacyBody: document.getElementById("privacyBody"),
+      value: document.getElementById("value"),
+      description: document.getElementById("description"),
+      iosLabel: document.getElementById("iosLabel"),
+      iosButton: document.getElementById("iosButton"),
+      androidLabel: document.getElementById("androidLabel"),
+      androidButton: document.getElementById("androidButton"),
+      benefitsTitle: document.getElementById("benefitsTitle"),
+      benefit1: document.getElementById("benefit1"),
+      benefit2: document.getElementById("benefit2"),
+      benefit3: document.getElementById("benefit3"),
       privacyLink: document.getElementById("privacyLink"),
-      footerLabel: document.getElementById("footerLabel"),
       backLink: document.getElementById("backLink"),
       buttons: document.querySelectorAll(".lang button")
     };
@@ -453,21 +458,24 @@
       const c = copy[lang];
       els.eyebrow.textContent = c.eyebrow;
       els.title.textContent = c.title;
-      els.subtitle.textContent = c.subtitle;
-      els.pill1.textContent = c.pills[0];
-      els.pill2.textContent = c.pills[1];
-      els.pill3.textContent = c.pills[2];
-      els.aboutTitle.textContent = c.aboutTitle;
-      els.aboutBody.textContent = c.aboutBody;
-      els.privacyTitle.textContent = c.privacyTitle;
-      els.privacyBody.textContent = c.privacyBody;
+      els.value.textContent = c.value;
+      els.description.textContent = c.description;
+      els.iosLabel.textContent = c.iosLabel;
+      els.iosButton.textContent = c.iosButton;
+      els.androidLabel.textContent = c.androidLabel;
+      els.androidButton.textContent = c.androidButton;
+      els.benefitsTitle.textContent = c.benefitsTitle;
+      els.benefit1.textContent = c.benefit1;
+      els.benefit2.textContent = c.benefit2;
+      els.benefit3.textContent = c.benefit3;
       els.privacyLink.textContent = c.privacyLink;
-      els.footerLabel.textContent = c.footerLabel;
       els.backLink.textContent = c.backLink;
+
       els.buttons.forEach((button) => {
         const pressed = button.dataset.lang === lang;
         button.setAttribute("aria-pressed", pressed ? "true" : "false");
       });
+
       document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
     }
 

@@ -6,17 +6,15 @@
   <title>Tarot Days</title>
   <style>
     :root{
-      --sky:#8fa9e3;
-      --sun:#faf5dc;
-      --sand:#f3e6cc;
-      --sand-deep:#ead08d;
-      --sand-soft:#fbf8ec;
-      --text:#3f4c73;
-      --muted:#6f7b9c;
-      --card:rgba(255,250,239,.82);
+      --sky:#93addf;
+      --sand:#f4e6cb;
+      --card:rgba(255,251,243,.9);
+      --card-strong:rgba(255,255,255,.95);
       --line:rgba(90,108,151,.14);
-      --shadow:0 28px 80px rgba(112,131,171,.18);
-      --button:#f7efd8;
+      --text:#405075;
+      --muted:#6f7b9c;
+      --shadow:0 24px 72px rgba(112,131,171,.16);
+      --button:#f8f0dd;
     }
     *{ box-sizing:border-box; }
     html,body{ min-height:100%; }
@@ -24,36 +22,28 @@
       margin:0;
       font-family:"Avenir Next", "Segoe UI", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
       color:var(--text);
-      background:linear-gradient(180deg, var(--sky) 0 38%, #c5d6f3 38% 46%, #f8f2e3 46% 100%);
+      background:
+        radial-gradient(780px 420px at 50% 0%, rgba(255,255,255,.6), transparent 64%),
+        linear-gradient(180deg, var(--sky) 0 34%, #c8d8f0 34% 44%, #f9f3e7 44% 100%);
       overflow-x:hidden;
     }
     a{ color:inherit; }
     .scene{
       position:fixed;
       inset:0;
-      z-index:-2;
+      z-index:-1;
       pointer-events:none;
       overflow:hidden;
     }
     .sun{
       position:absolute;
-      top:108px;
-      right:calc(50% - 260px);
-      width:122px;
-      height:122px;
+      top:96px;
+      right:calc(50% - 280px);
+      width:108px;
+      height:108px;
       border-radius:50%;
-      background:var(--sun);
-      box-shadow:0 0 46px rgba(250,245,220,.42);
-    }
-    .star{
-      position:absolute;
-      top:88px;
-      left:calc(50% - 270px);
-      width:72px;
-      height:72px;
-      background:#fffdf6;
-      clip-path:polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
-      opacity:.9;
+      background:#fbf7e4;
+      box-shadow:0 0 34px rgba(255,247,223,.48);
     }
     .dune{
       position:absolute;
@@ -62,43 +52,24 @@
       width:min(760px, 100vw);
     }
     .dune.one{
-      bottom:24%;
-      height:210px;
-      background:
-        radial-gradient(circle, rgba(255,255,255,.34) 0 1px, transparent 1.5px) 0 0 / 8px 8px,
-        linear-gradient(180deg, #eed393, #e8ca82);
-      clip-path:polygon(0 100%, 0 32%, 15% 14%, 30% 33%, 44% 38%, 60% 64%, 76% 58%, 90% 48%, 100% 56%, 100% 100%);
+      bottom:18%;
+      height:196px;
+      background:linear-gradient(180deg, #efd79e, #e7cb83);
+      clip-path:polygon(0 100%, 0 38%, 18% 20%, 34% 36%, 49% 44%, 64% 66%, 82% 58%, 100% 64%, 100% 100%);
+      opacity:.74;
     }
     .dune.two{
-      bottom:11%;
-      height:228px;
-      background:linear-gradient(180deg, var(--sand), #efe0bd);
-      clip-path:polygon(0 100%, 0 48%, 14% 62%, 31% 56%, 47% 37%, 63% 58%, 80% 52%, 100% 38%, 100% 100%);
-    }
-    .dune.three{
-      bottom:-2%;
-      height:174px;
-      background:
-        radial-gradient(circle, rgba(255,255,255,.34) 0 1px, transparent 1.5px) 0 0 / 8px 8px,
-        linear-gradient(180deg, #e6ca84, #dcc073);
-      clip-path:polygon(0 100%, 0 56%, 17% 70%, 32% 63%, 48% 78%, 63% 44%, 83% 60%, 100% 46%, 100% 100%);
-    }
-    .mist{
-      position:absolute;
-      left:50%;
-      transform:translateX(-50%);
-      bottom:6%;
-      width:min(760px, 100vw);
-      height:124px;
-      background:var(--sand-soft);
-      clip-path:polygon(0 100%, 0 42%, 18% 58%, 42% 52%, 58% 30%, 73% 62%, 88% 67%, 100% 58%, 100% 100%);
+      bottom:2%;
+      height:190px;
+      background:linear-gradient(180deg, var(--sand), #efdfb9);
+      clip-path:polygon(0 100%, 0 52%, 16% 60%, 34% 50%, 48% 34%, 66% 60%, 82% 54%, 100% 40%, 100% 100%);
     }
     header{
       position:sticky;
       top:0;
       z-index:10;
       backdrop-filter:blur(10px);
-      background:linear-gradient(180deg, rgba(250,248,240,.54), rgba(250,248,240,.18));
+      background:linear-gradient(180deg, rgba(251,248,241,.64), rgba(251,248,241,.24));
       border-bottom:1px solid rgba(255,255,255,.18);
     }
     .wrap{
@@ -124,7 +95,7 @@
     .lang button{
       appearance:none;
       border:1px solid rgba(78,97,141,.18);
-      background:rgba(255,255,255,.48);
+      background:rgba(255,255,255,.52);
       color:var(--text);
       padding:8px 11px;
       border-radius:999px;
@@ -132,44 +103,43 @@
       cursor:pointer;
     }
     .lang button[aria-pressed="true"]{
-      background:rgba(255,249,235,.94);
-      border-color:rgba(79,98,142,.28);
+      background:rgba(255,251,242,.96);
+      border-color:rgba(79,98,142,.26);
     }
     main{
       max-width:920px;
       margin:0 auto;
-      padding:48px 20px 110px;
+      padding:48px 20px 100px;
     }
     .page{
-      max-width:680px;
+      max-width:760px;
       margin:0 auto;
     }
-    .hero, .section{
-      position:relative;
-      overflow:hidden;
-      border-radius:30px;
+    .panel{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,251,241,.9), var(--card));
+      border-radius:30px;
+      background:linear-gradient(180deg, var(--card-strong), var(--card));
       box-shadow:var(--shadow);
       backdrop-filter:blur(10px);
     }
     .hero{
       padding:34px 32px;
-      margin-bottom:18px;
       display:grid;
-      grid-template-columns:minmax(0, 1fr) 210px;
-      gap:18px;
+      grid-template-columns:minmax(0, 1fr) 220px;
+      gap:22px;
       align-items:center;
+      position:relative;
+      overflow:hidden;
     }
     .hero::after{
       content:"";
       position:absolute;
       width:220px;
       height:220px;
-      top:-60px;
-      right:-56px;
+      top:-72px;
+      right:-72px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(255,255,255,.68), transparent 68%);
+      background:radial-gradient(circle, rgba(255,255,255,.82), transparent 68%);
     }
     .eyebrow{
       margin:0 0 12px;
@@ -184,107 +154,122 @@
       line-height:1.02;
       letter-spacing:-.05em;
     }
-    .subtitle{
-      margin:16px 0 0;
-      max-width:30ch;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:17px;
-    }
-    .meta{
-      margin-top:22px;
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .pill{
-      padding:9px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.56);
-      border:1px solid rgba(89,106,148,.12);
-      font-size:13px;
-      color:#677594;
-    }
-    .art-card{
-      position:relative;
-      min-height:220px;
-      display:grid;
-      place-items:center;
-      animation:float 6s ease-in-out infinite;
-    }
-    .art-card::before,
-    .art-card::after{
-      content:"";
-      position:absolute;
-      border-radius:24px;
-      border:1px solid rgba(93,112,157,.16);
-      background:linear-gradient(180deg, rgba(255,252,244,.96), rgba(244,231,200,.88));
-      box-shadow:0 20px 36px rgba(129,150,191,.14);
-    }
-    .art-card::before{
-      width:122px;
-      height:168px;
-      transform:rotate(-12deg) translateX(-16px);
-    }
-    .art-card::after{
-      width:122px;
-      height:168px;
-      transform:rotate(10deg) translateX(18px);
-    }
-    .card-star{
-      position:relative;
-      z-index:1;
-      width:72px;
-      height:72px;
-      background:#fffdf6;
-      clip-path:polygon(50% 0, 61% 38%, 100% 50%, 61% 62%, 50% 100%, 39% 62%, 0 50%, 39% 38%);
-      box-shadow:0 0 0 14px rgba(255,249,233,.74);
-    }
-    @keyframes float{
-      0%, 100%{ transform:translateY(0); }
-      50%{ transform:translateY(-8px); }
-    }
-    .grid{
-      display:grid;
-      gap:16px;
-    }
-    .section{
-      padding:24px 22px;
-    }
-    h2{
-      margin:0 0 10px;
-      font-size:20px;
+    .value{
+      margin:14px 0 0;
+      font-size:24px;
+      line-height:1.45;
       letter-spacing:-.03em;
+      color:#516181;
     }
-    p{
-      margin:0;
-      line-height:1.8;
+    .description{
+      margin:12px 0 0;
+      max-width:32ch;
       color:var(--muted);
-      font-size:15px;
+      line-height:1.8;
+      font-size:16px;
     }
-    .action{
-      text-decoration:none;
-      display:block;
-      background:linear-gradient(180deg, rgba(255,250,239,.98), rgba(249,241,224,.92));
+    .download-grid{
+      margin-top:22px;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr);
+      gap:12px;
+      max-width:260px;
     }
-    .action-copy{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
+    .store{
+      display:grid;
+      gap:8px;
     }
-    .action-link{
+    .store-label{
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:#7f8ba9;
+    }
+    .store-button{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      padding:11px 14px;
-      min-width:138px;
-      border-radius:999px;
+      min-height:50px;
+      padding:0 16px;
+      border-radius:16px;
+      border:1px solid rgba(90,108,151,.12);
       background:var(--button);
-      border:1px solid rgba(93,112,157,.14);
-      color:#566481;
+      color:#4d5e7c;
+      text-decoration:none;
       font-size:14px;
-      white-space:nowrap;
+      text-align:center;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.72);
+    }
+    .store-button.is-disabled{
+      background:rgba(255,255,255,.7);
+      color:#94a3b8;
+      border-color:rgba(148,163,184,.18);
+      pointer-events:none;
+    }
+    .visual{
+      min-height:210px;
+      display:grid;
+      place-items:center;
+    }
+    .visual-stack{
+      position:relative;
+      width:182px;
+      height:198px;
+    }
+    .visual-stack img{
+      position:absolute;
+      width:108px;
+      height:152px;
+      object-fit:cover;
+      border-radius:24px;
+      border:1px solid rgba(90,108,151,.14);
+      box-shadow:0 18px 28px rgba(148,163,184,.12);
+      background:#fff8eb;
+      display:block;
+    }
+    .visual-stack .moon{
+      left:14px;
+      bottom:10px;
+      transform:rotate(-12deg);
+    }
+    .visual-stack .sun-card{
+      right:12px;
+      top:12px;
+      transform:rotate(10deg);
+    }
+    .section{
+      margin-top:16px;
+      padding:24px 22px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:21px;
+      letter-spacing:-.03em;
+    }
+    .benefits{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+    .benefits li{
+      position:relative;
+      padding-left:18px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:15px;
+    }
+    .benefits li::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.78em;
+      width:6px;
+      height:6px;
+      border-radius:50%;
+      background:#8da5da;
+      transform:translateY(-50%);
     }
     .footer{
       margin-top:18px;
@@ -301,35 +286,31 @@
       border-bottom:1px solid rgba(103,121,165,.24);
       padding-bottom:2px;
     }
+    @media (max-width: 680px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .visual{
+        min-height:180px;
+      }
+      .download-grid{
+        grid-template-columns:1fr;
+      }
+    }
     @media (max-width: 640px){
       .wrap{ padding:16px; }
       main{ padding:34px 16px 88px; }
-      .hero, .section{ border-radius:24px; }
-      .hero{
-        padding:30px 22px;
-        grid-template-columns:1fr;
-      }
-      .action-copy{
-        display:grid;
-      }
-      .sun{ right:8vw; }
-      .star{ left:10vw; }
-    }
-    @media (prefers-reduced-motion: reduce){
-      .art-card{
-        animation:none;
-      }
+      .panel{ border-radius:24px; }
+      .hero{ padding:30px 22px; }
+      .section{ padding:22px 18px; }
     }
   </style>
 </head>
 <body>
   <div class="scene" aria-hidden="true">
-    <div class="star"></div>
     <div class="sun"></div>
     <div class="dune one"></div>
     <div class="dune two"></div>
-    <div class="mist"></div>
-    <div class="dune three"></div>
   </div>
 
   <header>
@@ -345,41 +326,40 @@
 
   <main>
     <div class="page">
-      <section class="hero" aria-label="Tarot Days">
+      <section class="panel hero" aria-label="Tarot Days">
         <div>
-          <p class="eyebrow" id="eyebrow">Project Page</p>
+          <p class="eyebrow" id="eyebrow">Daily Reflection</p>
           <h1 id="title">Tarot Days</h1>
-          <p class="subtitle" id="subtitle">A separate home page for the Tarot Days app inside Very Days.</p>
-          <div class="meta" aria-label="Project Summary">
-            <span class="pill" id="pill1">Calm</span>
-            <span class="pill" id="pill2">Private</span>
-            <span class="pill" id="pill3">Simple</span>
+          <p class="value" id="value">A quiet card for a clearer thought.</p>
+          <p class="description" id="description">Tarot Days gives you a calm space for a quick tarot check-in. Open it when you want to pause, sort through a question, and carry one simple reflection into the rest of your day.</p>
+
+          <div class="download-grid" aria-label="Download links">
+            <div class="store">
+              <span class="store-label" id="androidLabel">Android</span>
+              <a class="store-button" id="androidButton" href="https://play.google.com/store/apps/details?id=com.verydays.tarotdays&hl=en" target="_blank" rel="noreferrer">Get it on Google Play</a>
+            </div>
           </div>
         </div>
-        <div class="art-card" aria-hidden="true">
-          <div class="card-star"></div>
+
+        <div class="visual" aria-hidden="true">
+          <div class="visual-stack">
+            <img class="moon" src="./assets/18_the_moon.webp" alt="" />
+            <img class="sun-card" src="./assets/19_the_sun.webp" alt="" />
+          </div>
         </div>
       </section>
 
-      <div class="grid">
-        <section class="section">
-          <h2 id="aboutTitle">About</h2>
-          <p id="aboutBody">Tarot Days now has its own page instead of being grouped only inside the main index. This page keeps the app entry separate and leaves the privacy policy on its own dedicated URL.</p>
-        </section>
-
-        <a class="section action" href="./tarot-days-privacy-policy.html">
-          <div class="action-copy">
-            <div>
-              <h2 id="privacyTitle">Privacy Policy</h2>
-              <p id="privacyBody">Read the separate privacy policy page for Tarot Days. It states that no customer information is collected.</p>
-            </div>
-            <span class="action-link" id="privacyLink">Open policy →</span>
-          </div>
-        </a>
-      </div>
+      <section class="panel section">
+        <h2 id="benefitsTitle">Why people use it</h2>
+        <ul class="benefits">
+          <li id="benefit1">For a short daily ritual that does not feel heavy.</li>
+          <li id="benefit2">For moments when you want to slow down and look at one question calmly.</li>
+          <li id="benefit3">For a tarot experience that stays simple and visually quiet.</li>
+        </ul>
+      </section>
 
       <div class="footer">
-        <span id="footerLabel">Tarot Days page</span>
+        <a href="./tarot-days-privacy-policy.html" id="privacyLink">Privacy Policy</a>
         <a href="./index.html" id="backLink">Back to Very Days</a>
       </div>
     </div>
@@ -388,42 +368,45 @@
   <script>
     const copy = {
       ko: {
-        eyebrow: "Project Page",
+        eyebrow: "Daily Reflection",
         title: "Tarot Days",
-        subtitle: "Very Days 안에서 Tarot Days를 따로 볼 수 있는 개별 페이지입니다.",
-        pills: ["차분함", "프라이빗", "심플"],
-        aboutTitle: "소개",
-        aboutBody: "Tarot Days는 이제 메인 인덱스에만 묶이지 않고 별도 페이지를 가집니다. 이 페이지는 앱 진입을 분리하고, 개인정보처리방침은 전용 URL에 따로 두도록 정리했습니다.",
-        privacyTitle: "개인정보처리방침",
-        privacyBody: "Tarot Days 전용 개인정보처리방침 페이지를 확인할 수 있습니다. 고객 정보를 수집하지 않는다는 내용이 별도로 정리되어 있습니다.",
-        privacyLink: "정책 보기 →",
-        footerLabel: "Tarot Days 페이지",
+        value: "생각을 조금 더 또렷하게 보고 싶을 때 여는 조용한 카드.",
+        description: "Tarot Days는 짧게 타로를 보고 생각을 정리할 수 있는 차분한 공간입니다. 잠깐 멈추고 질문을 바라본 뒤, 하루에 가져갈 한 가지 감각을 남기고 싶을 때 어울립니다.",
+        androidLabel: "Android",
+        androidButton: "Google Play에서 받기",
+        benefitsTitle: "이럴 때 좋아요",
+        benefit1: "부담스럽지 않은 짧은 하루 루틴이 필요할 때.",
+        benefit2: "한 가지 질문을 조금 더 차분하게 바라보고 싶을 때.",
+        benefit3: "복잡하지 않고 조용한 타로 화면을 원할 때.",
+        privacyLink: "개인정보처리방침",
         backLink: "Very Days로 돌아가기"
       },
       ja: {
-        eyebrow: "Project Page",
+        eyebrow: "Daily Reflection",
         title: "Tarot Days",
-        subtitle: "Very Days の中で Tarot Days を個別に見られる専用ページです。",
-        pills: ["静けさ", "プライベート", "シンプル"],
-        aboutTitle: "紹介",
-        aboutBody: "Tarot Days は、メインのインデックスだけにまとめず、個別ページを持つようにしました。このページでアプリの入口を分け、プライバシーポリシーは専用 URL に整理しています。",
-        privacyTitle: "プライバシーポリシー",
-        privacyBody: "Tarot Days 専用のプライバシーポリシーページを確認できます。顧客情報を収集しないことを別ページで明確にしています。",
-        privacyLink: "ポリシーを見る →",
-        footerLabel: "Tarot Days ページ",
+        value: "考えを少しだけ整えたいときに開く静かなカード。",
+        description: "Tarot Days は、短くタロットを引いて気持ちを整えられる落ち着いた場所です。少し立ち止まり、問いを見つめ、一日へ持っていく小さな気づきを残したいときに合います。",
+        androidLabel: "Android",
+        androidButton: "Google Play で入手",
+        benefitsTitle: "こんなときに",
+        benefit1: "重たくない短い一日の習慣がほしいとき。",
+        benefit2: "ひとつの問いを静かに見つめ直したいとき。",
+        benefit3: "余計な要素が少ない落ち着いたタロット画面がほしいとき。",
+        privacyLink: "プライバシーポリシー",
         backLink: "Very Days に戻る"
       },
       en: {
-        eyebrow: "Project Page",
+        eyebrow: "Daily Reflection",
         title: "Tarot Days",
-        subtitle: "A separate home page for the Tarot Days app inside Very Days.",
-        pills: ["Calm", "Private", "Simple"],
-        aboutTitle: "About",
-        aboutBody: "Tarot Days now has its own page instead of being grouped only inside the main index. This page keeps the app entry separate and leaves the privacy policy on its own dedicated URL.",
-        privacyTitle: "Privacy Policy",
-        privacyBody: "Read the separate privacy policy page for Tarot Days. It states that no customer information is collected.",
-        privacyLink: "Open policy →",
-        footerLabel: "Tarot Days page",
+        value: "A quiet card for a clearer thought.",
+        description: "Tarot Days gives you a calm space for a quick tarot check-in. Open it when you want to pause, sort through a question, and carry one simple reflection into the rest of your day.",
+        androidLabel: "Android",
+        androidButton: "Get it on Google Play",
+        benefitsTitle: "Why people use it",
+        benefit1: "For a short daily ritual that does not feel heavy.",
+        benefit2: "For moments when you want to slow down and look at one question calmly.",
+        benefit3: "For a tarot experience that stays simple and visually quiet.",
+        privacyLink: "Privacy Policy",
         backLink: "Back to Very Days"
       }
     };
@@ -431,16 +414,15 @@
     const els = {
       eyebrow: document.getElementById("eyebrow"),
       title: document.getElementById("title"),
-      subtitle: document.getElementById("subtitle"),
-      pill1: document.getElementById("pill1"),
-      pill2: document.getElementById("pill2"),
-      pill3: document.getElementById("pill3"),
-      aboutTitle: document.getElementById("aboutTitle"),
-      aboutBody: document.getElementById("aboutBody"),
-      privacyTitle: document.getElementById("privacyTitle"),
-      privacyBody: document.getElementById("privacyBody"),
+      value: document.getElementById("value"),
+      description: document.getElementById("description"),
+      androidLabel: document.getElementById("androidLabel"),
+      androidButton: document.getElementById("androidButton"),
+      benefitsTitle: document.getElementById("benefitsTitle"),
+      benefit1: document.getElementById("benefit1"),
+      benefit2: document.getElementById("benefit2"),
+      benefit3: document.getElementById("benefit3"),
       privacyLink: document.getElementById("privacyLink"),
-      footerLabel: document.getElementById("footerLabel"),
       backLink: document.getElementById("backLink"),
       buttons: document.querySelectorAll(".lang button")
     };
@@ -449,21 +431,22 @@
       const c = copy[lang];
       els.eyebrow.textContent = c.eyebrow;
       els.title.textContent = c.title;
-      els.subtitle.textContent = c.subtitle;
-      els.pill1.textContent = c.pills[0];
-      els.pill2.textContent = c.pills[1];
-      els.pill3.textContent = c.pills[2];
-      els.aboutTitle.textContent = c.aboutTitle;
-      els.aboutBody.textContent = c.aboutBody;
-      els.privacyTitle.textContent = c.privacyTitle;
-      els.privacyBody.textContent = c.privacyBody;
+      els.value.textContent = c.value;
+      els.description.textContent = c.description;
+      els.androidLabel.textContent = c.androidLabel;
+      els.androidButton.textContent = c.androidButton;
+      els.benefitsTitle.textContent = c.benefitsTitle;
+      els.benefit1.textContent = c.benefit1;
+      els.benefit2.textContent = c.benefit2;
+      els.benefit3.textContent = c.benefit3;
       els.privacyLink.textContent = c.privacyLink;
-      els.footerLabel.textContent = c.footerLabel;
       els.backLink.textContent = c.backLink;
+
       els.buttons.forEach((button) => {
         const pressed = button.dataset.lang === lang;
         button.setAttribute("aria-pressed", pressed ? "true" : "false");
       });
+
       document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
     }
 
