@@ -14,13 +14,10 @@
   <style>
     :root{
       --bg:#faf7f2;
-      --surface:#ffffff;
-      --surface-soft:#f3ede5;
       --text:#2f2a25;
       --muted:#7b7066;
       --border:#e6ddd2;
       --accent:#c58b5f;
-      --accent-soft:#ead6c6;
       --shadow:0 14px 32px rgba(47,42,37,.05);
     }
 
@@ -103,7 +100,7 @@
       font:inherit;
       font-size:14px;
       cursor:pointer;
-      transition:color .2s ease, opacity .2s ease;
+      transition:color .2s ease;
     }
 
     .lang button[aria-pressed="true"]{
@@ -226,8 +223,10 @@
 
     .card-grid{
       display:grid;
-      grid-template-columns:repeat(3, 1fr);
+      grid-template-columns:repeat(2, minmax(0, 1fr));
       gap:20px;
+      max-width:860px;
+      margin:0 auto;
     }
 
     .app-card{
@@ -435,6 +434,13 @@
             <p class="app-value" id="waterValue">A simple way to keep up with water.</p>
             <span class="app-link" id="waterLink">View app →</span>
           </a>
+
+          <a class="app-card reveal" style="--delay:.24s" href="./money-days.html">
+            <span class="app-tag" id="moneyTag">Budget</span>
+            <h3>Money Days</h3>
+            <p class="app-value" id="moneyValue">A simple budget app for spending and income.</p>
+            <span class="app-link" id="moneyLink">View app →</span>
+          </a>
         </div>
       </div>
     </section>
@@ -465,7 +471,10 @@
         supportLink: "앱 보기 →",
         waterTag: "습관",
         waterValue: "물을 더 가볍게 기록하는 방법.",
-        waterLink: "앱 보기 →"
+        waterLink: "앱 보기 →",
+        moneyTag: "가계부",
+        moneyValue: "지출과 수입을 가볍게 적는 심플한 가계부 앱.",
+        moneyLink: "앱 보기 →"
       },
       ja: {
         heroTitle: "Very Days",
@@ -484,7 +493,10 @@
         supportLink: "アプリを見る →",
         waterTag: "習慣",
         waterValue: "水分記録をもっと軽やかに。",
-        waterLink: "アプリを見る →"
+        waterLink: "アプリを見る →",
+        moneyTag: "家計簿",
+        moneyValue: "支出と収入を軽やかに記録するシンプルな家計簿アプリ。",
+        moneyLink: "アプリを見る →"
       },
       en: {
         heroTitle: "Very Days",
@@ -503,7 +515,10 @@
         supportLink: "View app →",
         waterTag: "Habit",
         waterValue: "A simple way to keep up with water.",
-        waterLink: "View app →"
+        waterLink: "View app →",
+        moneyTag: "Budget",
+        moneyValue: "A simple budget app for spending and income.",
+        moneyLink: "View app →"
       }
     };
 
@@ -524,7 +539,10 @@
       "supportLink",
       "waterTag",
       "waterValue",
-      "waterLink"
+      "waterLink",
+      "moneyTag",
+      "moneyValue",
+      "moneyLink"
     ];
 
     const els = Object.fromEntries(

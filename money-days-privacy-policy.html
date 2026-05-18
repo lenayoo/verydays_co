@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Money Days Privacy Policy</title>
+  <style>
+    :root{
+      --bg-top:#fffaf7;
+      --bg-mid:#fff2ec;
+      --bg-bottom:#fde7dd;
+      --ink:#5a4941;
+      --muted:#88736b;
+      --card:rgba(255,255,255,.84);
+      --card-strong:rgba(255,255,255,.95);
+      --line:rgba(239,116,88,.12);
+      --shadow:0 28px 76px rgba(226,150,128,.16);
+    }
+    *{ box-sizing:border-box; }
+    html,body{ min-height:100%; }
+    body{
+      margin:0;
+      font-family:"Trebuchet MS", "Avenir Next", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(920px 540px at 50% 0%, rgba(255,255,255,.88), transparent 62%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 52%, var(--bg-bottom) 100%);
+      overflow-x:hidden;
+    }
+    a{ color:inherit; }
+    .scene{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .mist{
+      position:absolute;
+      inset:auto 0 -90px;
+      height:260px;
+      background:
+        radial-gradient(circle at 16% 26%, rgba(255,255,255,.68) 0 28px, transparent 29px),
+        radial-gradient(circle at 76% 38%, rgba(255,255,255,.56) 0 22px, transparent 23px),
+        linear-gradient(180deg, rgba(252,229,220,.12), rgba(248,215,203,.42));
+      clip-path:polygon(0 100%, 0 44%, 12% 58%, 28% 50%, 41% 64%, 57% 46%, 71% 60%, 86% 52%, 100% 66%, 100% 100%);
+      opacity:.76;
+    }
+    @keyframes currencyFloatOne{
+      0%, 100%{
+        transform:translate3d(0, 0, 0) rotate(0deg);
+        opacity:.76;
+      }
+      24%{
+        transform:translate3d(8px, -12px, 0) rotate(3deg);
+        opacity:.88;
+      }
+      52%{
+        transform:translate3d(18px, -26px, 0) rotate(-2deg);
+        opacity:.82;
+      }
+      78%{
+        transform:translate3d(2px, -36px, 0) rotate(2deg);
+        opacity:.72;
+      }
+    }
+    @keyframes currencyFloatTwo{
+      0%, 100%{
+        transform:translate3d(0, 0, 0) rotate(0deg);
+        opacity:.7;
+      }
+      20%{
+        transform:translate3d(-10px, -8px, 0) rotate(-4deg);
+        opacity:.84;
+      }
+      46%{
+        transform:translate3d(-20px, 10px, 0) rotate(2deg);
+        opacity:.76;
+      }
+      72%{
+        transform:translate3d(6px, 18px, 0) rotate(-1deg);
+        opacity:.86;
+      }
+    }
+    @keyframes currencyFloatThree{
+      0%, 100%{
+        transform:translate3d(0, 0, 0) rotate(0deg);
+        opacity:.74;
+      }
+      28%{
+        transform:translate3d(14px, -10px, 0) rotate(2deg);
+        opacity:.86;
+      }
+      54%{
+        transform:translate3d(20px, -22px, 0) rotate(-3deg);
+        opacity:.78;
+      }
+      80%{
+        transform:translate3d(-4px, -30px, 0) rotate(1deg);
+        opacity:.68;
+      }
+    }
+    @keyframes currencyFloatFour{
+      0%, 100%{
+        transform:translate3d(0, 0, 0) rotate(0deg);
+        opacity:.8;
+      }
+      18%{
+        transform:translate3d(-8px, -14px, 0) rotate(-2deg);
+        opacity:.9;
+      }
+      44%{
+        transform:translate3d(-20px, -26px, 0) rotate(3deg);
+        opacity:.76;
+      }
+      70%{
+        transform:translate3d(-4px, -42px, 0) rotate(-1deg);
+        opacity:.7;
+      }
+    }
+    @keyframes currencyFloatFive{
+      0%, 100%{
+        transform:translate3d(0, 0, 0) rotate(0deg) scale(1);
+        opacity:.82;
+      }
+      22%{
+        transform:translate3d(14px, -10px, 0) rotate(3deg) scale(1.02);
+        opacity:.94;
+      }
+      48%{
+        transform:translate3d(22px, -28px, 0) rotate(-2deg) scale(1.05);
+        opacity:.86;
+      }
+      74%{
+        transform:translate3d(-6px, -40px, 0) rotate(2deg) scale(1.01);
+        opacity:.78;
+      }
+    }
+    .currency{
+      position:absolute;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      border:3px solid rgba(239,116,88,.14);
+      background:linear-gradient(180deg, rgba(255,255,255,.76), rgba(253,232,223,.56));
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.58);
+      opacity:.78;
+      color:rgba(213,108,83,.58);
+      font-weight:700;
+      line-height:1;
+      letter-spacing:-.04em;
+      will-change:transform, opacity;
+    }
+    .currency::after{
+      content:"";
+      position:absolute;
+      inset:10px;
+      border-radius:50%;
+      border:1px solid rgba(239,116,88,.14);
+    }
+    .currency.one{
+      top:148px;
+      right:174px;
+      width:96px;
+      height:96px;
+      font-size:40px;
+      animation:currencyFloatFour 16.8s ease-in-out infinite;
+      animation-delay:-6.2s;
+    }
+    .currency.two{
+      top:148px;
+      left:38px;
+      width:72px;
+      height:72px;
+      font-size:31px;
+      animation:currencyFloatTwo 13.8s ease-in-out infinite;
+      animation-delay:-4.6s;
+    }
+    .currency.three{
+      left:30px;
+      bottom:54px;
+      width:86px;
+      height:86px;
+      font-size:36px;
+      animation:currencyFloatOne 15.2s ease-in-out infinite;
+      animation-delay:-2.8s;
+    }
+    .currency.four{
+      right:88px;
+      bottom:76px;
+      width:68px;
+      height:68px;
+      font-size:29px;
+      animation:currencyFloatThree 14.2s ease-in-out infinite;
+      animation-delay:-5.2s;
+    }
+    .currency.five{
+      left:calc(50% - 510px);
+      top:316px;
+      width:122px;
+      height:122px;
+      font-size:56px;
+      border-width:4px;
+      background:linear-gradient(180deg, rgba(255,255,255,.84), rgba(248,215,203,.66));
+      color:rgba(213,108,83,.68);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.68),
+        0 8px 20px rgba(239,116,88,.08);
+      animation:currencyFloatFive 18.8s ease-in-out infinite;
+      animation-delay:-7.4s;
+    }
+    @keyframes logoFloat{
+      0%, 100%{
+        transform:translateY(0) rotate(0deg);
+      }
+      50%{
+        transform:translateY(-10px) rotate(.8deg);
+      }
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(180deg, rgba(255,249,246,.82), rgba(255,249,246,.28));
+      border-bottom:1px solid rgba(239,116,88,.10);
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:lowercase;
+    }
+    .lang{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang button{
+      appearance:none;
+      border:1px solid rgba(239,116,88,.14);
+      background:rgba(255,255,255,.56);
+      color:var(--ink);
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+    }
+    .lang button[aria-pressed="true"]{
+      background:rgba(255,255,255,.96);
+      border-color:rgba(239,116,88,.22);
+    }
+    main{
+      max-width:980px;
+      margin:0 auto;
+      padding:46px 20px 120px;
+    }
+    .page{
+      max-width:680px;
+      margin:0 auto;
+    }
+    .hero,
+    .section{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, var(--card-strong), var(--card));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+    .hero{
+      border-radius:36px;
+      padding:34px 32px;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) 220px;
+      gap:20px;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      margin-bottom:18px;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -44px -56px auto;
+      width:210px;
+      height:210px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(248,215,203,.64), transparent 68%);
+    }
+    .eyebrow{
+      margin:0 0 12px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:#b08678;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(34px, 7vw, 60px);
+      line-height:1.03;
+      letter-spacing:-.05em;
+    }
+    .subtitle{
+      margin:14px 0 0;
+      max-width:31ch;
+      font-size:17px;
+      line-height:1.8;
+      color:var(--muted);
+    }
+    .meta{
+      margin-top:22px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:9px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.82);
+      border:1px solid rgba(239,116,88,.12);
+      font-size:13px;
+      color:#8f7569;
+    }
+    .logo-shell{
+      position:relative;
+      min-height:248px;
+      display:grid;
+      align-items:center;
+      justify-items:center;
+      animation:logoFloat 6.8s ease-in-out infinite;
+    }
+    .logo{
+      display:block;
+      width:232px;
+      max-width:100%;
+      height:auto;
+      border-radius:34px;
+      box-shadow:0 18px 34px rgba(221,154,132,.14);
+      position:relative;
+      z-index:1;
+    }
+    .logo-shell::after{
+      content:"";
+      position:absolute;
+      inset:auto 24px 18px;
+      height:28px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(248,215,203,.58), transparent 72%);
+      filter:blur(8px);
+      z-index:0;
+    }
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+    .section{
+      border-radius:28px;
+      padding:24px 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .summary{
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,245,241,.88)),
+        var(--card);
+    }
+    .summary::after{
+      content:"";
+      position:absolute;
+      right:-18px;
+      top:-26px;
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(248,215,203,.48), transparent 68%);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-.03em;
+    }
+    p{
+      margin:0;
+      font-size:15px;
+      line-height:1.85;
+      color:var(--muted);
+    }
+    .footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:0 4px;
+      color:#987f76;
+      font-size:13px;
+    }
+    .footer a{
+      text-decoration:none;
+      border-bottom:1px solid rgba(239,116,88,.24);
+      padding-bottom:2px;
+    }
+    @media (max-width: 720px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .logo-shell{
+        min-height:228px;
+      }
+    }
+    @media (max-width: 640px){
+      .wrap{ padding:16px; }
+      main{ padding:34px 16px 98px; }
+      .hero{
+        border-radius:28px;
+        padding:28px 22px 24px;
+      }
+      .section{
+        border-radius:24px;
+        padding:22px 18px;
+      }
+      .currency.one{
+        top:58px;
+        right:16px;
+      }
+      .currency.two{
+        left:12px;
+        top:144px;
+      }
+      .currency.three{
+        left:8px;
+        bottom:24px;
+      }
+      .currency.four{
+        right:10px;
+        bottom:78px;
+      }
+      .currency.five{
+        left:8px;
+        top:224px;
+        width:94px;
+        height:94px;
+        font-size:42px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .logo-shell,
+      .currency{
+        animation:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="mist"></div>
+    <div class="currency one">$</div>
+    <div class="currency two">€</div>
+    <div class="currency three">¥</div>
+    <div class="currency four">£</div>
+    <div class="currency five">₩</div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <a class="brand" href="./index.html" aria-label="Very Days home">verydays</a>
+      <nav class="lang" aria-label="Language">
+        <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        <button type="button" data-lang="en" aria-pressed="true">Eng</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page">
+      <section class="hero" aria-label="Privacy Policy Hero">
+        <div>
+          <p class="eyebrow" id="eyebrow">Privacy Policy</p>
+          <h1 id="title">Money Days Privacy Policy</h1>
+          <p class="subtitle" id="subtitle">Money Days is a simple budget app designed to keep your records on your device and out of tracking systems.</p>
+          <div class="meta" aria-label="Privacy Summary">
+            <span class="pill" id="pill1">No sign-in</span>
+            <span class="pill" id="pill2">On-device records</span>
+            <span class="pill" id="pill3">No analytics SDK</span>
+          </div>
+        </div>
+
+        <div class="logo-shell">
+          <img class="logo" src="./assets/money_days_logo.png" alt="Money Days logo" />
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="section summary">
+          <h2 id="highlightTitle">Summary</h2>
+          <p id="highlightBody">Money Days is a simple budget app for recording spending and income without accounts or behavioral tracking. We do not ask for your name, email address, phone number, contacts, precise location, or payment credentials.</p>
+        </section>
+        <section class="section">
+          <h2 id="section1Title">Information We Collect</h2>
+          <p id="section1Body">Money Days does not collect personal information or device-based identifiers that can be used to identify you. The spending and income entries you create are intended to remain stored locally on your device.</p>
+        </section>
+        <section class="section">
+          <h2 id="section2Title">How We Use Information</h2>
+          <p id="section2Body">The information you enter is used only inside the app on your device to show records, category totals, and monthly summaries. We do not use your data for analytics, advertising, profiling, or sale to third parties.</p>
+        </section>
+        <section class="section">
+          <h2 id="section3Title">Third-Party Services and Sharing</h2>
+          <p id="section3Body">Money Days does not include advertising SDKs, external analytics tools, or third-party tracking technologies. If you choose to use a system share or export feature, only the content you choose to share is handled by the app or service you selected, under that service's own privacy policy.</p>
+        </section>
+        <section class="section">
+          <h2 id="section4Title">Children's Privacy</h2>
+          <p id="section4Body">Because Money Days does not collect personal information from users, it also does not knowingly collect personal information from children.</p>
+        </section>
+        <section class="section">
+          <h2 id="section5Title">Changes to This Policy</h2>
+          <p id="section5Body">If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.</p>
+        </section>
+        <section class="section">
+          <h2 id="section6Title">Contact</h2>
+          <p id="section6Body">If you have questions about this policy, please contact the developer through the contact method provided on the App Store listing.</p>
+        </section>
+      </div>
+
+      <div class="footer">
+        <span id="effectiveDate">Effective date: 2026-05-18</span>
+        <a href="./money-days.html" id="backLink">Back to Money Days</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const copy = {
+      ko: {
+        eyebrow: "Privacy Policy",
+        title: "Money Days 개인정보처리방침",
+        subtitle: "Money Days는 기록이 사용자의 기기에 머물도록 설계된 심플한 가계부 앱이며, 추적 목적으로 사용되지 않습니다.",
+        pills: ["로그인 없음", "기기 내 기록", "분석 SDK 없음"],
+        highlightTitle: "요약",
+        highlightBody: "Money Days는 계정 생성이나 행동 추적 없이 지출과 수입을 기록할 수 있는 심플한 가계부 앱입니다. 이름, 이메일 주소, 전화번호, 연락처, 정밀 위치 정보, 결제 자격 정보 등을 요구하지 않습니다.",
+        section1Title: "수집하는 정보",
+        section1Body: "Money Days는 사용자를 식별할 수 있는 개인정보나 기기 식별자를 수집하지 않습니다. 사용자가 작성한 지출 및 수입 기록은 사용자의 기기에 로컬로 저장되는 것을 전제로 합니다.",
+        section2Title: "정보 이용 방식",
+        section2Body: "사용자가 입력한 정보는 기기 안에서 기록, 카테고리 합계, 월별 요약을 보여주기 위한 용도로만 사용됩니다. 데이터를 분석, 광고, 프로파일링, 제3자 판매 목적으로 사용하지 않습니다.",
+        section3Title: "제3자 서비스 및 공유",
+        section3Body: "Money Days에는 광고 SDK, 외부 분석 도구, 제3자 추적 기술이 포함되어 있지 않습니다. 다만 사용자가 시스템 공유 또는 내보내기 기능을 직접 사용할 경우, 사용자가 선택한 내용만 해당 앱 또는 서비스의 자체 개인정보처리방침에 따라 처리됩니다.",
+        section4Title: "아동의 개인정보",
+        section4Body: "Money Days는 사용자 개인정보를 수집하지 않으므로, 아동의 개인정보 역시 의도적으로 수집하지 않습니다.",
+        section5Title: "정책 변경",
+        section5Body: "향후 본 개인정보처리방침이 변경되는 경우, 수정된 시행일과 함께 이 페이지에 업데이트된 내용을 게시합니다.",
+        section6Title: "문의",
+        section6Body: "본 정책에 관한 문의가 있을 경우, App Store 목록에 기재된 개발자 연락 방법을 통해 문의해 주세요.",
+        effectiveDate: "시행일: 2026-05-18",
+        backLink: "Money Days로 돌아가기"
+      },
+      ja: {
+        eyebrow: "Privacy Policy",
+        title: "Money Days プライバシーポリシー",
+        subtitle: "Money Days は記録がユーザーの端末にとどまるよう設計されたシンプルな家計簿アプリであり、追跡目的では利用されません。",
+        pills: ["ログイン不要", "端末内の記録", "分析 SDK なし"],
+        highlightTitle: "概要",
+        highlightBody: "Money Days は、アカウント作成や行動追跡なしで支出と収入を記録できるシンプルな家計簿アプリです。氏名、メールアドレス、電話番号、連絡先、正確な位置情報、決済資格情報などを要求しません。",
+        section1Title: "収集する情報",
+        section1Body: "Money Days は、個人を特定できる個人情報や端末識別子を収集しません。ユーザーが作成した支出・収入の記録は、端末内にローカル保存されることを前提としています。",
+        section2Title: "情報の利用",
+        section2Body: "入力された情報は、記録、カテゴリ合計、月別サマリーを端末内で表示するためにのみ使われます。データを分析、広告、プロファイリング、第三者販売の目的で利用することはありません。",
+        section3Title: "第三者サービスと共有",
+        section3Body: "Money Days には、広告 SDK、外部分析ツール、第三者トラッキング技術は含まれていません。ただし、システムの共有または書き出し機能をユーザーが利用した場合、選択した内容のみが、選択したアプリまたはサービスのプライバシーポリシーに従って処理されます。",
+        section4Title: "子どものプライバシー",
+        section4Body: "Money Days はユーザーの個人情報を収集しないため、子どもの個人情報を意図的に収集することもありません。",
+        section5Title: "本ポリシーの変更",
+        section5Body: "今後このプライバシーポリシーが変更された場合は、改定後の発効日とともにこのページに掲載します。",
+        section6Title: "お問い合わせ",
+        section6Body: "本ポリシーに関するご質問は、App Store の掲載情報にある開発者連絡先からお問い合わせください。",
+        effectiveDate: "施行日: 2026-05-18",
+        backLink: "Money Days に戻る"
+      },
+      en: {
+        eyebrow: "Privacy Policy",
+        title: "Money Days Privacy Policy",
+        subtitle: "Money Days is a simple budget app designed to keep your records on your device and out of tracking systems.",
+        pills: ["No sign-in", "On-device records", "No analytics SDK"],
+        highlightTitle: "Summary",
+        highlightBody: "Money Days is a simple budget app for recording spending and income without accounts or behavioral tracking. We do not ask for your name, email address, phone number, contacts, precise location, or payment credentials.",
+        section1Title: "Information We Collect",
+        section1Body: "Money Days does not collect personal information or device-based identifiers that can be used to identify you. The spending and income entries you create are intended to remain stored locally on your device.",
+        section2Title: "How We Use Information",
+        section2Body: "The information you enter is used only inside the app on your device to show records, category totals, and monthly summaries. We do not use your data for analytics, advertising, profiling, or sale to third parties.",
+        section3Title: "Third-Party Services and Sharing",
+        section3Body: "Money Days does not include advertising SDKs, external analytics tools, or third-party tracking technologies. If you choose to use a system share or export feature, only the content you choose to share is handled by the app or service you selected, under that service's own privacy policy.",
+        section4Title: "Children's Privacy",
+        section4Body: "Because Money Days does not collect personal information from users, it also does not knowingly collect personal information from children.",
+        section5Title: "Changes to This Policy",
+        section5Body: "If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.",
+        section6Title: "Contact",
+        section6Body: "If you have questions about this policy, please contact the developer through the contact method provided on the App Store listing.",
+        effectiveDate: "Effective date: 2026-05-18",
+        backLink: "Back to Money Days"
+      }
+    };
+
+    const els = {
+      eyebrow: document.getElementById("eyebrow"),
+      title: document.getElementById("title"),
+      subtitle: document.getElementById("subtitle"),
+      pill1: document.getElementById("pill1"),
+      pill2: document.getElementById("pill2"),
+      pill3: document.getElementById("pill3"),
+      highlightTitle: document.getElementById("highlightTitle"),
+      highlightBody: document.getElementById("highlightBody"),
+      section1Title: document.getElementById("section1Title"),
+      section1Body: document.getElementById("section1Body"),
+      section2Title: document.getElementById("section2Title"),
+      section2Body: document.getElementById("section2Body"),
+      section3Title: document.getElementById("section3Title"),
+      section3Body: document.getElementById("section3Body"),
+      section4Title: document.getElementById("section4Title"),
+      section4Body: document.getElementById("section4Body"),
+      section5Title: document.getElementById("section5Title"),
+      section5Body: document.getElementById("section5Body"),
+      section6Title: document.getElementById("section6Title"),
+      section6Body: document.getElementById("section6Body"),
+      effectiveDate: document.getElementById("effectiveDate"),
+      backLink: document.getElementById("backLink"),
+      buttons: document.querySelectorAll(".lang button")
+    };
+
+    function setLang(lang){
+      const c = copy[lang];
+      els.eyebrow.textContent = c.eyebrow;
+      els.title.textContent = c.title;
+      els.subtitle.textContent = c.subtitle;
+      els.pill1.textContent = c.pills[0];
+      els.pill2.textContent = c.pills[1];
+      els.pill3.textContent = c.pills[2];
+      els.highlightTitle.textContent = c.highlightTitle;
+      els.highlightBody.textContent = c.highlightBody;
+      els.section1Title.textContent = c.section1Title;
+      els.section1Body.textContent = c.section1Body;
+      els.section2Title.textContent = c.section2Title;
+      els.section2Body.textContent = c.section2Body;
+      els.section3Title.textContent = c.section3Title;
+      els.section3Body.textContent = c.section3Body;
+      els.section4Title.textContent = c.section4Title;
+      els.section4Body.textContent = c.section4Body;
+      els.section5Title.textContent = c.section5Title;
+      els.section5Body.textContent = c.section5Body;
+      els.section6Title.textContent = c.section6Title;
+      els.section6Body.textContent = c.section6Body;
+      els.effectiveDate.textContent = c.effectiveDate;
+      els.backLink.textContent = c.backLink;
+      els.buttons.forEach((button) => {
+        const pressed = button.dataset.lang === lang;
+        button.setAttribute("aria-pressed", pressed ? "true" : "false");
+      });
+      document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
+    }
+
+    els.buttons.forEach((btn) => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+    setLang("en");
+  </script>
+</body>
+</html>
