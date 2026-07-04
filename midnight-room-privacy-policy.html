@@ -1,0 +1,704 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Privacy policy for Midnight Room by Verydays."
+  />
+  <title>Midnight Room Privacy Policy | Verydays</title>
+  <style>
+    :root{
+      --bg-top:#050b19;
+      --bg-mid:#0a1630;
+      --bg-bottom:#121a38;
+      --ink:#f5f3ff;
+      --muted:#c0c7e3;
+      --card:rgba(9,16,34,.74);
+      --card-strong:rgba(13,21,44,.88);
+      --line:rgba(206,216,255,.12);
+      --shadow:0 28px 76px rgba(0,0,0,.34);
+      --moon:#f3e6c9;
+      --violet:#7d72c6;
+      --blue:#7b8fd8;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ min-height:100%; }
+    body{
+      margin:0;
+      font-family:"Avenir Next", "Trebuchet MS", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(920px 560px at 50% 0%, rgba(92,110,180,.18), transparent 62%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
+      overflow-x:hidden;
+    }
+    a{ color:inherit; }
+    .scene{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .scene::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(rgba(255,246,223,.82) 1px, transparent 1.4px),
+        radial-gradient(rgba(197,205,255,.32) 1px, transparent 1.2px);
+      background-size:24px 24px, 34px 34px;
+      background-position:0 0, 12px 18px;
+      opacity:.16;
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.9), rgba(0,0,0,.46) 76%, transparent);
+    }
+    .scene::after{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:-160px;
+      width:560px;
+      height:560px;
+      transform:translateX(-50%);
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(125,114,198,.2), transparent 68%);
+      filter:blur(16px);
+    }
+    .glow{
+      position:absolute;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(243,230,201,.12), transparent 72%);
+      filter:blur(6px);
+    }
+    .glow.one{
+      top:88px;
+      left:12%;
+      width:180px;
+      height:180px;
+    }
+    .glow.two{
+      right:10%;
+      top:18%;
+      width:240px;
+      height:240px;
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(14px);
+      background:linear-gradient(180deg, rgba(5,10,22,.78), rgba(5,10,22,.3));
+      border-bottom:1px solid rgba(206,216,255,.08);
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:lowercase;
+    }
+    .lang{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang button{
+      appearance:none;
+      border:1px solid rgba(206,216,255,.14);
+      background:rgba(17,28,58,.64);
+      color:var(--ink);
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+    }
+    .lang button[aria-pressed="true"]{
+      background:rgba(27,40,78,.9);
+      border-color:rgba(242,231,207,.18);
+    }
+    main{
+      max-width:980px;
+      margin:0 auto;
+      padding:46px 20px 120px;
+    }
+    .page{
+      max-width:700px;
+      margin:0 auto;
+    }
+    .hero,
+    .section{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, var(--card-strong), var(--card));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+    @keyframes riseIn{
+      0%{
+        opacity:0;
+        transform:translateY(18px);
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+    @keyframes float{
+      0%, 100%{ transform:translateY(0); }
+      50%{ transform:translateY(-8px); }
+    }
+    .hero{
+      border-radius:34px;
+      padding:36px 34px;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) minmax(224px, 264px);
+      gap:26px;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      margin-bottom:18px;
+      animation:riseIn .62s ease both;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      left:-38px;
+      top:-44px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(243,230,201,.1), transparent 72%);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -50px -62px auto;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(125,114,198,.22), transparent 70%);
+    }
+    .eyebrow{
+      margin:0 0 12px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:#aab5db;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(34px, 7vw, 58px);
+      line-height:1.03;
+      letter-spacing:-.05em;
+    }
+    .subtitle{
+      margin:14px 0 0;
+      max-width:32ch;
+      font-size:16px;
+      line-height:1.85;
+      color:var(--muted);
+    }
+    .meta{
+      margin-top:22px;
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(206,216,255,.1);
+      background:rgba(17,28,58,.56);
+      color:#d6def8;
+      font-size:13px;
+    }
+    .visual{
+      min-height:316px;
+      display:grid;
+      place-items:center;
+    }
+    .visual-stack{
+      position:relative;
+      width:min(100%, 248px);
+      min-height:300px;
+      display:grid;
+      place-items:center;
+      animation:float 6.6s ease-in-out infinite;
+    }
+    .visual-stack::after{
+      content:"";
+      position:absolute;
+      inset:auto 24px -18px;
+      height:34px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(6,10,22,.72), transparent 72%);
+      filter:blur(10px);
+      z-index:0;
+    }
+    .moon-disc{
+      position:absolute;
+      top:8px;
+      right:4px;
+      width:56px;
+      height:56px;
+      border-radius:50%;
+      background:radial-gradient(circle at 34% 34%, rgba(255,249,234,.98), rgba(243,230,201,.28) 54%, transparent 66%);
+      opacity:.84;
+    }
+    .star-trail{
+      position:absolute;
+      top:40px;
+      left:12px;
+      width:90px;
+      height:2px;
+      background:linear-gradient(90deg, transparent, rgba(243,230,201,.54), transparent);
+      opacity:.46;
+    }
+    .phone-echo{
+      position:absolute;
+      width:210px;
+      border-radius:34px;
+      opacity:.13;
+      filter:blur(16px) saturate(.7);
+      z-index:1;
+    }
+    .phone-echo.first{
+      top:24px;
+      left:-6px;
+      transform:rotate(-8deg) scale(.92);
+    }
+    .phone-echo.second{
+      top:0;
+      right:-8px;
+      transform:rotate(9deg) scale(.84);
+      opacity:.1;
+      filter:blur(18px) saturate(.7);
+    }
+    .phone-shell{
+      position:relative;
+      z-index:2;
+      width:214px;
+      padding:10px;
+      border-radius:38px;
+      background:linear-gradient(180deg, rgba(255,250,240,.16), rgba(169,181,226,.08));
+      border:1px solid rgba(236,229,212,.16);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.06),
+        0 22px 46px rgba(0,0,0,.3);
+    }
+    .phone-shell::before{
+      content:"";
+      position:absolute;
+      top:8px;
+      left:50%;
+      width:30%;
+      height:6px;
+      transform:translateX(-50%);
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+    }
+    .phone-card{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:30px;
+      background:#070b15;
+      box-shadow:0 10px 24px rgba(0,0,0,.24);
+    }
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+    .section{
+      border-radius:28px;
+      padding:26px 24px;
+      position:relative;
+      overflow:hidden;
+      animation:riseIn .62s ease .08s both;
+    }
+    .summary{
+      background:
+        linear-gradient(180deg, rgba(15,25,50,.92), rgba(10,18,38,.86)),
+        var(--card);
+    }
+    .summary::after{
+      content:"";
+      position:absolute;
+      top:-26px;
+      right:-16px;
+      width:128px;
+      height:128px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(243,230,201,.14), transparent 70%);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-.03em;
+    }
+    p{
+      margin:0;
+      font-size:15px;
+      line-height:1.85;
+      color:var(--muted);
+    }
+    .footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:0 4px;
+      color:#adb8de;
+      font-size:13px;
+    }
+    .footer a{
+      text-decoration:none;
+      border-bottom:1px solid rgba(206,216,255,.18);
+      padding-bottom:2px;
+    }
+    @media (max-width: 860px){
+      .hero{
+        grid-template-columns:minmax(0, 1fr) 236px;
+        gap:22px;
+      }
+    }
+    @media (max-width: 720px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .visual{
+        min-height:284px;
+        margin-top:6px;
+      }
+    }
+    @media (max-width: 640px){
+      .wrap{ padding:16px; }
+      main{ padding:32px 16px 92px; }
+      .hero{
+        border-radius:28px;
+        padding:28px 22px 24px;
+      }
+      .section{
+        border-radius:24px;
+        padding:22px 18px;
+      }
+      .visual{ min-height:264px; }
+      .visual-stack{
+        width:min(100%, 210px);
+        min-height:252px;
+      }
+      .phone-echo{
+        width:180px;
+      }
+      .phone-shell{
+        width:188px;
+        padding:8px;
+        border-radius:32px;
+      }
+      .phone-card{
+        border-radius:24px;
+      }
+      .moon-disc{
+        width:44px;
+        height:44px;
+        top:6px;
+      }
+      .star-trail{
+        width:72px;
+        top:34px;
+      }
+    }
+    @media (max-width: 420px){
+      .hero{
+        padding:24px 18px 22px;
+      }
+      .section{
+        padding:20px 16px;
+      }
+      .pill{
+        width:100%;
+        justify-content:center;
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .hero,
+      .section,
+      .visual-stack{
+        animation:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <a class="brand" href="./index.html" aria-label="Very Days home">verydays</a>
+      <nav class="lang" aria-label="Language">
+        <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        <button type="button" data-lang="en" aria-pressed="true">Eng</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page">
+      <section class="hero" aria-label="Midnight Room Privacy Policy Hero">
+        <div>
+          <p class="eyebrow" id="eyebrow">Privacy Policy</p>
+          <h1 id="title">Midnight Room Privacy Policy</h1>
+          <p class="subtitle" id="subtitle">Midnight Room is designed to help you slow down at night without accounts, ads, or behavioral tracking.</p>
+          <div class="meta" aria-label="Privacy Summary">
+            <span class="pill" id="pill1">No sign-in</span>
+            <span class="pill" id="pill2">On-device preferences</span>
+            <span class="pill" id="pill3">No ads or tracking</span>
+          </div>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <div class="visual-stack">
+            <span class="moon-disc"></span>
+            <span class="star-trail"></span>
+            <img class="phone-echo first" src="./assets/midnight_rm.png" alt="" />
+            <img class="phone-echo second" src="./assets/midnight_rm.png" alt="" />
+            <div class="phone-shell">
+              <img class="phone-card" src="./assets/midnight_rm.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="grid">
+        <section class="section summary">
+          <h2 id="highlightTitle">Summary</h2>
+          <p id="highlightBody">Midnight Room is built to provide a quiet, low-friction experience. We do not ask you to create an account, and we do not use advertising SDKs or behavioral tracking tools inside the app.</p>
+        </section>
+        <section class="section">
+          <h2 id="section1Title">Information We Collect</h2>
+          <p id="section1Body">Midnight Room does not collect personal information or device-based identifiers through normal use of the app. If the app remembers your selected room, playback preferences, or similar settings, that information is intended to remain on your device.</p>
+        </section>
+        <section class="section">
+          <h2 id="section2Title">How We Use Information</h2>
+          <p id="section2Body">Any settings stored by the app are used only to maintain your experience inside Midnight Room. We do not use your information for profiling, advertising, selling data, or behavioral analytics.</p>
+        </section>
+        <section class="section">
+          <h2 id="section3Title">Support Requests</h2>
+          <p id="section3Body">If you contact us by email, we receive the email address and any information you include in your message. We use that information only to respond to your request, troubleshoot issues, and keep a basic record of support conversations.</p>
+        </section>
+        <section class="section">
+          <h2 id="section4Title">Third-Party Services and Store Providers</h2>
+          <p id="section4Body">Midnight Room does not include third-party advertising SDKs or analytics trackers. If you download the app through the Apple App Store or Google Play, those platforms may process transaction, device, or account information under their own privacy policies.</p>
+        </section>
+        <section class="section">
+          <h2 id="section5Title">Permissions, Backups, and Local Data</h2>
+          <p id="section5Body">Midnight Room is designed to deliver its core experience without requiring access to your contacts, photos, or precise location. If your device platform includes app data in system backups or crash reports, that handling is controlled by Apple or Google according to your settings and their policies.</p>
+        </section>
+        <section class="section">
+          <h2 id="section6Title">Children's Privacy</h2>
+          <p id="section6Body">Because Midnight Room does not collect personal information through normal app use, it does not knowingly collect personal information from children.</p>
+        </section>
+        <section class="section">
+          <h2 id="section7Title">Data Retention and Your Choices</h2>
+          <p id="section7Body">Since normal app use does not send personal data to our servers, there is generally no server-side retention of your in-app activity. If you email support, we keep that correspondence only as long as reasonably necessary to respond and maintain support records. You may ask us to delete past support emails by contacting us.</p>
+        </section>
+        <section class="section">
+          <h2 id="section8Title">Changes to This Policy</h2>
+          <p id="section8Body">If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.</p>
+        </section>
+        <section class="section">
+          <h2 id="section9Title">Contact</h2>
+          <p id="section9Body">If you have questions about this policy or want to request deletion of a support email you sent, contact us at lenayoo17@gmail.com.</p>
+        </section>
+      </div>
+
+      <div class="footer">
+        <span id="effectiveDate">Effective date: 2026-07-04</span>
+        <a href="./midnight-room.html" id="backLink">Back to Midnight Room</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const SUPPORT_EMAIL = "lenayoo17@gmail.com";
+    const EFFECTIVE_DATE = "2026-07-04";
+
+    const copy = {
+      ko: {
+        eyebrow: "Privacy Policy",
+        title: "Midnight Room 개인정보처리방침",
+        subtitle: "Midnight Room은 계정, 광고, 행동 추적 없이 밤의 속도를 천천히 낮출 수 있도록 설계되었습니다.",
+        pills: ["로그인 없음", "기기 내 설정 저장", "광고 및 추적 없음"],
+        highlightTitle: "요약",
+        highlightBody: "Midnight Room은 조용하고 부담 없는 경험을 제공하도록 만들어졌습니다. 계정 생성을 요구하지 않으며, 앱 내부에 광고 SDK나 행동 추적 도구를 사용하지 않습니다.",
+        section1Title: "수집하는 정보",
+        section1Body: "Midnight Room은 일반적인 앱 사용 과정에서 개인정보나 사용자를 식별할 수 있는 기기 식별자를 수집하지 않습니다. 앱이 선택한 방, 재생 설정, 유사한 기본값을 기억하는 경우에도 그 정보는 사용자의 기기 안에 머무르도록 의도되어 있습니다.",
+        section2Title: "정보 이용 방식",
+        section2Body: "앱이 저장하는 설정값은 Midnight Room 안에서 사용 경험을 유지하기 위한 용도로만 사용됩니다. 해당 정보를 프로파일링, 광고, 데이터 판매, 행동 분석에 사용하지 않습니다.",
+        section3Title: "지원 요청",
+        section3Body: "이메일로 문의하실 경우, 이메일 주소와 메시지에 포함된 내용을 받게 됩니다. 이 정보는 답변 제공, 문제 해결, 기본적인 지원 기록 유지 목적에만 사용됩니다.",
+        section4Title: "제3자 서비스 및 스토어 제공자",
+        section4Body: "Midnight Room에는 제3자 광고 SDK나 분석 추적기가 포함되어 있지 않습니다. 다만 Apple App Store 또는 Google Play를 통해 앱을 다운로드하는 경우, 해당 플랫폼은 자체 개인정보처리방침에 따라 거래, 기기, 계정 정보를 처리할 수 있습니다.",
+        section5Title: "권한, 백업, 로컬 데이터",
+        section5Body: "Midnight Room은 핵심 기능 제공을 위해 연락처, 사진, 정확한 위치 정보 접근을 요구하지 않도록 설계되었습니다. 기기 플랫폼이 앱 데이터를 시스템 백업이나 크래시 리포트에 포함하는 경우, 그 처리는 사용자의 설정과 Apple 또는 Google의 정책에 따라 이루어집니다.",
+        section6Title: "아동의 개인정보",
+        section6Body: "Midnight Room은 일반적인 앱 사용 과정에서 개인정보를 수집하지 않으므로, 아동의 개인정보를 의도적으로 수집하지 않습니다.",
+        section7Title: "보관 기간 및 선택권",
+        section7Body: "일반적인 앱 사용은 개인정보를 서버로 전송하지 않기 때문에, 앱 내부 활동에 대한 서버 측 보관은 원칙적으로 없습니다. 지원 문의 이메일은 답변 및 기록 유지에 필요한 합리적인 기간 동안만 보관되며, 요청하시면 과거 지원 이메일 삭제를 문의할 수 있습니다.",
+        section8Title: "정책 변경",
+        section8Body: "향후 본 개인정보처리방침이 변경되는 경우, 수정된 시행일과 함께 이 페이지에 업데이트된 내용을 게시합니다.",
+        section9Title: "문의",
+        section9Body: `본 정책에 관한 질문이 있거나, 이미 보낸 지원 이메일 삭제를 요청하려면 ${SUPPORT_EMAIL} 으로 연락해 주세요.`,
+        effectiveDate: `시행일: ${EFFECTIVE_DATE}`,
+        backLink: "Midnight Room으로 돌아가기"
+      },
+      ja: {
+        eyebrow: "Privacy Policy",
+        title: "Midnight Room プライバシーポリシー",
+        subtitle: "Midnight Room は、アカウント、広告、行動トラッキングなしで夜のペースをゆっくり落とせるように設計されています。",
+        pills: ["ログイン不要", "端末内設定", "広告・追跡なし"],
+        highlightTitle: "概要",
+        highlightBody: "Midnight Room は静かで負担の少ない体験を提供するために作られています。アカウント作成を求めず、アプリ内で広告 SDK や行動トラッキングツールを使用しません。",
+        section1Title: "収集する情報",
+        section1Body: "Midnight Room は、通常の利用において個人情報や利用者を特定できる端末識別子を収集しません。アプリが選択した部屋や再生設定などを記憶する場合でも、その情報は利用者の端末内にとどまることを前提としています。",
+        section2Title: "情報の利用",
+        section2Body: "アプリが保存する設定は、Midnight Room 内で体験を維持するためだけに使われます。プロフィール作成、広告、データ販売、行動分析には使用しません。",
+        section3Title: "サポートへのお問い合わせ",
+        section3Body: "メールでお問い合わせいただいた場合、メールアドレスと本文に含まれる情報を受け取ります。これらは返信、問題解決、基本的なサポート記録の維持のためにのみ使用されます。",
+        section4Title: "第三者サービスとストア提供者",
+        section4Body: "Midnight Room には第三者の広告 SDK や分析トラッカーは含まれていません。ただし、Apple App Store または Google Play を通じてアプリを入手する場合、それらのプラットフォームは自社のポリシーに基づいて取引情報、端末情報、アカウント情報を処理することがあります。",
+        section5Title: "権限、バックアップ、ローカルデータ",
+        section5Body: "Midnight Room は、コア体験の提供に連絡先、写真、正確な位置情報へのアクセスを必要としないよう設計されています。端末プラットフォームがアプリデータをシステムバックアップやクラッシュレポートに含める場合、その扱いは利用者の設定と Apple または Google のポリシーに従います。",
+        section6Title: "子どものプライバシー",
+        section6Body: "Midnight Room は通常の利用において個人情報を収集しないため、子どもの個人情報を意図的に収集することもありません。",
+        section7Title: "保存期間と利用者の選択",
+        section7Body: "通常のアプリ利用では個人データが当社サーバーに送信されないため、アプリ内行動のサーバー側保存は原則としてありません。サポートメールは返信と記録維持に合理的に必要な期間のみ保持され、過去のサポートメール削除を希望する場合はお問い合わせいただけます。",
+        section8Title: "本ポリシーの変更",
+        section8Body: "今後このプライバシーポリシーが変更された場合は、改定後の発効日とともにこのページに掲載します。",
+        section9Title: "お問い合わせ",
+        section9Body: `本ポリシーに関するご質問、または送信済みサポートメールの削除依頼は、${SUPPORT_EMAIL} までご連絡ください。`,
+        effectiveDate: `施行日: ${EFFECTIVE_DATE}`,
+        backLink: "Midnight Room に戻る"
+      },
+      en: {
+        eyebrow: "Privacy Policy",
+        title: "Midnight Room Privacy Policy",
+        subtitle: "Midnight Room is designed to help you slow down at night without accounts, ads, or behavioral tracking.",
+        pills: ["No sign-in", "On-device preferences", "No ads or tracking"],
+        highlightTitle: "Summary",
+        highlightBody: "Midnight Room is built to provide a quiet, low-friction experience. We do not ask you to create an account, and we do not use advertising SDKs or behavioral tracking tools inside the app.",
+        section1Title: "Information We Collect",
+        section1Body: "Midnight Room does not collect personal information or device-based identifiers through normal use of the app. If the app remembers your selected room, playback preferences, or similar settings, that information is intended to remain on your device.",
+        section2Title: "How We Use Information",
+        section2Body: "Any settings stored by the app are used only to maintain your experience inside Midnight Room. We do not use your information for profiling, advertising, selling data, or behavioral analytics.",
+        section3Title: "Support Requests",
+        section3Body: "If you contact us by email, we receive the email address and any information you include in your message. We use that information only to respond to your request, troubleshoot issues, and keep a basic record of support conversations.",
+        section4Title: "Third-Party Services and Store Providers",
+        section4Body: "Midnight Room does not include third-party advertising SDKs or analytics trackers. If you download the app through the Apple App Store or Google Play, those platforms may process transaction, device, or account information under their own privacy policies.",
+        section5Title: "Permissions, Backups, and Local Data",
+        section5Body: "Midnight Room is designed to deliver its core experience without requiring access to your contacts, photos, or precise location. If your device platform includes app data in system backups or crash reports, that handling is controlled by Apple or Google according to your settings and their policies.",
+        section6Title: "Children's Privacy",
+        section6Body: "Because Midnight Room does not collect personal information through normal app use, it does not knowingly collect personal information from children.",
+        section7Title: "Data Retention and Your Choices",
+        section7Body: "Since normal app use does not send personal data to our servers, there is generally no server-side retention of your in-app activity. If you email support, we keep that correspondence only as long as reasonably necessary to respond and maintain support records. You may ask us to delete past support emails by contacting us.",
+        section8Title: "Changes to This Policy",
+        section8Body: "If this privacy policy changes in the future, the updated version will be posted on this page with a revised effective date.",
+        section9Title: "Contact",
+        section9Body: `If you have questions about this policy or want to request deletion of a support email you sent, contact us at ${SUPPORT_EMAIL}.`,
+        effectiveDate: `Effective date: ${EFFECTIVE_DATE}`,
+        backLink: "Back to Midnight Room"
+      }
+    };
+
+    const els = {
+      eyebrow: document.getElementById("eyebrow"),
+      title: document.getElementById("title"),
+      subtitle: document.getElementById("subtitle"),
+      pill1: document.getElementById("pill1"),
+      pill2: document.getElementById("pill2"),
+      pill3: document.getElementById("pill3"),
+      highlightTitle: document.getElementById("highlightTitle"),
+      highlightBody: document.getElementById("highlightBody"),
+      section1Title: document.getElementById("section1Title"),
+      section1Body: document.getElementById("section1Body"),
+      section2Title: document.getElementById("section2Title"),
+      section2Body: document.getElementById("section2Body"),
+      section3Title: document.getElementById("section3Title"),
+      section3Body: document.getElementById("section3Body"),
+      section4Title: document.getElementById("section4Title"),
+      section4Body: document.getElementById("section4Body"),
+      section5Title: document.getElementById("section5Title"),
+      section5Body: document.getElementById("section5Body"),
+      section6Title: document.getElementById("section6Title"),
+      section6Body: document.getElementById("section6Body"),
+      section7Title: document.getElementById("section7Title"),
+      section7Body: document.getElementById("section7Body"),
+      section8Title: document.getElementById("section8Title"),
+      section8Body: document.getElementById("section8Body"),
+      section9Title: document.getElementById("section9Title"),
+      section9Body: document.getElementById("section9Body"),
+      effectiveDate: document.getElementById("effectiveDate"),
+      backLink: document.getElementById("backLink"),
+      buttons: document.querySelectorAll(".lang button")
+    };
+
+    function setLang(lang){
+      const c = copy[lang];
+      els.eyebrow.textContent = c.eyebrow;
+      els.title.textContent = c.title;
+      els.subtitle.textContent = c.subtitle;
+      els.pill1.textContent = c.pills[0];
+      els.pill2.textContent = c.pills[1];
+      els.pill3.textContent = c.pills[2];
+      els.highlightTitle.textContent = c.highlightTitle;
+      els.highlightBody.textContent = c.highlightBody;
+      els.section1Title.textContent = c.section1Title;
+      els.section1Body.textContent = c.section1Body;
+      els.section2Title.textContent = c.section2Title;
+      els.section2Body.textContent = c.section2Body;
+      els.section3Title.textContent = c.section3Title;
+      els.section3Body.textContent = c.section3Body;
+      els.section4Title.textContent = c.section4Title;
+      els.section4Body.textContent = c.section4Body;
+      els.section5Title.textContent = c.section5Title;
+      els.section5Body.textContent = c.section5Body;
+      els.section6Title.textContent = c.section6Title;
+      els.section6Body.textContent = c.section6Body;
+      els.section7Title.textContent = c.section7Title;
+      els.section7Body.textContent = c.section7Body;
+      els.section8Title.textContent = c.section8Title;
+      els.section8Body.textContent = c.section8Body;
+      els.section9Title.textContent = c.section9Title;
+      els.section9Body.textContent = c.section9Body;
+      els.effectiveDate.textContent = c.effectiveDate;
+      els.backLink.textContent = c.backLink;
+
+      els.buttons.forEach((button) => {
+        const pressed = button.dataset.lang === lang;
+        button.setAttribute("aria-pressed", pressed ? "true" : "false");
+      });
+
+      document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
+    }
+
+    els.buttons.forEach((btn) => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+    setLang("en");
+  </script>
+</body>
+</html>

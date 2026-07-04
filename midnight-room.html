@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Support and app information for Midnight Room, a calm night companion by Verydays."
+  />
+  <title>Midnight Room Support | Verydays</title>
+  <style>
+    :root{
+      --bg-top:#050b19;
+      --bg-mid:#0a1630;
+      --bg-bottom:#121a38;
+      --ink:#f5f3ff;
+      --muted:#c0c7e3;
+      --card:rgba(9,16,34,.74);
+      --card-strong:rgba(13,21,44,.88);
+      --line:rgba(206,216,255,.12);
+      --shadow:0 26px 72px rgba(0,0,0,.34);
+      --moon:#f3e6c9;
+      --moon-soft:#e8d8b1;
+      --blue:#7b8fd8;
+      --violet:#7d72c6;
+      --button:#121c39;
+    }
+    *{ box-sizing:border-box; }
+    html,body{ min-height:100%; }
+    body{
+      margin:0;
+      font-family:"Avenir Next", "Trebuchet MS", "Noto Sans KR", "Hiragino Sans", "Noto Sans JP", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(920px 560px at 50% 0%, rgba(92,110,180,.18), transparent 62%),
+        linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bottom) 100%);
+      overflow-x:hidden;
+    }
+    a{ color:inherit; }
+    .scene{
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .scene::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background-image:
+        radial-gradient(rgba(255,246,223,.82) 1px, transparent 1.4px),
+        radial-gradient(rgba(197,205,255,.32) 1px, transparent 1.2px);
+      background-size:24px 24px, 34px 34px;
+      background-position:0 0, 12px 18px;
+      opacity:.16;
+      mask-image:linear-gradient(180deg, rgba(0,0,0,.88), rgba(0,0,0,.48) 72%, transparent);
+    }
+    .glow{
+      position:absolute;
+      border-radius:50%;
+      filter:blur(10px);
+    }
+    .glow.one{
+      top:74px;
+      left:50%;
+      width:320px;
+      height:320px;
+      transform:translateX(-50%);
+      background:radial-gradient(circle, rgba(99,114,186,.22), transparent 70%);
+    }
+    .glow.two{
+      right:6%;
+      bottom:10%;
+      width:260px;
+      height:260px;
+      background:radial-gradient(circle, rgba(243,230,201,.12), transparent 72%);
+    }
+    .moon-haze{
+      position:absolute;
+      left:8%;
+      top:118px;
+      width:156px;
+      height:156px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(243,230,201,.18), transparent 68%);
+      filter:blur(4px);
+      opacity:.92;
+    }
+    header{
+      position:sticky;
+      top:0;
+      z-index:10;
+      backdrop-filter:blur(14px);
+      background:linear-gradient(180deg, rgba(5,10,22,.78), rgba(5,10,22,.3));
+      border-bottom:1px solid rgba(206,216,255,.08);
+    }
+    .wrap{
+      max-width:980px;
+      margin:0 auto;
+      padding:18px 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      text-decoration:none;
+      font-weight:700;
+      letter-spacing:.04em;
+      text-transform:lowercase;
+    }
+    .lang{
+      display:flex;
+      gap:8px;
+      align-items:center;
+    }
+    .lang button{
+      appearance:none;
+      border:1px solid rgba(206,216,255,.14);
+      background:rgba(17,28,58,.64);
+      color:var(--ink);
+      padding:8px 11px;
+      border-radius:999px;
+      font-size:13px;
+      cursor:pointer;
+    }
+    .lang button[aria-pressed="true"]{
+      background:rgba(27,40,78,.9);
+      border-color:rgba(242,231,207,.18);
+    }
+    main{
+      max-width:980px;
+      margin:0 auto;
+      padding:46px 20px 110px;
+    }
+    .page{
+      max-width:760px;
+      margin:0 auto;
+    }
+    .panel{
+      border:1px solid var(--line);
+      border-radius:30px;
+      background:linear-gradient(180deg, var(--card-strong), var(--card));
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(14px);
+    }
+    @keyframes riseIn{
+      0%{
+        opacity:0;
+        transform:translateY(18px);
+      }
+      100%{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+    @keyframes drift{
+      0%, 100%{ transform:translateY(0); }
+      50%{ transform:translateY(-10px); }
+    }
+    .hero{
+      padding:36px 34px;
+      display:grid;
+      grid-template-columns:minmax(0, 1fr) minmax(228px, 272px);
+      gap:28px;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      animation:riseIn .62s ease both;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      left:-34px;
+      top:-42px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(243,230,201,.1), transparent 72%);
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:auto -56px -68px auto;
+      width:240px;
+      height:240px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(125,114,198,.22), transparent 70%);
+    }
+    .eyebrow{
+      margin:0 0 12px;
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      color:#aab5db;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(34px, 7vw, 60px);
+      line-height:1.03;
+      letter-spacing:-.05em;
+    }
+    .value{
+      margin:14px 0 0;
+      font-size:24px;
+      line-height:1.45;
+      letter-spacing:-.03em;
+      color:#ece5d4;
+    }
+    .description{
+      margin:14px 0 0;
+      max-width:36ch;
+      font-size:15.5px;
+      line-height:1.85;
+      color:var(--muted);
+    }
+    .meta{
+      margin-top:20px;
+      display:flex;
+      gap:9px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(206,216,255,.1);
+      background:rgba(17,28,58,.56);
+      color:#d6def8;
+      font-size:13px;
+    }
+    .visual{
+      min-height:340px;
+      display:grid;
+      place-items:center;
+    }
+    .visual-stack{
+      position:relative;
+      width:min(100%, 252px);
+      min-height:324px;
+      display:grid;
+      place-items:center;
+      animation:drift 6.8s ease-in-out infinite;
+    }
+    .visual-stack::after{
+      content:"";
+      position:absolute;
+      inset:auto 28px -18px;
+      height:34px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(6,10,22,.72), transparent 72%);
+      filter:blur(10px);
+      z-index:0;
+    }
+    .moon-disc{
+      position:absolute;
+      top:10px;
+      right:4px;
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      background:radial-gradient(circle at 34% 34%, rgba(255,249,234,.98), rgba(243,230,201,.28) 54%, transparent 66%);
+      opacity:.86;
+      filter:blur(.2px);
+    }
+    .star-trail{
+      position:absolute;
+      top:42px;
+      left:12px;
+      width:92px;
+      height:2px;
+      background:linear-gradient(90deg, transparent, rgba(243,230,201,.56), transparent);
+      opacity:.48;
+    }
+    .phone-echo{
+      position:absolute;
+      width:214px;
+      border-radius:34px;
+      opacity:.14;
+      filter:blur(16px) saturate(.7);
+      box-shadow:none;
+      z-index:1;
+    }
+    .phone-echo.first{
+      top:26px;
+      left:-4px;
+      transform:rotate(-8deg) scale(.92);
+    }
+    .phone-echo.second{
+      top:2px;
+      right:-8px;
+      transform:rotate(9deg) scale(.84);
+      opacity:.1;
+      filter:blur(18px) saturate(.7);
+    }
+    .phone-shell{
+      position:relative;
+      z-index:2;
+      width:220px;
+      padding:10px;
+      border-radius:38px;
+      background:linear-gradient(180deg, rgba(255,250,240,.16), rgba(169,181,226,.08));
+      border:1px solid rgba(236,229,212,.16);
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.06),
+        0 22px 46px rgba(0,0,0,.3);
+    }
+    .phone-shell::before{
+      content:"";
+      position:absolute;
+      top:8px;
+      left:50%;
+      width:30%;
+      height:6px;
+      transform:translateX(-50%);
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+    }
+    .phone-card{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:30px;
+      background:#070b15;
+      box-shadow:0 10px 24px rgba(0,0,0,.24);
+    }
+    .section{
+      margin-top:16px;
+      padding:26px 24px;
+      animation:riseIn .62s ease .08s both;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:21px;
+      letter-spacing:-.03em;
+    }
+    p{
+      margin:0;
+      line-height:1.82;
+      font-size:15px;
+      color:var(--muted);
+    }
+    .faq-list{
+      display:grid;
+      gap:12px;
+    }
+    .faq-item{
+      padding:18px 18px 16px;
+      border-radius:22px;
+      border:1px solid rgba(206,216,255,.08);
+      background:rgba(11,19,40,.36);
+    }
+    .faq-item h3{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:-.02em;
+      color:var(--ink);
+    }
+    .support-section{
+      display:grid;
+      gap:18px;
+    }
+    .support-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:12px;
+    }
+    .mini-card{
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(206,216,255,.08);
+      background:rgba(11,19,40,.38);
+      display:grid;
+      gap:8px;
+    }
+    .mini-label{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:#aab5db;
+    }
+    .mini-link{
+      text-decoration:none;
+      font-size:16px;
+      color:#f3e6c9;
+      word-break:break-word;
+    }
+    .mini-value{
+      font-size:22px;
+      letter-spacing:-.03em;
+      color:#f3e6c9;
+      font-weight:600;
+    }
+    .footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+      padding:0 4px;
+      font-size:13px;
+      color:#adb8de;
+    }
+    .footer a{
+      text-decoration:none;
+      border-bottom:1px solid rgba(206,216,255,.18);
+      padding-bottom:2px;
+    }
+    @media (max-width: 860px){
+      .hero{
+        grid-template-columns:minmax(0, 1fr) 244px;
+        gap:22px;
+      }
+    }
+    @media (max-width: 720px){
+      .hero{
+        grid-template-columns:1fr;
+      }
+      .visual{
+        min-height:296px;
+        margin-top:6px;
+      }
+    }
+    @media (max-width: 640px){
+      .wrap{ padding:16px; }
+      main{ padding:32px 16px 88px; }
+      .panel{ border-radius:24px; }
+      .hero{ padding:28px 22px 24px; }
+      .section{ padding:22px 18px; }
+      .support-grid{ grid-template-columns:1fr; }
+      .meta{ gap:8px; }
+      .visual{ min-height:272px; }
+      .visual-stack{
+        width:min(100%, 214px);
+        min-height:262px;
+      }
+      .phone-echo{
+        width:184px;
+      }
+      .phone-shell{
+        width:192px;
+        padding:8px;
+        border-radius:32px;
+      }
+      .phone-card{
+        border-radius:24px;
+      }
+      .moon-disc{
+        width:46px;
+        height:46px;
+        top:6px;
+      }
+      .star-trail{
+        width:74px;
+        top:36px;
+      }
+    }
+    @media (max-width: 420px){
+      .hero{
+        padding:24px 18px 22px;
+      }
+      .section{
+        padding:20px 16px;
+      }
+      .pill{
+        width:100%;
+        justify-content:center;
+      }
+      .faq-item,
+      .mini-card{
+        padding:16px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce){
+      .hero,
+      .section,
+      .visual-stack{
+        animation:none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scene" aria-hidden="true">
+    <div class="glow one"></div>
+    <div class="glow two"></div>
+    <div class="moon-haze"></div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <a class="brand" href="./index.html" aria-label="Very Days home">verydays</a>
+      <nav class="lang" aria-label="Language">
+        <button type="button" data-lang="ko" aria-pressed="false">한국어</button>
+        <button type="button" data-lang="ja" aria-pressed="false">日本語</button>
+        <button type="button" data-lang="en" aria-pressed="true">Eng</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="page">
+      <section class="panel hero" aria-label="Midnight Room support">
+        <div>
+          <p class="eyebrow" id="eyebrow">Night Sound Journey</p>
+          <h1 id="title">Midnight Room</h1>
+          <p class="value" id="value">A quiet room for deep nights and slow breathing.</p>
+          <p class="description" id="description">Midnight Room is a calm night companion with starry scenes and gentle audio for winding down, resting, or keeping the room soft and quiet.</p>
+          <div class="meta" aria-label="App Details">
+            <span class="pill" id="pill1">No sign-in</span>
+            <span class="pill" id="pill2">Version 1.0.0</span>
+            <span class="pill" id="pill3">Support: lenayoo17@gmail.com</span>
+          </div>
+        </div>
+
+        <div class="visual" aria-hidden="true">
+          <div class="visual-stack">
+            <span class="moon-disc"></span>
+            <span class="star-trail"></span>
+            <img class="phone-echo first" src="./assets/midnight_rm.png" alt="" />
+            <img class="phone-echo second" src="./assets/midnight_rm.png" alt="" />
+            <div class="phone-shell">
+              <img class="phone-card" src="./assets/midnight_rm.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section">
+        <h2 id="introTitle">About Midnight Room</h2>
+        <p id="introBody">Midnight Room brings together calm night imagery and a quiet listening atmosphere so you can pause at the end of the day. It is made for bedtime wind-downs, still breaks, and any moment that needs a softer pace.</p>
+      </section>
+
+      <section class="panel section">
+        <h2 id="faqTitle">FAQ</h2>
+        <div class="faq-list">
+          <article class="faq-item">
+            <h3 id="faq1Question">What is Midnight Room?</h3>
+            <p id="faq1Answer">Midnight Room is a quiet night companion designed to help you settle in with calm visuals and gentle audio.</p>
+          </article>
+          <article class="faq-item">
+            <h3 id="faq2Question">Do I need to create an account?</h3>
+            <p id="faq2Answer">No. Midnight Room is designed to open quickly without sign-in or a personal profile.</p>
+          </article>
+          <article class="faq-item">
+            <h3 id="faq3Question">How is my data handled?</h3>
+            <p id="faq3Answer">Midnight Room is built around a private, low-friction experience. You can read the full details in the privacy policy linked below.</p>
+          </article>
+          <article class="faq-item">
+            <h3 id="faq4Question">What should I include when reporting an issue?</h3>
+            <p id="faq4Answer">Please include your device model, operating system version, app version, and a short description of what happened so the issue is easier to reproduce.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel section support-section">
+        <div>
+          <h2 id="supportTitle">Support</h2>
+          <p id="supportBody">For support, bug reports, or store-related questions, send an email with as much context as you can. Current public app version: 1.0.0.</p>
+        </div>
+
+        <div class="support-grid">
+          <div class="mini-card">
+            <span class="mini-label" id="contactLabel">Contact email</span>
+            <a class="mini-link" href="mailto:lenayoo17@gmail.com" id="contactEmail">lenayoo17@gmail.com</a>
+          </div>
+          <div class="mini-card">
+            <span class="mini-label" id="versionLabel">App version</span>
+            <strong class="mini-value" id="versionValue">1.0.0</strong>
+          </div>
+        </div>
+      </section>
+
+      <div class="footer">
+        <a href="./midnight-room-privacy-policy.html" id="privacyLink">Privacy Policy</a>
+        <a href="./index.html" id="backLink">Back to Very Days</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const SUPPORT_EMAIL = "lenayoo17@gmail.com";
+    const APP_VERSION = "1.0.0";
+
+    const copy = {
+      ko: {
+        eyebrow: "Night Sound Journey",
+        title: "Midnight Room",
+        value: "깊은 밤과 느린 호흡을 위한 조용한 방.",
+        description: "Midnight Room은 별빛 같은 장면과 잔잔한 사운드로 하루를 천천히 마무리할 수 있게 돕는 작은 야간 휴식 앱입니다.",
+        pills: ["로그인 없음", `버전 ${APP_VERSION}`, `문의: ${SUPPORT_EMAIL}`],
+        introTitle: "Midnight Room 소개",
+        introBody: "Midnight Room은 차분한 밤의 이미지와 조용한 청취 분위기를 하나로 묶어 하루 끝에 잠시 멈출 수 있게 합니다. 잠들기 전의 정리 시간, 고요한 휴식, 속도를 조금 늦추고 싶은 순간을 위해 만들었습니다.",
+        faqTitle: "자주 묻는 질문",
+        faq1Question: "Midnight Room은 어떤 앱인가요?",
+        faq1Answer: "Midnight Room은 차분한 화면과 잔잔한 오디오로 밤의 흐름을 가라앉히도록 돕는 조용한 동반자 앱입니다.",
+        faq2Question: "계정을 만들어야 하나요?",
+        faq2Answer: "아니요. Midnight Room은 로그인이나 개인 프로필 없이 바로 열 수 있도록 설계되었습니다.",
+        faq3Question: "데이터는 어떻게 처리되나요?",
+        faq3Answer: "Midnight Room은 사적이고 부담 없는 사용 경험을 중심에 두고 만들었습니다. 자세한 내용은 아래 개인정보처리방침에서 확인할 수 있습니다.",
+        faq4Question: "문제를 제보할 때 무엇을 함께 보내면 좋나요?",
+        faq4Answer: "기기 모델, 운영체제 버전, 앱 버전, 그리고 어떤 일이 있었는지에 대한 짧은 설명을 함께 보내 주시면 문제를 더 쉽게 재현할 수 있습니다.",
+        supportTitle: "지원",
+        supportBody: `문의, 버그 제보, 스토어 관련 질문은 가능한 한 자세한 상황과 함께 이메일로 보내 주세요. 현재 공개 버전은 ${APP_VERSION}입니다.`,
+        contactLabel: "지원 이메일",
+        versionLabel: "앱 버전",
+        privacyLink: "개인정보처리방침",
+        backLink: "Very Days로 돌아가기"
+      },
+      ja: {
+        eyebrow: "Night Sound Journey",
+        title: "Midnight Room",
+        value: "深い夜とゆっくりした呼吸のための静かな部屋。",
+        description: "Midnight Room は、星のような風景とやわらかなサウンドで一日の終わりを静かに整えるための、小さなナイトレストアプリです。",
+        pills: ["ログイン不要", `バージョン ${APP_VERSION}`, `連絡先: ${SUPPORT_EMAIL}`],
+        introTitle: "Midnight Room について",
+        introBody: "Midnight Room は、落ち着いた夜のイメージと静かなリスニング体験をひとつにして、一日の終わりに少し立ち止まれるように作られています。眠る前の時間や、静かな休憩、少しだけペースを落としたい瞬間に向いています。",
+        faqTitle: "FAQ",
+        faq1Question: "Midnight Room はどんなアプリですか？",
+        faq1Answer: "Midnight Room は、穏やかな映像とやさしい音で夜の空気を落ち着かせるための静かなナイトコンパニオンです。",
+        faq2Question: "アカウント作成は必要ですか？",
+        faq2Answer: "いいえ。Midnight Room はサインインや個人プロフィールなしですぐに開けるように設計されています。",
+        faq3Question: "データはどのように扱われますか？",
+        faq3Answer: "Midnight Room は、プライベートで負担の少ない体験を大切にしています。詳しくは下のプライバシーポリシーをご確認ください。",
+        faq4Question: "不具合を報告するときは何を送ればよいですか？",
+        faq4Answer: "端末名、OS バージョン、アプリバージョン、そして起きたことの簡単な説明を添えていただくと、状況を再現しやすくなります。",
+        supportTitle: "サポート",
+        supportBody: `サポート、バグ報告、ストアに関する質問は、できるだけ状況を詳しく書いてメールでお送りください。現在の公開バージョンは ${APP_VERSION} です。`,
+        contactLabel: "サポートメール",
+        versionLabel: "アプリバージョン",
+        privacyLink: "プライバシーポリシー",
+        backLink: "Very Days に戻る"
+      },
+      en: {
+        eyebrow: "Night Sound Journey",
+        title: "Midnight Room",
+        value: "A quiet room for deep nights and slow breathing.",
+        description: "Midnight Room is a calm night companion with starry scenes and gentle audio for winding down, resting, or keeping the room soft and quiet.",
+        pills: ["No sign-in", `Version ${APP_VERSION}`, `Support: ${SUPPORT_EMAIL}`],
+        introTitle: "About Midnight Room",
+        introBody: "Midnight Room brings together calm night imagery and a quiet listening atmosphere so you can pause at the end of the day. It is made for bedtime wind-downs, still breaks, and any moment that needs a softer pace.",
+        faqTitle: "FAQ",
+        faq1Question: "What is Midnight Room?",
+        faq1Answer: "Midnight Room is a quiet night companion designed to help you settle in with calm visuals and gentle audio.",
+        faq2Question: "Do I need to create an account?",
+        faq2Answer: "No. Midnight Room is designed to open quickly without sign-in or a personal profile.",
+        faq3Question: "How is my data handled?",
+        faq3Answer: "Midnight Room is built around a private, low-friction experience. You can read the full details in the privacy policy linked below.",
+        faq4Question: "What should I include when reporting an issue?",
+        faq4Answer: "Please include your device model, operating system version, app version, and a short description of what happened so the issue is easier to reproduce.",
+        supportTitle: "Support",
+        supportBody: `For support, bug reports, or store-related questions, send an email with as much context as you can. Current public app version: ${APP_VERSION}.`,
+        contactLabel: "Contact email",
+        versionLabel: "App version",
+        privacyLink: "Privacy Policy",
+        backLink: "Back to Very Days"
+      }
+    };
+
+    const els = {
+      eyebrow: document.getElementById("eyebrow"),
+      title: document.getElementById("title"),
+      value: document.getElementById("value"),
+      description: document.getElementById("description"),
+      pill1: document.getElementById("pill1"),
+      pill2: document.getElementById("pill2"),
+      pill3: document.getElementById("pill3"),
+      introTitle: document.getElementById("introTitle"),
+      introBody: document.getElementById("introBody"),
+      faqTitle: document.getElementById("faqTitle"),
+      faq1Question: document.getElementById("faq1Question"),
+      faq1Answer: document.getElementById("faq1Answer"),
+      faq2Question: document.getElementById("faq2Question"),
+      faq2Answer: document.getElementById("faq2Answer"),
+      faq3Question: document.getElementById("faq3Question"),
+      faq3Answer: document.getElementById("faq3Answer"),
+      faq4Question: document.getElementById("faq4Question"),
+      faq4Answer: document.getElementById("faq4Answer"),
+      supportTitle: document.getElementById("supportTitle"),
+      supportBody: document.getElementById("supportBody"),
+      contactLabel: document.getElementById("contactLabel"),
+      contactEmail: document.getElementById("contactEmail"),
+      versionLabel: document.getElementById("versionLabel"),
+      versionValue: document.getElementById("versionValue"),
+      privacyLink: document.getElementById("privacyLink"),
+      backLink: document.getElementById("backLink"),
+      buttons: document.querySelectorAll(".lang button")
+    };
+
+    function setLang(lang){
+      const c = copy[lang];
+      els.eyebrow.textContent = c.eyebrow;
+      els.title.textContent = c.title;
+      els.value.textContent = c.value;
+      els.description.textContent = c.description;
+      els.pill1.textContent = c.pills[0];
+      els.pill2.textContent = c.pills[1];
+      els.pill3.textContent = c.pills[2];
+      els.introTitle.textContent = c.introTitle;
+      els.introBody.textContent = c.introBody;
+      els.faqTitle.textContent = c.faqTitle;
+      els.faq1Question.textContent = c.faq1Question;
+      els.faq1Answer.textContent = c.faq1Answer;
+      els.faq2Question.textContent = c.faq2Question;
+      els.faq2Answer.textContent = c.faq2Answer;
+      els.faq3Question.textContent = c.faq3Question;
+      els.faq3Answer.textContent = c.faq3Answer;
+      els.faq4Question.textContent = c.faq4Question;
+      els.faq4Answer.textContent = c.faq4Answer;
+      els.supportTitle.textContent = c.supportTitle;
+      els.supportBody.textContent = c.supportBody;
+      els.contactLabel.textContent = c.contactLabel;
+      els.contactEmail.textContent = SUPPORT_EMAIL;
+      els.contactEmail.href = `mailto:${SUPPORT_EMAIL}`;
+      els.versionLabel.textContent = c.versionLabel;
+      els.versionValue.textContent = APP_VERSION;
+      els.privacyLink.textContent = c.privacyLink;
+      els.backLink.textContent = c.backLink;
+
+      els.buttons.forEach((button) => {
+        const pressed = button.dataset.lang === lang;
+        button.setAttribute("aria-pressed", pressed ? "true" : "false");
+      });
+
+      document.documentElement.lang = lang === "ko" ? "ko" : (lang === "ja" ? "ja" : "en");
+    }
+
+    els.buttons.forEach((btn) => btn.addEventListener("click", () => setLang(btn.dataset.lang)));
+    setLang("en");
+  </script>
+</body>
+</html>
